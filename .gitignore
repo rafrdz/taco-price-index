@@ -10,6 +10,16 @@ capybara-*.html
 *.orig
 rerun.txt
 pickle-email-*.html
+/data_collection/venv
+venv/
+env/
+.venv/
+
+.idea/
+*.iml
+*.ipr
+*.iws
+*.DS_Store
 
 # Ignore all logfiles and tempfiles.
 /log/*

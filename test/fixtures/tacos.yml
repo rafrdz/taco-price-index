@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  restaurant: one
+  name: MyString
+  description: MyText
+  price_cents: 1
+  calories: 1
+  tortilla_type: MyString
+  protein_type: MyString
+  is_vegan: false
+  is_bulk: false
+  is_daily_special: false
+  available_from: 2025-06-07 23:26:15
+  available_to: 2025-06-07 23:26:15
+
+two:
+  restaurant: two
+  name: MyString
+  description: MyText
+  price_cents: 1
+  calories: 1
+  tortilla_type: MyString
+  protein_type: MyString
+  is_vegan: false
+  is_bulk: false
+  is_daily_special: false
+  available_from: 2025-06-07 23:26:15
+  available_to: 2025-06-07 23:26:15

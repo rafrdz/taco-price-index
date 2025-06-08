@@ -1,0 +1,172 @@
+id,place_id,name,street_address,city,state,zip,latitude,longitude,phone,website,yelp_id,bean_cheese_likelihood_score
+74616038-b2a9-4bf8-b75e-29997ea67526,ChIJTQbaXgD1XIYRoef7X5THUbc,Chela’s Tacos Mexican Restaurant,5231 Broadway suite 157,Alamo Heights,TX,78209,29.4758551,-98.4631993,(210) 753-1040,,,4
+416a82e0-3e45-4d45-adbc-37f078bfa279,ChIJBUmoihf2XIYRLuoPUDQ993o,Taqueria Los Dos Laredos,1303 S Hackberry St,San Antonio,TX,78210,29.4045458,-98.47344869999999,(210) 534-2494,https://taquerialosdoslaredos.shop/,,3
+61e4843a-925b-4cb6-a88c-a874eeb99752,ChIJNWSBql73XIYRjVFt6F2slV0,La Coronela Mexican Restaurant,201 N New Braunfels Ave,San Antonio,TX,78202,29.4212869,-98.46153919999999,(210) 598-0537,,,3
+219c0259-221f-4f47-8eca-92b6b7f02d23,ChIJ-Q4IXm32XIYRkS5OzdwdBY0,Taqueria Los Dos Laredos #5,414 S New Braunfels Ave,San Antonio,TX,78203,29.4153236,-98.4609579,(210) 532-2283,,,3
+c7e15025-1fa4-4736-914c-ca1bc5cdb9c3,ChIJyXzGQjJfXIYR3-WmPtulBbQ,Las Delicias Tacos #2,1901 W Commerce St,San Antonio,TX,78207,29.4273581,-98.5156841,(210) 223-1800,,,3
+551b42de-54bf-40bb-a4cb-3e7b5dd099a5,ChIJT1hp3L1fXIYRl3yxmAkkaEE,La Sultana Del Norte Taqueria,4403 Blanco Rd,San Antonio,TX,78212,29.4873801,-98.50818,(210) 732-2244,http://lasultanadelnorte.com/,,3
+02c91e1a-7ad4-4734-9508-45eb26c3c092,ChIJvWcFVBz1XIYRHuFYFAlqI7g,Taqueria Los Dos Laredos,1264 Austin Hwy,San Antonio,TX,78209,29.489102,-98.4428112,(210) 822-3110,https://taquerialosdoslaredostx.com/,,3
+bcb2927d-e859-4f71-83af-a583ef1e40b5,ChIJLa8BpqNZXIYRwTe5BxvmoVI,Taqueria La Catrina Mexican Food,544 New Laredo Hwy,San Antonio,TX,78211,29.3673503,-98.54630060000001,(210) 921-1090,,,3
+bfac7e86-5741-43aa-b612-bd88ceeb0dfb,ChIJi-b-t832XIYRdePFA4pffeU,Taqueria Los Dos Laredos,4703 Rigsby Ave,San Antonio,TX,78222,29.3987222,-98.40053739999999,(210) 333-8172,,,3
+17f312c8-65c5-40b8-97c7-5b2fb48c1bf1,ChIJl4-xDK1fXIYRZeaQOIq5-xQ,Los Laureles,1918 West Ave,San Antonio,TX,78201,29.4791635,-98.525842,(210) 736-1255,,,3
+a4a0e9d3-c17a-4f61-8f3e-1bb078eee5b6,ChIJ4Tb8IydcXIYRBZKiE_uEPp4,Isela's Tacos,3650 Culebra Rd,San Antonio,TX,78228,29.4494562,-98.57456359999999,(210) 468-2240,,,3
+f8a6992d-ab5d-44d1-8f8d-e98cfc7f1d6e,ChIJIyuIWjJfXIYRPAno-4NA04U,Taqueria El Chilaquil,1821 W Commerce St,San Antonio,TX,78207,29.427382,-98.5150997,(210) 226-5410,,,3
+16ba9daf-b404-4d87-b75b-071de065f8ae,ChIJe0oMwFVeXIYR-G_6wjhCTJU,Mi Celayence Mexican Restaurant,2907 Fredericksburg Rd,San Antonio,TX,78201,29.4702888,-98.5326743,(210) 732-1122,https://celayence.top/,,3
+751654c3-aca4-4dfc-a8e7-092eb6b10dc4,ChIJXSlRSgdZXIYRcCY5YBM4syw,Angela's Mexican Café,4822 S Zarzamora St,San Antonio,TX,78211,29.3775062,-98.5338979,(210) 231-0083,https://www.facebook.com/Angelasmexicancafe210/,,3
+dd1483f3-9ef9-4d5f-8061-1b023f2e144f,ChIJE98TgzNfXIYR5ksJOvBgsvY,Las Delicias Tacos #1,1603 W Commerce St #100,San Antonio,TX,78207,29.427098,-98.512389,(210) 226-4111,,,3
+c911edeb-2242-49f5-91a0-62b0701f817a,ChIJQ_EEe0n1XIYREJ-REJpb9es,Taqueria Vallarta #3,8234 Broadway,San Antonio,TX,78209,29.5127291,-98.4658335,(210) 829-0180,,,2
+1fbe5401-c92a-433b-8d55-e4efc30794ff,ChIJq9a61uD0XIYRr20pkDyVnYY,Taqueria El Trompos,7863 Callaghan Rd Suite 108,San Antonio,TX,78229,29.5096549,-98.5549435,(210) 626-8032,https://www.ordertaqueriaeltrompo.com/,,2
+b814b2bf-30c7-49d2-9f3f-2e25498a57c3,ChIJmfvBY_P1XIYRCjrN5rhXplk,Los Weyes de la Asada,1009 Avenue B,San Antonio,TX,78215,29.435432,-98.481337,,https://losweyesdelaasada.com/,,2
+ca9d1d71-61ff-4aa0-aba7-8b1b5b7d7c19,ChIJTZXmkF1fXIYROCUnT57g94o,Taqueria Chapala Jalisco,1902 McCullough Ave,San Antonio,TX,78212,29.4473178,-98.4916616,(210) 735-5352,https://taqueriachapala.top/,,2
+84b7d76f-e366-4e7f-a49f-a89600cd362f,ChIJKyn2wORYXIYR_62QUVzAy7A,El Itacate Tacos,2501 Nogalitos St,San Antonio,TX,78225,29.3901017,-98.5209138,(210) 922-7191,,,2
+5c7184b7-34e1-4fd7-ae6b-4bd19b7b614d,ChIJq-L-ARr2XIYRs1hYUk6SVhs,Taqueria Vallarta #2,1430 E César E. Chávez Blvd,San Antonio,TX,78210,29.4090309,-98.47351119999999,(210) 534-5285,https://kairospublicidadbilingue.com/taqueria-vallarta/,,2
+bc7ef47f-b017-4f1a-8a51-58c2ba5b5f95,ChIJMeGJAXzzXIYRYHqNaoQV9bM,Taqueria Perla Tapatia,5102 Rittiman Rd,San Antonio,TX,78218,29.4835953,-98.3914077,(210) 662-2919,https://www.facebook.com/Taqueria-Perla-Tapatia-116703768353668/,,2
+49b4aea3-5b7c-4be1-8e50-737092dff2e9,ChIJ8ZA76DP2XIYRbwm0VSw5wCo,Taqueria El Ranchero de Jalisco,505 Fair Ave,San Antonio,TX,78223,29.3856922,-98.4692332,(210) 957-0515,https://elrancherotaqueria.net/,,2
+233ac81f-e374-4c7a-b3d3-15f2d11dffc9,ChIJw4ztpKhYXIYRuKpymLUwmyM,Cascabel Mexican Patio,1000 S St Mary's St,San Antonio,TX,78205,29.4145235,-98.4888305,(210) 212-6456,https://www.clover.com/online-ordering/cascabel-mexican-patio-san-antonio,,2
+3e677fa0-1e78-4a08-a1a8-586569e1414a,ChIJ4wOwRFFZXIYRKEakVR1e4MU,Tacos El Rey,1821 Castroville Rd,San Antonio,TX,78237,29.4141369,-98.5656903,(210) 432-3663,https://www.facebook.com/TacosElReySA/,,2
+5d9ba210-cc6d-4f1a-9554-fc12c4fc4d7a,ChIJ09TwH6pZXIYRQy_QPo0Le9I,Las Palomas Mexican Restaurant,3950 S Zarzamora St,San Antonio,TX,78225,29.3852702,-98.5328561,(210) 757-3426,,,2
+9243085e-776b-41b3-ad23-707f29336f51,ChIJk7Z2SItZXIYRtgZGvjJXUMA,La Mexicana Mexican Restaurant,130 Main Plaza,San Antonio,TX,78205,29.4239975,-98.49311569999999,(210) 265-3422,http://lamexicanarestaurant.online/,,2
+73470b5b-d30f-4ab4-b757-7cff76c25dff,ChIJvUGN4vdfXIYRpf7nV8k8wy0,TLAHCO MEXICAN KITCHEN,6702 San Pedro Ave,San Antonio,TX,78216,29.5005879,-98.49886769999999,(210) 239-9457,http://www.tlahcokitchen.com/,,2
+26267784-7345-4c79-956f-496e542b6c26,ChIJ5THGqB73XIYR3jt7uVPM6dw,El Taco Huevon,2620 S Presa St Suite #2,San Antonio,TX,78210,29.3956097,-98.4812285,(210) 607-3002,,,2
+a3ad9b44-5641-477e-bb9c-50ea6a0d5e7d,ChIJ_7QScgX1XIYRliT1dl-k9xI,Velvet Taco,103 W Grayson St,San Antonio,TX,78212,29.4449,-98.48178999999999,(210) 960-5650,https://www.velvettaco.com/location/the-pearl/,,2
+f4e5fe1f-1bc5-416f-8e13-5cd5b5e5d5a3,ChIJIefhSL5fXIYRifMm3165EAI,Taqueria El Charro Tapatio,4600 Blanco Rd,San Antonio,TX,78212,29.4900369,-98.5074004,(210) 340-2650,http://www.taqueriaelcharro.weebly.com/,,2
+5f5632a5-69a4-461b-af3a-fd91ee1ea86e,ChIJ-RykXztcXIYRvXPZRuYrUKk,Taqueria El Rodeo De Jalisco,4044 Culebra Rd,San Antonio,TX,78228,29.448167,-98.584401,(210) 432-8984,https://taqueria-el-rodeo-de-jalisco.shop/,,2
+14fe71e9-1816-4d36-bae4-f8bdf8cfa286,ChIJ5W-TwrZeXIYR8llyUjDMONs,Mexico Taco Mexican Restaurant,203 S General McMullen Dr,San Antonio,TX,78237,29.4289678,-98.5545811,(210) 432-5594,,,2
+3f8ecdc1-d71c-41f0-8cac-d8c3f65d3d2e,ChIJNfpp9-71XIYRZG7-38jT2bg,Taco La Gardenia,1805 N Pine St,San Antonio,TX,78208,29.441719,-98.470396,(210) 229-9702,,,2
+9530a267-49c9-402f-a3f0-345d1e48bf25,ChIJJ8ulCAtfXIYRk7iijuYatLo,Rolando's Super Tacos # 1,919 W Hildebrand Ave,San Antonio,TX,78201,29.4667244,-98.50866409999999,(210) 549-5950,https://maricelarmendez.wixsite.com/rolandos,,2
+4a53a527-43e5-42d4-bc2c-e7c30645fbfe,ChIJZfIEkk33XIYRC9ivZUxk1QM,TAQUERIA ELRANCHERO DE JALISCO,502 Porter St,San Antonio,TX,78210,29.4055553,-98.4610455,(210) 534-0180,,,2
+24e6c107-b592-49d4-9aad-b6a4a73589c9,ChIJ2QtxuKj2XIYRneX8NE7NdGg,El Gran Tapatio Mexican Grill,319 S WW White Rd,San Antonio,TX,78219,29.4256995,-98.4058974,(210) 359-1313,http://www.elgrantapatiomexicangrill.com/,,2
+95ef58ca-7390-4d2f-b669-38531e8678d2,ChIJQTSdOqpcXIYR0cq0mIk4LhI,Taqueria La Tapatia # 8,3555 Fredericksburg Rd,San Antonio,TX,78201,29.4770336,-98.5392727,(210) 732-2000,,,2
+6f15bd88-4e23-4cc7-a1c5-7d5c00d87e80,ChIJqyo7UGBfXIYRr9S4NmOFXjU,Tacos El Regio - St Mary’s,2726 N St Mary's St,San Antonio,TX,78212,29.4508395,-98.4863396,(210) 782-2272,https://www.tacoselregiosatx.com/,,2
+632ee0e0-5104-4a42-95fc-e7d779bb3ba6,ChIJ9bDCHvZYXIYRD2LMUGKegeE,Las Cazuelas Restaurant,645 Chalmers Ave,San Antonio,TX,78214,29.377843,-98.5128684,(210) 932-1785,http://www.lascazuelassa.com/,,2
+229cf6bf-d9b0-4adf-8d6e-7068c289368a,ChIJEy-GVd31XIYRng_kK0YcQ48,Taqueria Mi Chapala Jalisco,1808 N New Braunfels Ave,San Antonio,TX,78208,29.44064079999999,-98.4607772,(210) 368-2966,,,2
+cd8fa269-957b-448b-8ca7-417c00f9caf8,ChIJ43ZjgK5ZXIYRoWtzVvQ5ebs,Taqueria Rello,1522 W Southcross Blvd,San Antonio,TX,78211,29.3678855,-98.5338033,(210) 932-2009,,,2
+cb9d4945-ae5c-496b-a51f-3ef08134b558,ChIJqSZhsmlYXIYRlP-orSPyCaI,El Sol Mexican Restaurant,1815 Pleasanton Rd,San Antonio,TX,78221,29.3637019,-98.5042447,(210) 923-5553,https://elsolmexicanrestaurant.cfd/,,2
+2b0c6d3b-a640-48c8-8d2b-3eb585fb5afb,ChIJcaj5bmFfXIYR6Il-Ml_C4q4,Los Chiles Mexican Restaurant,341 St Cloud,San Antonio,TX,78228,29.4598623,-98.550257,(210) 233-6249,https://loschiles.top/,,2
+c8fd28db-c894-409b-92d9-4c4cd92b3d51,ChIJM-uz1d_3XIYRjTtBKc1JsWw,Taqueria Nuevo Vallarta,3451 Roosevelt Ave,San Antonio,TX,78214,29.3567033,-98.4816907,(210) 923-3058,,,2
+db07eafb-4078-4e9c-bd10-01d1611d90a0,ChIJlQ7EtKFfXIYRy0IQ5rzY2Ew,Plaza’s Mexican Restaurant,1516 Basse Rd,San Antonio,TX,78213,29.48825369999999,-98.5086429,(210) 735-4512,,,2
+c596708d-42e8-471f-8ff6-52e3e008cbfa,ChIJBXcgORX1XIYR-RCPCl-kZJI,El Vaquero Mexican Restaurant,8014 Cross Crk,San Antonio,TX,78218,29.5108285,-98.4026105,(210) 251-4970,https://elvaqueromexicanrestauranttx.com/,,2
+0102e612-e5b7-42f7-b5ce-4ee0cb5c68e4,ChIJI0rLeDT2XIYRdm5VWNBNOj0,Taqueria La Tapatia,538 Fair Ave,San Antonio,TX,78223,29.3839312,-98.4676181,(210) 532-9395,,,2
+a7173f5f-d363-475a-a9ad-62f4aa1b3287,ChIJV6cDac72XIYRPSVNGFQ494o,Taqueria Hacienda Mexican Restaurant,4535 Rigsby Ave #101,San Antonio,TX,78222,29.3987104,-98.4030688,(210) 277-0125,,,2
+5359c241-4fd0-40ff-b9b7-e5ab2f25e85c,ChIJ9Rzk6KleXIYRiDDBGxo8hyI,Chelita's Mexican Restaurant,550 Old Hwy 90 W,San Antonio,TX,78237,29.4271157,-98.5713339,(210) 687-7237,https://m.facebook.com/profile.php?id=1594041214181428&ref=bookmarks,,2
+45490bbe-f112-4cd3-a874-31cc57da7f76,ChIJqSnv5AL0XIYRqh3wGqqdU-Y,Lazarita's Mexican Restaurant,166 S WW White Rd,San Antonio,TX,78219,29.4289079,-98.4052249,(210) 337-4180,https://forms.gle/ZRDomgYvmmuW33Ct8,,2
+b64748c1-f132-4b6f-bb6b-d9deb6ba9600,ChIJFcl00xRYXIYRe8TeawlUkT4,Rolando's Super Taco,93 Shasta Ave,San Antonio,TX,78221,29.3552085,-98.5030304,(210) 927-9449,https://rolandossupertaco.shop/,,2
+8ecda410-b9f3-41ee-88dd-87f907494b45,ChIJI_QBI_ZfXIYR8O3KEYFKG7g,Chipilos Mexican Cuisine,814 West Ave,San Antonio,TX,78201,29.4701675,-98.52571619999999,(210) 437-4505,https://chipilosmexicancuisine.com/,,2
+586f65ec-a51f-4645-9d56-64aeab39a3d0,ChIJQwUIhAxYXIYRct8vuldW4Bs,Taqueria La Tapatia,6731 S Flores St,San Antonio,TX,78221,29.3537679,-98.49017350000001,(210) 924-6181,,,2
+0c0071eb-887a-4815-af0b-45af51b64bd8,ChIJ1XBlyhZfXIYRpf-HLh6lQwE,La Capital del Sabor,502 Bandera Rd,San Antonio,TX,78228,29.4521755,-98.5477444,(210) 200-8901,https://lacapitaldelsabortexas.com/,,2
+1f2296ab-f1ba-451b-b379-c6c500501abf,ChIJvSoZnUxZXIYRszMF4SIYOCk,Taqueria Vallarta # 1,829 S General McMullen Dr,San Antonio,TX,78237,29.41908979999999,-98.5557886,(210) 432-8832,,,2
+9b90d614-67e8-42c0-bf09-6aee41886eac,ChIJu0zr0FFZXIYRZwU2glG-uMk,El Alteno Mexican Food,7135 Somerset Rd,San Antonio,TX,78211,29.3560388,-98.55066459999999,(210) 314-5972,,,2
+edb64bdb-e8e2-4ba1-a947-a292d741eae5,ChIJv7ioZzz3XIYRAMC1z7euYI4,Vallarta Taco,1818 Goliad Rd,San Antonio,TX,78223,29.3683861,-98.4429586,(210) 333-8226,,,2
+5952c58c-df15-4021-8949-d01aeef27244,ChIJn20g9SL3XIYR76DVjKKiDhI,El Bracero Mexican Restaurant,3939 E Southcross,San Antonio,TX,78222,29.3751901,-98.4166747,(210) 337-1686,http://el-bracero-mexican-san-antonio.poi.place/,,2
+b867b3a7-4b62-494a-8cd5-67ac61668b35,ChIJqSHsAU5ZXIYRAsljwoAjszI,El Puesto Mexican Restaurant #1,1504 Castroville Rd,San Antonio,TX,78237,29.414755,-98.561106,(210) 433-1901,,,2
+9e2dd507-959a-4242-b5f3-512f0b58f183,ChIJIXfcctVfXIYRLtccs6JUX2M,La Comarca Mexican Restaurant,5131 West Ave,San Antonio,TX,78213,29.5144564,-98.5264115,(210) 340-8050,https://lacomarcamexicanrestauranttx.com/,,2
+e285bc8e-f4ac-4ae9-aa67-82fa720f00ff,ChIJP6eVIJ5ZXIYRkwZJ9XBViOA,La Quintana Mexican Restaurant,1402 Quintana Rd,San Antonio,TX,78211,29.3751106,-98.5539972,(210) 745-0302,https://www.facebook.com/LaQuintanaRealMexicanFood/,,2
+76ad9be3-5d87-4395-836b-fb80f67f3162,ChIJo4wIZRNeXIYRSge8MCAB5-Q,Taqueria El Rodeo De Jalisco,3802 Northwest Loop 410,San Antonio,TX,78229,29.4922104,-98.5561829,(210) 733-6776,https://taqueriaelrodeodejalisco.shop/,,2
+d6291d21-37bd-4392-9671-76c28f8d2b27,ChIJc_SgJQBfXIYREv6k4O0f1mU,Taqueria La Milpa,114 Fredericksburg Rd,San Antonio,TX,78212,29.44261599999999,-98.5043219,(210) 370-3033,,,2
+6b64f13d-14b3-4969-9b58-3e12869bfd93,ChIJ4WhbDctfXIYRkYFIHoaxNBA,Taqueria El Gallo De Jalisco,3615 West Ave,San Antonio,TX,78213,29.4961866,-98.5265739,(210) 342-4855,,,2
+e489a365-984a-4427-9c85-1cce1938233f,ChIJPZ6qKdT3XIYRIoCnd7bysH0,Taqueria Guadalajara,2702 Roosevelt Ave,San Antonio,TX,78214,29.3742515,-98.4809994,(210) 532-5500,http://ordertaqueriaguadalajarasanantonio.mobile-webview8.com/,,2
+8bd6d0d5-6a98-4199-a7de-43ad05bd301b,ChIJMdz5gJP3XIYRFRK6h2LuZ2Y,Taqueria La Perla de Jalisco,2255 SE Military Dr,San Antonio,TX,78223,29.3521693,-98.4593414,(210) 532-5550,,,2
+761879c9-28ab-4211-b49f-7d41b7b16175,ChIJdU35WABZXIYR68wLXqNfD7o,Taqueria y Restaurant Los Jaliscienses #2,3423 Pleasanton Rd,San Antonio,TX,78221,29.344919,-98.504212,(210) 248-9388,,,2
+f56b07db-d36e-488c-818a-36006c622bb3,ChIJ_VEpvcBYXIYRVcoxBoL_0CA,Taqueria Los Potrillos,715 Nogalitos St,San Antonio,TX,78204,29.4056091,-98.5071519,(210) 226-5408,,,2
+c24e5587-f744-4b25-ba8b-b23dffe8cd4c,ChIJF884F55ZXIYRk_jCpvRZSqw,Taqueria Lupita's Mexican Food,1502 Quintana Rd,San Antonio,TX,78211,29.3744152,-98.55454329999999,(210) 923-2244,,,2
+692cdcfa-23fe-4da5-8ab7-521b6223fe57,ChIJp6PpAy_3XIYRHPh7obpH7jw,Taqueria Los Potrillos,3023 S WW White Rd,San Antonio,TX,78222,29.3761559,-98.40479619999999,(210) 359-9774,https://www.facebook.com/los.potrillos.16752,,2
+6bd13596-c221-449f-aa26-68aa3d6ad841,ChIJr67ZQvJdXIYRYO-qj_qL2_I,Taqueria La Tapatia,2320 Babcock Rd,San Antonio,TX,78229,29.504712,-98.585183,(210) 442-8013,,,2
+10df9337-bd74-433b-b866-84cf105593bb,ChIJxZRHJaJfXIYRxqDmROeBJ0I,Taqueria Vallarta,3219 Blanco Rd,San Antonio,TX,78212,29.4766277,-98.50818249999999,(210) 737-0797,https://taqueriavallarta.shop/,,2
+d02923c9-d387-49ed-80cf-c9528df18829,ChIJeXyV4_D3XIYRxGnRauGJ-bM,Taqueria La Tapatia,4731 Rigsby Ave,San Antonio,TX,78222,29.39872459999999,-98.3985223,(210) 333-9885,,,2
+c764339a-d9cc-466d-96d6-a626fb1e723f,ChIJsQ3E6gJhXIYRvl48oryB_mM,LOS PINCHES TACOS,3850 Culebra Rd,San Antonio,TX,78228,29.44963049999999,-98.5796888,(210) 269-5261,,,2
+24762cfa-eded-452c-84e2-4c8a41097233,ChIJ2UTItThfXIYRdOaiAVJf1yw,El Noa Noa Mexican Cafe,1502 N Zarzamora St,San Antonio,TX,78207,29.4430149,-98.52501439999999,(210) 475-3228,,,2
+9a4ff0c8-09b4-4208-a5fa-24d44b1d8cad,ChIJt2376X_1XIYR4CE6LMox8RQ,Lupe Tortilla Mexican Restaurant,255 E Basse Rd,San Antonio,TX,78209,29.4969848,-98.4797006,(210) 446-4081,https://tex-mex.com/sanantonio-quarry/,,2
+f6bf7861-c16a-430a-817b-e0760982e8c4,ChIJyfN-w2FfXIYRCY6qYXMN3c4,El Milagrito Cafe,521 E Woodlawn Ave,San Antonio,TX,78212,29.4526748,-98.4850889,(210) 737-8646,,,2
+f01aab38-71d3-48f9-8970-23394cdf6284,ChIJ5RKHRaX0XIYRDdC_cjKSvuc,El San Luis Mexican Restaurant,4455 Walzem Rd,San Antonio,TX,78218,29.5105285,-98.40565819999999,(210) 564-0644,http://orderelsanluismexicanrestaurant.com/,,2
+6a510c66-a4bf-4245-9961-788ed46a6b11,ChIJkSYBFrBeXIYR2Zs2mWzphQM,Tacos Martinez,5034 W Commerce St,San Antonio,TX,78237,29.4310991,-98.56014379999999,(210) 436-1729,https://www.facebook.com/profile.php?id=100063493873117,,1
+d2d07b4e-a0e3-48ca-b3b4-5a291fd69aa4,ChIJg68dNJf1XIYR2iRx__jz_Os,Taco Broadway,3610 Broadway,San Antonio,TX,78209,29.4596519,-98.46752029999999,(210) 758-5231,https://www.facebook.com/carnitasypozole/,,1
+c32fee81-e268-4881-b9c6-405890d9bf58,ChIJvyvij1nzXIYR0beoUzMPuMI,Benny's Tacos,5050 Walzem Rd,San Antonio,TX,78218,29.5099447,-98.3915274,(210) 655-8646,,,1
+1db92989-a07a-40f7-b8d0-62f4631c27e5,ChIJKYclHMT3XIYRxl5podSxZ1k,Con Huevos Tacos,1629 E Houston St,San Antonio,TX,78202,29.4253072,-98.47192,(210) 229-9295,https://order.toasttab.com/online/con-huevos-tacos,,1
+8dea0cb5-5939-4a5d-878a-ea6f1bf563e5,ChIJedNDerhYXIYRuOyvrAkiN1g,Eddie's Taco House,402 W Cevallos,San Antonio,TX,78204,29.41063879999999,-98.50588429999999,(210) 222-2400,http://www.eddiestacohouses.com/,,1
+99dfea84-5471-4170-a361-44d2e8828010,ChIJvevCuY1ZXIYRvCbgdWpJQdM,Tia's Taco Hut,8514 Interstate 35 Access Rd,San Antonio,TX,78211,29.339529,-98.5533523,(210) 267-1265,http://www.tiastacohuttx.com/,,1
+59796c30-458d-4603-b564-85e83b12df59,ChIJ1-iBuhZiXIYRIztOxKncwPU,Taco Palenque Broadway,1002 NE Interstate 410 Loop,San Antonio,TX,78209,29.5155699,-98.4593342,(210) 826-5313,,,1
+e69c00f9-198e-4add-9789-e275d9979e30,ChIJ27zFHG5fXIYRndWN0DZXT30,Tia’s Taco Hut,1203 N St Mary's St,San Antonio,TX,78215,29.4343458,-98.48624749999999,(210) 248-9533,https://www.tiastacohuttx.com/,,1
+8128a382-e0f9-4b70-8e79-9731a66977fa,ChIJY9NB3ML3XIYRlT3QphEal2k,Taco Grill,4043 E Houston St,San Antonio,TX,78220,29.425081,-98.418911,(210) 810-6915,,,1
+cfad80b5-f3dd-44e3-ba69-5c4058e42fcc,ChIJo737ISdcXIYRkTZtp5uC3h4,Taco Express Cafe,3659 Culebra Rd,San Antonio,TX,78228,29.4501436,-98.57452699999999,(210) 263-9899,,,1
+1d2ae430-e380-4ded-9176-45bc9e55538a,ChIJY-92MEL1XIYRS04ASaSmO_o,Torchy's Tacos,999 E Basse Rd,San Antonio,TX,78209,29.497568,-98.470455,(210) 824-1603,https://torchystacos.com/?olonwp=JjBtp_vMLk25gkYh_bnoiQ,,1
+08303759-c7fa-4081-8d82-092b7ab8af51,ChIJQY2wrDr2XIYRcStHoEnSG68,Patty's Taco House #1,2422 S Hackberry St,San Antonio,TX,78210,29.3922846,-98.47314519999999,(210) 534-3395,https://pattystacohousesa.com/,,1
+9941293e-53b6-4fad-b69c-9db340d46414,ChIJ7USlW69YXIYR_vPrsjrIkxY,Tito's Mexican Restaurant,955 S Alamo St,San Antonio,TX,78205,29.4141238,-98.49093620000001,(210) 212-8226,http://titosrestaurant.com/,,1
+91015409-578f-470f-b596-78c3d2fc9935,ChIJvfs0TjVfXIYRlT4og0jnRdU,Tacos de Mama,3709 Blanco Rd,San Antonio,TX,78212,29.4809961,-98.5080079,(726) 205-9131,,,1
+449e4860-1e33-4129-a46a-f0b0098d1384,ChIJYbTKfgFcXIYRD8bvtc3uDnc,Taqueria Fiesta Charra,318 Enrique M. Barrera Pkwy,San Antonio,TX,78237,29.4292484,-98.56623599999999,(210) 432-3334,,,1
+c7e12c2d-d476-448a-a99b-b64a8a010f85,ChIJ45usu6FfXIYRWr9G-ScCn3c,TINK - A - TAKO / Sandra’s Mexican Food,2919 Blanco Rd,San Antonio,TX,78212,29.4739045,-98.5081668,(210) 738-1161,,,1
+cd34e865-90b0-40c5-9e71-f7c7471244e7,ChIJJaZQZVxfXIYRh5TcPHQJFTM,Little Taco Factory,1510 McCullough Ave,San Antonio,TX,78212,29.4431691,-98.4916521,(210) 227-5657,https://www.facebook.com/The-Little-Taco-Factory-Mexican-Restaurant-117834104910145/,,1
+e475b26c-3d08-49b2-ab01-945367560abc,ChIJ3376v_D3XIYRVYvdBFQaAB0,Tia's Taco Hut,2402 SE Military Dr #105,San Antonio,TX,78223,29.3514286,-98.45501120000002,(210) 368-9087,https://www.tiastacohuttx.com/,,1
+970a8c08-7e76-496a-ad2e-296063bae74d,ChIJ5yzlSk31XIYR-m_HDh2tDYw,Las Palapas - Austin Hwy,1208 Austin Hwy,San Antonio,TX,78209,29.4872365,-98.4465058,(210) 598-8735,https://www.laspalapas.com/,,1
+34e2af86-9ab9-4c79-aa59-4c61664a7e63,ChIJ6TO4qUldXIYRyLKcrGh2uyo,Tia's Taco Hut,5423 Evers Rd,San Antonio,TX,78238,29.4860941,-98.5938568,(210) 314-4504,https://www.tiastacohuttx.com/,,1
+04bb59f8-2a8b-4291-94ef-9b2ad6d35334,ChIJyWyIiHdfXIYRAXM3XfKCpSw,Naco Mexican Grayson,310 W Grayson St,San Antonio,TX,78212,29.4452218,-98.48440730000002,(844) 536-8127,https://www.nacomexican.com/,,1
+86aff2a6-959d-438f-99fe-a66e38e3de9c,ChIJaZZoQ_BfXIYRFDnngcpVLe0,Oblate Cafe,904 Oblate Dr,San Antonio,TX,78216,29.5039935,-98.49323129999999,(210) 826-3363,,,1
+19b4deca-c1f0-4dd2-9599-2932dfa78090,ChIJzRnC2hRZXIYRxfT7o1Tc3v4,Rocky's Taco House,1302 Cupples Rd #8,San Antonio,TX,78226,29.3949974,-98.54935619999999,(210) 433-2931,http://www.rockystacohouse.com/,,1
+a5898f1c-dc51-46a9-a420-c38e9e9f32a8,ChIJPcsPlelYXIYRvdhSXUzoR2w,Tony's Tacos To Go,1503 Nogalitos St,San Antonio,TX,78204,29.3992054,-98.5132438,(210) 271-7113,https://www.tonystacostogo1.com/,,1
+a81775fd-12cc-4357-bf0c-b08ce91e5101,ChIJz_Gm5gFeXIYRNa63ouChX7w,Original Blanco Cafe,7934 Fredericksburg Rd,San Antonio,TX,78229,29.5122222,-98.5677778,(210) 692-3233,http://theoriginalblancocafe.com/,,1
+e6e410be-0e26-43da-b9e4-29522e1e3052,ChIJnZg25qBYXIYRQk35gRgKjhs,Las Tapatias De Jalisco,1506 S St Mary's St,San Antonio,TX,78210,29.40676599999999,-98.486335,(210) 532-8800,,,1
+ac6b1327-5bce-42e7-ac8e-d8891013f4b6,ChIJ010ZNN71XIYRKWTeZnEIktk,Teresita's Mexican Restaurant,902 N New Braunfels Ave #1447,San Antonio,TX,78202,29.4305037,-98.46119069999999,(210) 212-5322,http://teresitaskitchen.com/,,1
+746ff5f1-1363-403f-931c-5f93e800ecd2,ChIJ-7GeA61fXIYRXIHITV_LAeM,Sukie's Taco House,1808 West Ave,San Antonio,TX,78201,29.4779396,-98.5258865,(210) 732-0230,https://www.sukiestacohouse.com/,,1
+5ad31f21-0d6c-450e-8305-b5fbcaa0cc41,ChIJF6E6x0BfXIYRTYf4xqiCY6I,Tacowey San Antonio,2023 Vance Jackson Rd,San Antonio,TX,78213,29.4916174,-98.5355768,(210) 723-7054,,,1
+c2dc915b-81dc-4c0c-9fea-d1668141cf0c,ChIJM6TG5MBfXIYRcWLInpNE13o,Taco Palenque San Pedro & Cypress,811 San Pedro Ave,San Antonio,TX,78212,29.4411418,-98.4994894,(210) 239-2339,,,1
+322e23b7-d0cf-4017-aeff-ae610f387ee7,ChIJzcJ6fUxZXIYRhv-oRGrddTY,Las Rancheritas Cafe,902 S San Augustine Ave,San Antonio,TX,78237,29.418186,-98.556174,(210) 399-1185,http://lasrancheritascafe.com/,,1
+9b606440-db61-43b3-9865-de0a3bea4b9a,ChIJe1CJMqhfXIYRigXT4OPbKO0,Tejas Birria- El Camino,1009 Avenue B,San Antonio,TX,78215,29.4353273,-98.4814122,,https://tejasbirria.toast.site/,,1
+72fcb325-290e-4d64-9d79-e72c7eba38f5,ChIJb0rWD69eXIYRZQBGtfvsu74,Roy's Taco Hut,246 West Old,US Highway 90,San,Antonio,29.4299583,-98.56451539999999,(210) 432-0275,https://roystacohut.shop/,,1
+3dafab5e-d3f5-43ff-9759-04a15c9c2fcb,ChIJxdQEJ_JYXIYRu9PRCYLR3oQ,Taco Cabana,543 W Malone Ave,San Antonio,TX,78214,29.3876847,-98.5112699,(210) 534-8533,https://www.tacocabana.com/?utm_source=google-business-profile&utm_medium=organic&utm_campaign=business-listing&utm_id=20212,,1
+d4a054e5-f09b-4c6a-ac0d-04cc855793c3,ChIJgyP0XI5ZXIYRKmkS1V7alXc,Taqueria Anahuac,3735 SW Military Dr,San Antonio,TX,78211,29.3590384,-98.56328359999999,(210) 921-0774,https://anahuac.top/,,1
+af40f2c3-6475-47b6-9822-a37270c61471,ChIJTdMnCk5ZXIYRijik71mkLKs,tonys tacos to go #2,1402 Castroville Rd,San Antonio,TX,78237,29.4148904,-98.5601037,(210) 549-4868,,,1
+bc7f762b-c75a-4bd2-ba68-8a35a630b9cf,ChIJ_d0qNEj2XIYR4DlDUZgQRFU,Olivia's Mexican Restaurant,801 Vanderbilt St,San Antonio,TX,78210,29.3900902,-98.461101,(210) 534-3016,https://www.facebook.com/pages/biz/Olivias-Mexican-Restaurant-1423672764555238/,,1
+ad948002-4903-4dbe-a5fd-2acd9d05b20d,ChIJExot-81YXIYRJjJ8CSGbvKM,Linda's Mexican Restaurant,1424 Guadalupe St,San Antonio,TX,78207,29.4184118,-98.51656589999999,(210) 271-7120,https://lindasmex.top/,,1
+946da776-d272-4a6a-8982-774fa1a01e75,ChIJl61ZcjxdXIYRlunaFfk9rhM,Taco Capital,2026 Babcock Rd suite 103,San Antonio,TX,78229,29.50053729999999,-98.57955969999999,(210) 314-1269,http://tacocptl.com/,,1
+d7a1d440-13c9-4c82-bed1-425d54f6ea1f,ChIJMUn3xHRfXIYRH_4MgYF32vs,La Cabana de Jalisco,727 W Hildebrand Ave,San Antonio,TX,78212,29.4667408,-98.5052994,(210) 732-2020,,,1
+d42606c4-465c-4626-81cd-14787cc78039,ChIJYwnAiqf3XIYR9OU0Jj-v8jk,El Reparo De Jalisco,922 S WW White Rd,San Antonio,TX,78220,29.4160673,-98.4050453,(210) 251-4724,,,1
+c3f83c5b-9d90-4136-9242-907c269d14fe,ChIJAU08CtL3XIYRsIKXxom0pVc,Reyna's Taqueria,4722 S Hackberry St,San Antonio,TX,78223,29.3759906,-98.47307889999999,(210) 532-8226,http://reynas-taqueria.edan.io/,,1
+2cd23f18-24f1-4996-acc6-1f774c908f66,ChIJuRZr6SP3XIYRKdCgFEnZSbI,Jalisco Taqueria #4,3119 S Gevers St,San Antonio,TX,78210,29.388314,-98.45704900000001,(210) 532-3049,,,1
+ca0f09a3-cb05-42c6-a958-71f90a59b23b,ChIJofBoA7BeXIYRlOkAB3ezH8w,Eva's Mexican Restaurant,5103 W Commerce St,San Antonio,TX,78237,29.4317054,-98.5608218,(210) 432-0201,,,1
+fb054e2e-7618-4e8a-91ca-06ecec16e7a8,ChIJf9GX5tFeXIYRWxiWhXENe4c,Yatzil Mexican Restaurant,502 S Zarzamora St,San Antonio,TX,78207,29.42370499999999,-98.5273199,(210) 432-2240,https://yatzilmexicanrestaurant.cfd/,,1
+701c4650-a22a-4ee3-ac39-ec3e5ac3e195,ChIJMXq4GABZXIYRsr2bRzbr4lg,Niko's Mexican Restaurant,643 Frio City Rd,San Antonio,TX,78207,29.4022294,-98.52357959999999,(210) 255-1222,https://nikosmexicanrestaurant.com/,,1
+84dba577-d66a-4fbf-b5b0-bf0fbd37272f,ChIJT4bm9JJYXIYRypSnJta-YSY,Blue Moon Mexican Restaurant,3228 S Flores St,San Antonio,TX,78204,29.39142,-98.5037306,(210) 531-0093,https://www.toasttab.com/local/order/bluemoontexmex/r-9eff2898-4f42-4618-af96-6daea37038e6/item-torta-jamon_985ce90a-9756-4208-bca7-a3afcd7143e1,,1
+32c7dd55-69b5-428b-a5aa-203793b6fe07,ChIJR-sI4nhfXIYRFYASz0Xe0q4,Panchito's Mexican Restaurant,4100 McCullough Ave,San Antonio,TX,78212,29.4684777,-98.4915305,(210) 821-5338,https://www.panchitos.net/,,1
+c76c20aa-9680-48a5-bf00-82bd04e95dd6,ChIJD65qJoj3XIYRs1tQo5alkgA,Esmeralda's Mexican Restaurant,8750 S Presa St,San Antonio,TX,78223,29.3357857,-98.45327499999999,(210) 534-0888,https://esmeraldasmexicanrestaurant.net/,,1
+69c680fa-f3b1-4ae5-b345-29e2db23d849,ChIJp2XNpmlfXIYRs-1-CWcq2BI,Garcia's Mexican Grill,843 Waverly Ave,San Antonio,TX,78201,29.4475379,-98.52445759999999,,,,1
+0d7354d2-073b-45f3-af33-99808cd894c4,ChIJBbOSOrxZXIYRDhgbszKCkaY,Dos Julios Mexican Restaurant,2031 McCauley Ave,San Antonio,TX,78224,29.3594638,-98.54694409999999,(210) 924-2361,https://dosjuliosmexican.shop/,,1
+e22e3f80-c7df-4fb8-85e1-7e53de6574a7,ChIJhcLjePn3XIYRGtjekBsalrs,Nopal Mexican Restaurant,1699 Rigsby Ave,San Antonio,TX,78210,29.3985055,-98.4394998,(210) 375-5771,,,1
+96ba4f6c-a238-43d3-9876-57b6c6b5e9e7,ChIJ28y6CVNfXIYRGgIYqr9va34,The Original Blanco Cafe,201 W Commerce St,San Antonio,TX,78205,29.4253113,-98.49495119999999,(210) 271-3300,http://www.theoriginalblancocafe.com/,,1
+c0a71432-5b02-4440-9e47-c02f9c159b0e,ChIJcRreok73XIYRZkdVJSHxeAQ,El Tipico Mex Food y Cantina,2511 SE Military Dr,San Antonio,TX,78223,29.3529247,-98.4531593,(210) 333-9000,,,1
+fc6583cb-8220-4a99-86d5-ec5b8ca87aa4,ChIJC7y2nv1ZXIYRh8oIT6S7dis,Guerrero’s Mexican Restaurant,3701 Nogalitos St,San Antonio,TX,78211,29.3790299,-98.53084989999999,(210) 314-2284,,,1
+518fd9b5-7c93-461e-a73d-637e76f7c10b,ChIJkf7EQKtYXIYRmBxipkDBAFE,The Original Mexican Restaurant,528 River Walk St,San Antonio,TX,78205,29.4243731,-98.48842060000001,(210) 224-9951,https://www.originalmexican.com/,,1
+0ccfc48e-f9df-4751-b92e-b070ddc6574d,ChIJkRdZUoP0XIYR_IViL3YIhjI,Taqueria Hacienda Tapatia,6402 N Interstate 35,San Antonio,TX,78218,29.48837,-98.401471,(210) 599-3600,https://taqueriahaciendatapatia.cfd/,,1
+2626eea5-d53f-4599-888d-64720a2b5a0a,ChIJV8XeOgBZXIYRfM7GjTyoB_w,A Whole Lotta Enchilada,4822 S Zarzamora St,San Antonio,TX,78211,29.3775096,-98.53394019999999,(210) 231-0083,,,1
+92d12206-1111-4243-bbfa-d28df327e7ff,ChIJBdeNy1JfXIYRbCpiHaU2Wvc,Poblano's On Houston St.,204 E Houston St,San Antonio,TX,78205,29.42634469999999,-98.4910677,(210) 474-0190,http://www.poblanosonmain.com/,,1
+ed8a8f37-831c-4832-b559-e906477c7b27,ChIJd1nruexfXIYRpfc1ChKH6qo,Taco House,6307 San Pedro Ave,San Antonio,TX,78216,29.4946862,-98.4995778,(210) 341-3136,https://www.instagram.com/tacohousesa/,,1
+1551b13b-e7bf-4d6a-8435-1253793d0111,ChIJ43KR4J9dXIYR1XDqqTCXkUQ,Sabores Cali-Baja Mexican Grill,2414 Babcock Rd #100,San Antonio,TX,78229,29.5051795,-98.58560659999999,(210) 255-1832,https://saboresbajacali.com/,,1
+a71a0ba1-450c-4956-93dc-88d162326c96,ChIJ-1ZXN_H2XIYRDUMHe0tVjQM,Guerrero's Mexican Restaurant,1859 Rigsby Ave,San Antonio,TX,78210,29.3983896,-98.43422040000002,(210) 333-2550,http://www.orderguerrerosmexicanrestaurant.com/,,1
+75ead228-ae67-4f7b-babf-a8c2e8736e3e,ChIJ_8ZNWGn3XIYRbKoruF-8ISA,La Parrilla 2,3719 SE Military Dr,San Antonio,TX,78223,29.35462369999999,-98.42314019999999,(210) 359-9200,,,1
+f966ba18-a7cf-476d-8a0c-9564045595fa,ChIJ_94KWyH3XIYR1bYJuYW6o4s,Papi's Mexican Restaurant,2802 E Houston St,San Antonio,TX,78202,29.4248996,-98.44718859999999,(210) 257-0669,,,1
+97de8989-0943-45b0-834c-b1c93d6e68c5,ChIJ29n_cEhYXIYRW2bcCcKuhBE,Don Pedro Mexican Restaurant,1526 SW Military Dr,San Antonio,TX,78221,29.35624809999999,-98.5172893,(210) 922-3511,https://www.donpedro.com/,,1
+52559386-79db-4da3-a297-0645d23f2310,ChIJV0FQDrZZXIYR7-A6c3R4Qos,Mama Margie's Mexican Restaurant,7335 S Zarzamora St,San Antonio,TX,78224,29.3537461,-98.5346065,(210) 923-1600,https://www.mamamargies.com/our-menu/,,1
+3b978c24-e85a-4f0f-b826-793c36440e57,ChIJ4dYc2S5fXIYR5lUok4jvTmA,Bertha's Mexican Restaurant,2629 W Martin St,San Antonio,TX,78207,29.43176059999999,-98.5217679,(210) 860-6143,,,1
+9e7735b0-ef31-4ab2-98af-9ead8348c084,ChIJpwn-O-JfXIYRiVr-Fhi37wo,El Potosino Méxican Restaurant,7243 San Pedro Ave,San Antonio,TX,78216,29.5150386,-98.4996676,(210) 349-6625,https://elpotosino.wixsite.com/elpotosino,,1
+e3300b52-3902-40f7-95b4-a3ef6135e3e9,ChIJqTS_1_9eXIYRZB0zyf4eL6k,Taqueria Huentitan Jalisco LLC,2318 Fredericksburg Rd,San Antonio,TX,78201,29.4670366,-98.528396,(210) 731-8305,https://taqueriahjaliscotx.com/,,1
+e43c2457-fa50-42e4-9624-4d7f87035b68,ChIJUX4h5-BZXIYRjZ9Qxr6o9j4,Sofía’s tacos house/ taco Amanda’s,1759 Palo Alto Rd,San Antonio,TX,78211,29.3327724,-98.552599,(210) 924-1555,https://sofias.top/,,1
+f33c3ea2-1df6-4e17-8e62-fa9f2bdfef7a,ChIJsS98cdFeXIYR1mgNF5sp37g,Taqueria Atotonilco,3431 W Commerce St,San Antonio,TX,78207,29.4291875,-98.5359174,(210) 227-8090,,,1
+8cb579d7-1bc6-419e-86d9-288124cc4783,ChIJw24C4XdfXIYRXL6zV3DMfes,Frida's Taqueria,1738 W Hildebrand Ave,San Antonio,TX,78201,29.466242,-98.5242332,(210) 481-4721,,,1
+17ccc4ca-68ab-4d76-ad91-da422c211c57,ChIJc1YQgElYXIYR7BYre6PWZcc,Mini Tacos Toribio,1809 SW Military Dr,San Antonio,TX,78221,29.35715739999999,-98.5219489,(210) 946-0895,,,1
+0d820a10-9c78-4c2e-867e-daa20cd9edc4,ChIJCabMKJdZXIYRjVSviXzv1n0,Taqueria Jalisco,1114 New Laredo Hwy,San Antonio,TX,78211,29.36096869999999,-98.5550098,(210) 921-2210,https://www.facebook.com/pages/Taqueria-Jalisco/113664751987288,,1
+6d6634d0-18cf-4f9a-8afa-951b4322daf6,ChIJiWODLLFfXIYRxrZt18e23Rw,Papos Tacos,909 Broadway,San Antonio,TX,78215,29.4339593,-98.4816194,,https://www.facebook.com/profile.php?id=100082013933863,,1
+8eca0784-629f-45ac-ab36-2226c3d1e7ad,ChIJWWTfhbFZXIYRfDeKyUMNlVk,Taqueria Jalisco #5,6632 S Zarzamora St,San Antonio,TX,78211,29.3619253,-98.5335995,(210) 921-9270,https://www.taqueriajaliscotex.com/,,1
+03254f1f-1b60-40b9-aa4f-6f706840e299,ChIJs_ReBh9YXIYR6Vm-qHcZJRI,Taqueria Jalisco,151 Moursund Blvd,San Antonio,TX,78221,29.335269,-98.50418900000001,(210) 927-4818,https://tajalisco.top/,,1
+9f93610e-7191-47a6-a472-27de4bd01842,ChIJrRCvqLBfXIYRo-T2qW4XIOQ,Taqueria Datapoint #2-Zarzamora Street Location,1702 W Gramercy Pl,San Antonio,TX,78201,29.46100149999999,-98.52322319999999,(210) 733-1323,https://taqueriadatapoint.net/,,1
+ff673867-4ba9-4f4d-b210-4d2b3f4ce0b3,ChIJjbuODgJZXIYRY7KrE11Pn7w,Mini Tacos CANTARITO,518 SW Military Dr,San Antonio,TX,78221,29.3563479,-98.49987279999999,(210) 236-7814,,,1
+b2ea7ab4-6da4-4669-841b-bd2f00ae2702,ChIJ24-JI1NfXIYRD6NDL7fWIsE,Acenar Mexican Restaurant,146 E Houston St,San Antonio,TX,78205,29.4263466,-98.49183560000002,(210) 222-2362,http://acenar.com/,,1
+af7bb0a7-446d-44cc-a41d-c3b331281922,ChIJr4ZANCBZXIYR4N5_3N2-0hk,Susana's Mexican Restaurant And Catering,2223 S Zarzamora St,San Antonio,TX,78207,29.4009011,-98.530676,(210) 368-9340,https://www.facebook.com/Susanas-Mexican-Restaurant-736773016358237/,,1
+a34c0a0e-9b3a-47ff-8f21-fa4979dbcdc5,ChIJ_1wBOqtgXIYRcLQujd7k7Sc,Sarita's Mexican Restaurant - Medical Center,8224 Fredericksburg Rd,San Antonio,TX,78229,29.5162371,-98.5713458,(210) 265-3723,http://www.saritastexmex.com/,,1
+7579cce2-180f-410a-8c0e-3528eda8c95f,ChIJRxZs5wxfXIYRNoIH5nNWhzw,Blanco Cafe,1720 Blanco Rd,San Antonio,TX,78212,29.4622481,-98.50767379999999,(210) 732-6480,http://blancocafesa.com/,,1
+70d99511-ac94-46fe-8bd9-aa62cf2d3b00,ChIJif53ce_1XIYRuxY4DavqvmE,El Molino Restaurant,1703 Interstate 35 North,1703 I-35 Frontage Rd,San,Antonio,29.4391972,-98.4700665,(210) 399-1714,http://elmolino.restaurant/,,1
+18387169-6e65-4025-bdcc-61a9d052c563,ChIJgzjFa3P1XIYRxMjBPN1YmlY,Paloma Blanca Mexican Cuisine,5800 Broadway #300,San Antonio,TX,78209,29.4797671,-98.4635457,(210) 822-6151,http://www.palomablanca.net/,,1
+426af3da-7e9b-4085-9377-97de8843820f,ChIJV6X__nb0XIYRiRurICmNYVk,Little Taco Factory,4706 Old Seguin Rd,San Antonio,TX,78219,29.4626561,-98.39917559999999,(210) 661-7644,,,1
+41bee5eb-0f8c-4a1a-b477-345d33834727,ChIJle0wTjhZXIYRLCuEpHuUK0Q,Natalie's Mexican Cafe,610 Cupples Rd,San Antonio,TX,78237,29.4080277,-98.54757649999999,(210) 434-0601,https://www.facebook.com/Natalies-Mexican-Cafe-113900688642267/,,1
+2ba22dff-b5bf-45dd-b7c4-327d1c899ebb,ChIJ9_TyXwBZXIYRPrkFyAjBVcE,Nadines Mexican Restaurant,3800 Nogalitos St,San Antonio,TX,78211,29.378133,-98.5308719,(210) 595-6529,,,1
+98f6cd87-6529-4480-a87d-8a2e02b5ad0f,ChIJCRyviKf0XIYRbhhxPok7OxM,Las Palapas - Walzem,4802 Walzem Rd,Windcrest,TX,78218,29.5098356,-98.3967208,(210) 650-5240,http://laspalapas.com/,,1
+97e04ecb-5642-403c-8caa-5326424e1fb3,ChIJS6p4Q8BdXIYRKtoURC4Kw-0,Las Palapas - 410 & Evers,5403 Northwest Loop 410,San Antonio,TX,78229,29.4859438,-98.5926808,(210) 680-7177,http://mylaspalapas.com/,,1
+f96c4c57-5556-46a9-9fff-88d6b34e15e5,ChIJZ3kGU9j3XIYRiWcPz1flBJ0,Nicha's Comida Mexicana - Southside,3119 Roosevelt Ave,San Antonio,TX,78214,29.3658264,-98.4817425,(210) 922-3330,https://www.fooddiscoveryapp.com/san-antonio/nichas-comida-mexicana-southside,,1
+7a2d3b38-5208-43d6-b40a-6ce4235138f2,ChIJyfY1oidZXIYRzOm0Rgae11A,Panchito's Mexican Restaurant,1705 S Zarzamora St,San Antonio,TX,78207,29.408807,-98.5296707,(210) 226-9998,https://www.panchitos.net/,,1
