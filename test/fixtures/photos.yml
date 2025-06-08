@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  taco: one
+  user_id: 
+  url: MyString
+  is_user_uploaded: false
+
+two:
+  taco: two
+  user_id: 
+  url: MyString
+  is_user_uploaded: false

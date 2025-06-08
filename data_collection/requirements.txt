@@ -1,0 +1,7 @@
+pandas
+pydantic
+scrapy-selenium
+selenium
+webdriver-manager
+dotenv
+psycopg2-binary>=2.9.0
