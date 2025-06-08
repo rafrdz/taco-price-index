@@ -1,27 +1,29 @@
 # Taco Price Index
 
-A Ruby on Rails application for tracking taco prices across different locations in San Antonio, Texas. This project collects real taco data from Google Places API and provides a comprehensive database of local taco establishments.
+A Ruby on Rails application for tracking taco prices across different locations in San Antonio, Texas. This project collects real taco data from the Google Places API and provides a comprehensive database of local taco establishments.
 
 ---
 
 ## Project Overview
 
 The Taco Price Index consists of:
-- **Rails API**: Core application with PostgreSQL database
-- **Data Collection Module**: Python scripts for scraping Google Places API
+
+- **Rails API**: Core application with PostgreSQL database  
+- **Data Collection Module**: Python scripts for scraping Google Places API  
 - **Seeded Database**: Pre-populated with real San Antonio taco data
 
 ### Database Models
 
 The application uses four main models with the following relationships:
 
-- **Restaurant**: Taco establishments with location data
-- **Taco**: Individual taco items with pricing and details
-- **Photo**: Images associated with tacos
+- **Restaurant**: Taco establishments with location data  
+- **Taco**: Individual taco items with pricing and details  
+- **Photo**: Images associated with tacos  
 - **Review**: Google Places reviews for restaurants
 
 **Model Generation Commands Used:**
 
+```bash
 rails generate model Restaurant name:string street_address:string city:string state:string zip:string latitude:decimal longitude:decimal phone:string website:string yelp_id:string
 
 rails generate model Taco restaurant:references name:string description:text price_cents:integer calories:integer tortilla_type:string protein_type:string is_vegan:boolean is_bulk:boolean is_daily_special:boolean available_from:time available_to:time
@@ -29,6 +31,7 @@ rails generate model Taco restaurant:references name:string description:text pri
 rails generate model Photo taco:references user_id:uuid url:string is_user_uploaded:boolean
 
 rails generate model Review restaurant:references author_name:string author_url:string google_rating:integer review_text:text review_time:bigint relative_time_description:string language:string review_date:datetime content:text
+```
 
 ---
 
@@ -42,60 +45,74 @@ This guide assumes you're using macOS with Apple Silicon (M1/M2/M3). For Intel M
 
 ### 1. Install Homebrew
 
-If you don't have Homebrew installed:
-
+```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
 ---
 
 ### 2. Install Xcode Command Line Tools
 
+```bash
 xcode-select --install
+```
 
 ---
 
 ### 3. Install Required Dependencies
 
+```bash
 brew install openssl@3 libyaml gmp rust readline libffi docker
+```
 
 ---
 
 ### 4. Install mise (Version Manager)
 
+```bash
 curl https://mise.run | sh
+```
 
-Add mise to your shell profile:
+Add `mise` to your shell profile:
 
+```bash
 echo 'eval "$(~/.local/bin/mise activate zsh)"' >> ~/.zshrc
 source ~/.zshrc
+```
 
 ---
 
 ### 5. Set Environment Variables for Ruby Build
 
-Add these to your ~/.zshrc:
+Add to your `~/.zshrc`:
 
+```bash
 echo 'export LDFLAGS="-L$(brew --prefix openssl@3)/lib -L$(brew --prefix readline)/lib -L$(brew --prefix libyaml)/lib -L$(brew --prefix gmp)/lib -L$(brew --prefix libffi)/lib"' >> ~/.zshrc
 echo 'export CPPFLAGS="-I$(brew --prefix openssl@3)/include -I$(brew --prefix readline)/include -I$(brew --prefix libyaml)/include -I$(brew --prefix gmp)/include -I$(brew --prefix libffi)/include"' >> ~/.zshrc
 source ~/.zshrc
+```
 
 ---
 
-### 6. Install Ruby using mise
+### 6. Install Ruby Using mise
 
+```bash
 mise install ruby@3.2.8
 mise use -g ruby@3.2.8
 ruby --version
 which ruby
+```
 
 ---
 
 ### 7. Install Rails
 
+```bash
 gem install rails
 rails --version
+```
 
-You should see Rails 8.0.2 or newer.
+You should see Rails `8.0.2` or newer.
 
 ---
 
@@ -103,86 +120,90 @@ You should see Rails 8.0.2 or newer.
 
 ### 1. Clone the Repository
 
-git clone [repository-url]
+```bash
+git clone <repository-url>
 cd taco-price-index
+```
+
+---
 
 ### 2. Install Project Dependencies
 
-**Always run this after cloning or when Gemfile changes:**
-
+```bash
 bundle install
-
-**When to use bundle install:**
-- After cloning the repository
-- When someone adds/updates gems in the Gemfile
-- When you see bundler-related errors
-- After switching branches that may have different dependencies
+```
 
 ---
 
 ### 3. Environment Configuration
 
-Create a .env file in the project root:
+Create a `.env` file in the project root:
 
-.env file contents:
+```env
 APIKEY=YOURGOOGLEPLACESAPIKEY
 POSTGRES_DB=tacos_db
 POSTGRES_USER=tacos
 POSTGRES_PASSWORD=tacos_password
+```
 
-**Important Notes:**
-- Replace YOURGOOGLEPLACESAPIKEY with your actual Google Places API key
-- The database credentials must match the Docker configuration
-- Never commit the .env file to version control
+> ⚠️ Never commit the `.env` file to version control.
 
 ---
 
 ### 4. Database Setup with Docker
 
-**Start PostgreSQL Container:**
+Start PostgreSQL container:
 
+```bash
 cd data_collection
 docker-compose up -d
 cd ..
+```
 
-**Docker Configuration** (data_collection/docker-compose.yml):
+**`data_collection/docker-compose.yml`:**
 
+```yaml
 services:
-postgres:
-image: postgres:14-alpine
-container_name: tacos-db
-environment:
-POSTGRES_DB: tacos_db
-POSTGRES_USER: tacos
-POSTGRES_PASSWORD: tacos_password
-ports:
-- "5432:5432"
-volumes:
-- postgres_data:/var/lib/postgresql/data
-restart: unless-stopped
-healthcheck:
-test: ["CMD-SHELL", "pg_isready -U tacos -d tacos_db"]
-interval: 10s
-timeout: 5s
-retries: 5
+  postgres:
+    image: postgres:14-alpine
+    container_name: tacos-db
+    environment:
+      POSTGRES_DB: tacos_db
+      POSTGRES_USER: tacos
+      POSTGRES_PASSWORD: tacos_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tacos -d tacos_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
-postgres_data:
+  postgres_data:
+```
 
-**Setup Database Tables and Data:**
+Setup the database:
 
+```bash
 rails db:migrate
 rails db:seed
+```
 
-**Important:** Do NOT run rails db:create - the Docker container handles database creation automatically.
+> ⚠️ Do **not** run `rails db:create` — Docker handles database creation.
 
 ---
 
 ### 5. Start the Development Server
 
+```bash
 rails server
+```
 
-Visit http://localhost:3000 to see the app.
+Visit `http://localhost:3000`
 
 ---
 
@@ -190,49 +211,44 @@ Visit http://localhost:3000 to see the app.
 
 ### Modified Files
 
-**Gemfile Changes:**
-- Added pg gem for PostgreSQL support
-- Removed sqlite3 dependency
-- Added dotenv-rails for environment variable management
+- **Gemfile**
+  - Added `pg`
+  - Removed `sqlite3`
+  - Added `dotenv-rails`
 
-**database.yml Configuration:**
-The application is configured to use PostgreSQL instead of SQLite:
-- Development and test databases connect to the Docker PostgreSQL container
-- Production uses environment variables for database connection
+- **config/database.yml**
+  - Configured to use Docker PostgreSQL for dev and test
+  - Production uses environment variables
 
 ---
 
 ## Data Exploration
 
-### Rails Console
+Start the Rails console:
 
-Use Rails console to interact with your data:
-
+```bash
 rails console
-or
+# or
 rails c
+```
 
-**Rails Console** provides an interactive Ruby environment where you can:
-- Query your database using ActiveRecord models
-- Test relationships between models
-- Debug data issues
-- Experiment with Ruby code
+Examples:
 
-**Example console commands:**
-
-Check data counts
+```ruby
 Restaurant.count
 Taco.count
 
-Explore relationships
 restaurant = Restaurant.first
 restaurant.tacos
 
-Find cheapest tacos
 Taco.where.not(price_cents: nil).order(:price_cents).limit(5)
+```
 
-Exit console
+Exit with:
+
+```ruby
 exit
+```
 
 ---
 
@@ -240,143 +256,149 @@ exit
 
 ### Running Tests
 
+```bash
 rails test
+```
 
-### Code Quality Tools
+### Code Quality
 
-The project includes:
-
-- Rubocop: Ruby style enforcement
-- Brakeman: Security scanner
-
-Run with:
-
+```bash
 bundle exec rubocop
 bundle exec brakeman
+```
 
 ### Background Jobs
 
-The app uses Solid Queue. Start it with:
-
+```bash
 bin/jobs
+```
 
 ---
 
 ## Data Collection Module
 
-### Overview
+Python scripts are located in `/data_collection`.
 
-The /data_collection directory contains Python scripts for gathering real taco data from Google Places API.
+- `bc_tacos.py`: Collects taco data  
+- `export_to_rails_seeds.py`: Exports to Rails seeds  
+- `docker-compose.yml`: PostgreSQL config
 
-**Key Components:**
-- bc_tacos.py: Main data collection script
-- export_to_rails_seeds.py: Exports PostgreSQL data to Rails-compatible seed files
-- docker-compose.yml: PostgreSQL container configuration
+---
 
-### Current Data
+## Seeded Data Snapshot
 
-The seeded database includes:
-- **153 restaurants** in San Antonio area
-- **54 unique taco varieties**
-- **540 photos** from Google Places
-- **765 customer reviews**
+- **153 restaurants**
+- **54 taco varieties**
+- **540 photos**
+- **765 reviews**
 
-**Note:** The data collection module is primarily for project maintainers. Regular developers can use the pre-seeded data via rails db:seed.
+> The data collection module is for maintainers. Other devs can use `rails db:seed`.
 
 ---
 
 ## Fixtures and Test Data
 
-The application includes comprehensive test fixtures for all models:
-- restaurants.yml: Sample restaurant data for testing
-- tacos.yml: Various taco types and pricing scenarios
-- photos.yml: Test photo associations
-- reviews.yml: Sample review data
+Included in `test/fixtures/`:
 
-Fixtures are automatically loaded during test runs and provide consistent test data.
+- `restaurants.yml`
+- `tacos.yml`
+- `photos.yml`
+- `reviews.yml`
+
+Loaded automatically when running tests.
 
 ---
 
-## Common Issues
+## Troubleshooting
 
-### Ruby Build Fails
+### Ruby Build Issues
 
-Ensure you have the correct environment variables and all dependencies installed. Most errors come from misconfigured OpenSSL or other library paths.
+Check `openssl`, `readline`, `libyaml`, etc. are installed. Review `LDFLAGS`/`CPPFLAGS`.
 
-### Version Manager Confusion
+### Conflicting Version Managers
 
-If you previously used rbenv or another Ruby version manager, remove it to avoid conflicts:
+If using `rbenv`, remove it:
 
+```bash
 brew uninstall rbenv
 rm -rf ~/.rbenv
+```
 
-Remove any rbenv references from your ~/.zshrc.
+Clean up `.zshrc` as needed.
 
-### Database Connection Issues
+### Docker DB Connection
 
-- Ensure Docker container is running: docker ps
-- Check container logs: docker logs tacos-db
-- Verify environment variables match Docker configuration
+```bash
+docker ps
+docker logs tacos-db
+```
 
-### Bundle Install Issues
+Ensure `.env` values match Docker.
 
-If you encounter gem installation errors:
+### Bundle Errors
 
-Clean bundle cache
+```bash
 bundle clean --force
-
-Reinstall gems
 bundle install
+```
 
 ---
 
 ## Deployment
 
-Deployment is configured with Kamal.
+Configured using [Kamal](https://kamal-docs.vercel.app):
 
-- config/deploy.yml: Main configuration
-- .kamal/secrets: Environment secrets (not committed)
+- `config/deploy.yml`
+- `.kamal/secrets` (not committed)
 
 ---
 
 ## Changelog
 
-### Recent Updates
+Recent changes:
 
-- **Database Migration**: Converted from SQLite to PostgreSQL
-- **Docker Integration**: Added containerized PostgreSQL setup
-- **Data Collection**: Implemented Google Places API scraping
-- **Seeded Data**: Pre-populated database with real San Antonio taco data
-- **Model Relationships**: Established comprehensive associations between restaurants, tacos, photos, and reviews
+- Switched DB from SQLite to PostgreSQL  
+- Added Docker-based setup  
+- Implemented Google Places API data scraper  
+- Seeded database with real taco data  
+- Built full model relationships
 
 ---
 
 ## Contributing
 
-Ensure you use the Ruby version specified in this README.
+1. Fork the repo  
+2. Create a feature branch  
+3. Make changes  
+4. Run tests and quality tools:
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests and quality checks: rails test && bundle exec rubocop
-5. Submit a pull request
+```bash
+rails test && bundle exec rubocop
+```
 
-### Development Workflow
+5. Submit a PR
 
-1. Start Docker container: cd data_collection && docker-compose up -d && cd ..
-2. Install dependencies: bundle install
-3. Set up database: rails db:migrate && rails db:seed
-4. Start server: rails server
-5. Make changes and test: rails test
+---
+
+## Development Workflow
+
+```bash
+cd data_collection && docker-compose up -d && cd ..
+bundle install
+rails db:migrate && rails db:seed
+rails server
+rails test
+```
 
 ---
 
 ## Support
 
-For issues related to setup or development, please check:
-1. This README for common solutions
-2. Docker container status and logs
-3. Environment variable configuration
-4. Ruby and Rails versions
+Check:
 
-The application has been tested on macOS with Apple Silicon and should work on similar Unix-like systems with appropriate adjustments.
+1. This README  
+2. Docker container logs  
+3. `.env` config  
+4. Ruby/Rails version
+
+> This app was tested on macOS with Apple Silicon.
