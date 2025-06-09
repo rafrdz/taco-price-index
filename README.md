@@ -160,6 +160,8 @@ docker-compose up -d
 cd ..
 ```
 
+> NOTE: You can also start/stop the PostgreSQL container using `bin/db [up|down]`
+
 **`data_collection/docker-compose.yml`:**
 
 ```yaml

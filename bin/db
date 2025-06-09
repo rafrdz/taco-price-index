@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+if ARGV.length != 1 || !%w[up down].include?(ARGV[0])
+  puts "Usage: db [up|down]"
+  exit 1
+end
+
+case ARGV[0]
+when 'up'
+  puts "Starting development database in the background..."
+  exec "docker-compose -f data_collection/docker-compose.yml up -d "
+when 'down'
+  puts "Stopping development database..."
+  exec "docker-compose -f data_collection/docker-compose.yml down"
+else
+  puts "Invalid argument. Use 'up' or 'down'."
+end
