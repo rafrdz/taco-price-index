@@ -24,13 +24,13 @@ The application uses four main models with the following relationships:
 **Model Generation Commands Used:**
 
 ```bash
-rails generate model Restaurant name:string street_address:string city:string state:string zip:string latitude:decimal longitude:decimal phone:string website:string yelp_id:string
+bin/rails generate model Restaurant name:string street_address:string city:string state:string zip:string latitude:decimal longitude:decimal phone:string website:string yelp_id:string
 
-rails generate model Taco restaurant:references name:string description:text price_cents:integer calories:integer tortilla_type:string protein_type:string is_vegan:boolean is_bulk:boolean is_daily_special:boolean available_from:time available_to:time
+bin/rails generate model Taco restaurant:references name:string description:text price_cents:integer calories:integer tortilla_type:string protein_type:string is_vegan:boolean is_bulk:boolean is_daily_special:boolean available_from:time available_to:time
 
-rails generate model Photo taco:references user_id:uuid url:string is_user_uploaded:boolean
+bin/rails generate model Photo taco:references user_id:uuid url:string is_user_uploaded:boolean
 
-rails generate model Review restaurant:references author_name:string author_url:string google_rating:integer review_text:text review_time:bigint relative_time_description:string language:string review_date:datetime content:text
+bin/rails generate model Review restaurant:references author_name:string author_url:string google_rating:integer review_text:text review_time:bigint relative_time_description:string language:string review_date:datetime content:text
 ```
 
 ---
@@ -160,6 +160,8 @@ docker-compose up -d
 cd ..
 ```
 
+> NOTE: You can also start/stop the PostgreSQL container using `bin/db [up|down]`
+
 **`data_collection/docker-compose.yml`:**
 
 ```yaml
@@ -189,18 +191,18 @@ volumes:
 Setup the database:
 
 ```bash
-rails db:migrate
-rails db:seed
+bin/rails db:migrate
+bin/rails db:seed
 ```
 
-> ⚠️ Do **not** run `rails db:create` — Docker handles database creation.
+> ⚠️ Do **not** run `bin/rails db:create` — Docker handles database creation.
 
 ---
 
 ### 5. Start the Development Server
 
 ```bash
-rails server
+bin/rails server
 ```
 
 Visit `http://localhost:3000`
@@ -227,9 +229,9 @@ Visit `http://localhost:3000`
 Start the Rails console:
 
 ```bash
-rails console
+bin/rails console
 # or
-rails c
+bin/rails c
 ```
 
 Examples:
@@ -257,14 +259,14 @@ exit
 ### Running Tests
 
 ```bash
-rails test
+bin/rails test
 ```
 
 ### Code Quality
 
 ```bash
-bundle exec rubocop
-bundle exec brakeman
+bin/rubocop
+bin/brakeman
 ```
 
 ### Background Jobs
@@ -292,7 +294,7 @@ Python scripts are located in `/data_collection`.
 - **540 photos**
 - **765 reviews**
 
-> The data collection module is for maintainers. Other devs can use `rails db:seed`.
+> The data collection module is for maintainers. Other devs can use `bin/rails db:seed`.
 
 ---
 
@@ -373,7 +375,7 @@ Recent changes:
 4. Run tests and quality tools:
 
 ```bash
-rails test && bundle exec rubocop
+bin/rails test && bin/rubocop
 ```
 
 5. Submit a PR
@@ -385,9 +387,9 @@ rails test && bundle exec rubocop
 ```bash
 cd data_collection && docker-compose up -d && cd ..
 bundle install
-rails db:migrate && rails db:seed
-rails server
-rails test
+bin/rails db:migrate && bin/rails db:seed
+bin/rails server
+bin/rails test
 ```
 
 ---
