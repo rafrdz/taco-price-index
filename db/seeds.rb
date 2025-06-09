@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # Taco Price Index - Seed Data
 # Real San Antonio taco data for development
 
@@ -25631,12 +25632,12 @@ if defined?(Review)
     "restaurant_id": "fecdd804-e74f-4e8b-8575-0d904fd855cb"
   }
 ]
-  
+
   reviews_data.each do |attrs|
     attrs['review_date'] = DateTime.parse(attrs['review_date']) if attrs['review_date']
     Review.create!(attrs.except('created_at', 'updated_at'))
   end
-  
+
   puts "✅ Created #{Review.count} reviews"
 else
   puts "⚠️  Review model not found, skipping reviews"
