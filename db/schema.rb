@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_08_042644) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_09_224732) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -64,6 +64,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_08_042644) do
     t.check_constraint "fullness_rating >= 1 AND fullness_rating <= 5", name: "reviews_fullness_rating_check"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "ip_address"
+    t.string "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
   create_table "tacos", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "restaurant_id"
     t.text "name"
@@ -81,8 +90,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_08_042644) do
     t.datetime "updated_at", precision: nil, default: -> { "now()" }
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email_address", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_address"], name: "index_users_on_email_address", unique: true
+  end
+
   add_foreign_key "photos", "tacos", name: "photos_taco_id_fkey", on_delete: :cascade
   add_foreign_key "reviews", "restaurants", name: "reviews_restaurant_id_fkey", on_delete: :cascade
   add_foreign_key "reviews", "tacos", name: "reviews_taco_id_fkey", on_delete: :cascade
+  add_foreign_key "sessions", "users"
   add_foreign_key "tacos", "restaurants", name: "tacos_restaurant_id_fkey", on_delete: :cascade
 end
