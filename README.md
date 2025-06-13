@@ -8,17 +8,17 @@ A Ruby on Rails application for tracking taco prices across different locations 
 
 The Taco Price Index consists of:
 
-- **Rails API**: Core application with PostgreSQL database  
-- **Data Collection Module**: Python scripts for scraping Google Places API  
+- **Rails API**: Core application with PostgreSQL database
+- **Data Collection Module**: Python scripts for scraping Google Places API
 - **Seeded Database**: Pre-populated with real San Antonio taco data
 
 ### Database Models
 
 The application uses four main models with the following relationships:
 
-- **Restaurant**: Taco establishments with location data  
-- **Taco**: Individual taco items with pricing and details  
-- **Photo**: Images associated with tacos  
+- **Restaurant**: Taco establishments with location data
+- **Taco**: Individual taco items with pricing and details
+- **Photo**: Images associated with tacos
 - **Review**: Google Places reviews for restaurants
 
 **Model Generation Commands Used:**
@@ -174,12 +174,12 @@ services:
       POSTGRES_USER: tacos
       POSTGRES_PASSWORD: tacos_password
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U tacos -d tacos_db"]
+      test: ['CMD-SHELL', 'pg_isready -U tacos -d tacos_db']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -209,11 +209,40 @@ Visit `http://localhost:3000`
 
 ---
 
+## Development Features
+
+To facilitate frontend development, several static HTML pages have been set up. These pages provide basic structures and routes for the frontend team to build upon without immediate backend integration.
+
+To access these pages:
+
+1. Ensure the Rails server is running (`bin/rails server`).
+2. Navigate to the following URLs in your browser:
+   - **Map:** `http://localhost:3000/frontend_pages/map`
+   - **Restaurant Details:** `http://localhost:3000/frontend_pages/restaurant_details`
+   - **Restaurant Review Form:** `http://localhost:3000/frontend_pages/restaurant_review_form`
+   - **User Profile:** `http://localhost:3000/frontend_pages/user_profile`
+   - **Featured Spotlight & Restaurant Deals:** `http://localhost:3000/frontend_pages/featured_spotlight`
+   - **Restaurant Leaderboard:** `http://localhost:3000/frontend_pages/restaurant_leaderboard`
+   - **Catering and Bulk Order:** `http://localhost:3000/frontend_pages/catering_bulk_order`
+
+## Dummy Email Login
+
+A basic **dummy email login** has been implemented to allow frontend developers to test authenticated user flows.
+
+To use the dummy login:
+
+1.  Visit the login page: `http://localhost:3000/session/new`
+2.  Use email: `test@example.com` and password: 'password'. The system is configured to simulate a successful login for frontend display purposes.
+3.  This feature is purely for development and will be replaced by a full authentication system in a later iteration.
+
+---
+
 ## Database Configuration
 
 ### Modified Files
 
 - **Gemfile**
+
   - Added `pg`
   - Removed `sqlite3`
   - Added `dotenv-rails`
@@ -281,8 +310,8 @@ bin/jobs
 
 Python scripts are located in `/data_collection`.
 
-- `bc_tacos.py`: Collects taco data  
-- `export_to_rails_seeds.py`: Exports to Rails seeds  
+- `bc_tacos.py`: Collects taco data
+- `export_to_rails_seeds.py`: Exports to Rails seeds
 - `docker-compose.yml`: PostgreSQL config
 
 ---
@@ -359,19 +388,19 @@ Configured using [Kamal](https://kamal-docs.vercel.app):
 
 Recent changes:
 
-- Switched DB from SQLite to PostgreSQL  
-- Added Docker-based setup  
-- Implemented Google Places API data scraper  
-- Seeded database with real taco data  
+- Switched DB from SQLite to PostgreSQL
+- Added Docker-based setup
+- Implemented Google Places API data scraper
+- Seeded database with real taco data
 - Built full model relationships
 
 ---
 
 ## Contributing
 
-1. Fork the repo  
-2. Create a feature branch  
-3. Make changes  
+1. Fork the repo
+2. Create a feature branch
+3. Make changes
 4. Run tests and quality tools:
 
 ```bash
@@ -398,9 +427,9 @@ bin/rails test
 
 Check:
 
-1. This README  
-2. Docker container logs  
-3. `.env` config  
+1. This README
+2. Docker container logs
+3. `.env` config
 4. Ruby/Rails version
 
 > This app was tested on macOS with Apple Silicon.
