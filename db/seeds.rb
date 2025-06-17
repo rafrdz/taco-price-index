@@ -5,8 +5,8 @@
 
 User.find_or_create_by(email_address: "user@example.com") do |u|
   puts "Creating user with email: #{u.email_address}"
-  u.password = "test"
-  u.password_confirmation = "test"
+  u.password = "password"
+  u.password_confirmation = "password"
 end
 
 if Rails.env.development? && Restaurant.count.zero? && Photo.count.zero? && Review.count.zero? && Taco.count.zero?
