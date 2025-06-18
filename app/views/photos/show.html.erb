@@ -1,0 +1,11 @@
+<p>
+  <strong>URL:</strong>
+  <%= @photo.url %>
+</p>
+<p>
+  <strong>Taco:</strong>
+  <%= @photo.taco_id %>
+</p>
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>

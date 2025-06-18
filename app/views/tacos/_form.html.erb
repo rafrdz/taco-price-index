@@ -1,0 +1,64 @@
+<%= form_with(model: taco) do |form| %>
+  <% if taco.errors.any? %>
+    <div>
+      <h2><%= pluralize(taco.errors.count, "error") %> prohibited this taco from being saved:</h2>
+      <ul>
+        <% taco.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :restaurant_id %>
+    <%= form.number_field :restaurant_id %>
+  </div>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  <div>
+    <%= form.label :price_cents %>
+    <%= form.number_field :price_cents %>
+  </div>
+  <div>
+    <%= form.label :calories %>
+    <%= form.number_field :calories %>
+  </div>
+  <div>
+    <%= form.label :tortilla_type %>
+    <%= form.text_field :tortilla_type %>
+  </div>
+  <div>
+    <%= form.label :protein_type %>
+    <%= form.text_field :protein_type %>
+  </div>
+  <div>
+    <%= form.label :is_vegan %>
+    <%= form.check_box :is_vegan %>
+  </div>
+  <div>
+    <%= form.label :is_bulk %>
+    <%= form.check_box :is_bulk %>
+  </div>
+  <div>
+    <%= form.label :is_daily_special %>
+    <%= form.check_box :is_daily_special %>
+  </div>
+  <div>
+    <%= form.label :available_from %>
+    <%= form.time_field :available_from %>
+  </div>
+  <div>
+    <%= form.label :available_to %>
+    <%= form.time_field :available_to %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

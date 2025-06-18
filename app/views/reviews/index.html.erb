@@ -1,0 +1,26 @@
+<h1>Reviews</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Author</th>
+      <th>Restaurant</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= review.author_name %></td>
+        <td><%= review.restaurant_id %></td>
+        <td>
+          <%= link_to 'Show', review %>
+          <%= link_to 'Edit', edit_review_path(review) %>
+          <%= link_to 'Destroy', review, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Review', new_review_path %>

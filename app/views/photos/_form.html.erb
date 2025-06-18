@@ -1,0 +1,32 @@
+<%= form_with(model: photo) do |form| %>
+  <% if photo.errors.any? %>
+    <div>
+      <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+      <ul>
+        <% photo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :taco_id %>
+    <%= form.number_field :taco_id %>
+  </div>
+  <div>
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+  <div>
+    <%= form.label :url %>
+    <%= form.text_field :url %>
+  </div>
+  <div>
+    <%= form.label :is_user_uploaded %>
+    <%= form.check_box :is_user_uploaded %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

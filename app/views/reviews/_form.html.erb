@@ -1,0 +1,56 @@
+<%= form_with(model: review) do |form| %>
+  <% if review.errors.any? %>
+    <div>
+      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+      <ul>
+        <% review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :restaurant_id %>
+    <%= form.number_field :restaurant_id %>
+  </div>
+  <div>
+    <%= form.label :author_name %>
+    <%= form.text_field :author_name %>
+  </div>
+  <div>
+    <%= form.label :author_url %>
+    <%= form.text_field :author_url %>
+  </div>
+  <div>
+    <%= form.label :google_rating %>
+    <%= form.number_field :google_rating %>
+  </div>
+  <div>
+    <%= form.label :review_text %>
+    <%= form.text_area :review_text %>
+  </div>
+  <div>
+    <%= form.label :review_time %>
+    <%= form.number_field :review_time %>
+  </div>
+  <div>
+    <%= form.label :relative_time_description %>
+    <%= form.text_field :relative_time_description %>
+  </div>
+  <div>
+    <%= form.label :language %>
+    <%= form.text_field :language %>
+  </div>
+  <div>
+    <%= form.label :review_date %>
+    <%= form.datetime_field :review_date %>
+  </div>
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

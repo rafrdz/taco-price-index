@@ -1,0 +1,15 @@
+<p>
+  <strong>Author:</strong>
+  <%= @review.author_name %>
+</p>
+<p>
+  <strong>Restaurant:</strong>
+  <%= @review.restaurant_id %>
+</p>
+<p>
+  <strong>Rating:</strong>
+  <%= @review.google_rating %>
+</p>
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>

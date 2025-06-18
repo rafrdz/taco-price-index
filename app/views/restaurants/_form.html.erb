@@ -1,0 +1,56 @@
+<%= form_with(model: restaurant) do |form| %>
+  <% if restaurant.errors.any? %>
+    <div>
+      <h2><%= pluralize(restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
+      <ul>
+        <% restaurant.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :street_address %>
+    <%= form.text_field :street_address %>
+  </div>
+  <div>
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+  <div>
+    <%= form.label :state %>
+    <%= form.text_field :state %>
+  </div>
+  <div>
+    <%= form.label :zip %>
+    <%= form.text_field :zip %>
+  </div>
+  <div>
+    <%= form.label :latitude %>
+    <%= form.number_field :latitude, step: 0.000001 %>
+  </div>
+  <div>
+    <%= form.label :longitude %>
+    <%= form.number_field :longitude, step: 0.000001 %>
+  </div>
+  <div>
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+  </div>
+  <div>
+    <%= form.label :website %>
+    <%= form.text_field :website %>
+  </div>
+  <div>
+    <%= form.label :yelp_id %>
+    <%= form.text_field :yelp_id %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

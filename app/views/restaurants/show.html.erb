@@ -1,0 +1,23 @@
+<p>
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.street_address %>, <%= @restaurant.city %>, <%= @restaurant.state %> <%= @restaurant.zip %>
+</p>
+<p>
+  <strong>Phone:</strong>
+  <%= @restaurant.phone %>
+</p>
+<p>
+  <strong>Website:</strong>
+  <%= @restaurant.website %>
+</p>
+<p>
+  <strong>Yelp:</strong>
+  <%= @restaurant.yelp_id %>
+</p>
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %>

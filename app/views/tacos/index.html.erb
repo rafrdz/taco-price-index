@@ -1,0 +1,26 @@
+<h1>Tacos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Restaurant</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tacos.each do |taco| %>
+      <tr>
+        <td><%= taco.name %></td>
+        <td><%= taco.restaurant_id %></td>
+        <td>
+          <%= link_to 'Show', taco %>
+          <%= link_to 'Edit', edit_taco_path(taco) %>
+          <%= link_to 'Destroy', taco, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Taco', new_taco_path %>
