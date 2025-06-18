@@ -1,0 +1,56 @@
+<%= form_with(model: restaurant, class: "needs-validation") do |form| %>
+  <% if restaurant.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
+      <ul class="mb-0">
+        <% restaurant.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :street_address, class: "form-label" %>
+    <%= form.text_field :street_address, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :city, class: "form-label" %>
+    <%= form.text_field :city, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :state, class: "form-label" %>
+    <%= form.text_field :state, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :zip, class: "form-label" %>
+    <%= form.text_field :zip, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :latitude, class: "form-label" %>
+    <%= form.number_field :latitude, step: 0.000001, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :longitude, class: "form-label" %>
+    <%= form.number_field :longitude, step: 0.000001, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :phone, class: "form-label" %>
+    <%= form.text_field :phone, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :website, class: "form-label" %>
+    <%= form.text_field :website, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :yelp_id, class: "form-label" %>
+    <%= form.text_field :yelp_id, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

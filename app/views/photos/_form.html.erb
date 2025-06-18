@@ -1,0 +1,32 @@
+<%= form_with(model: photo, class: "needs-validation") do |form| %>
+  <% if photo.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+      <ul class="mb-0">
+        <% photo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :taco_id, class: "form-label" %>
+    <%= form.number_field :taco_id, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :user_id, class: "form-label" %>
+    <%= form.text_field :user_id, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :url, class: "form-label" %>
+    <%= form.text_field :url, class: "form-control" %>
+  </div>
+  <div class="form-check mb-3">
+    <%= form.check_box :is_user_uploaded, class: "form-check-input" %>
+    <%= form.label :is_user_uploaded, class: "form-check-label" %>
+  </div>
+  <div class="mb-3">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

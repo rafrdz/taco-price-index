@@ -1,0 +1,8 @@
+<p class="mb-2"><strong>Name:</strong> <%= @restaurant.name %></p>
+<p class="mb-2"><strong>Address:</strong> <%= @restaurant.street_address %>, <%= @restaurant.city %>, <%= @restaurant.state %> <%= @restaurant.zip %></p>
+<p class="mb-2"><strong>Phone:</strong> <%= @restaurant.phone %></p>
+<p class="mb-2"><strong>Website:</strong> <%= @restaurant.website %></p>
+<p class="mb-2"><strong>Yelp:</strong> <%= @restaurant.yelp_id %></p>
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-primary' %>
+<%= link_to 'Back', restaurants_path, class: 'btn btn-secondary ms-2' %>

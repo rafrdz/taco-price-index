@@ -1,0 +1,6 @@
+<p class="mb-2"><strong>Author:</strong> <%= @review.author_name %></p>
+<p class="mb-2"><strong>Restaurant:</strong> <%= @review.restaurant_id %></p>
+<p class="mb-2"><strong>Rating:</strong> <%= @review.google_rating %></p>
+
+<%= link_to 'Edit', edit_review_path(@review), class: 'btn btn-primary' %>
+<%= link_to 'Back', reviews_path, class: 'btn btn-secondary ms-2' %>
