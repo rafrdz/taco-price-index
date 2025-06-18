@@ -47,4 +47,3 @@ class RestaurantsController < ApplicationController
       params.require(:restaurant).permit(:name, :street_address, :city, :state, :zip, :latitude, :longitude, :phone, :website, :yelp_id)
     end
 end
-

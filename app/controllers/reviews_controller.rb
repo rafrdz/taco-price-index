@@ -47,4 +47,3 @@ class ReviewsController < ApplicationController
       params.require(:review).permit(:restaurant_id, :author_name, :author_url, :google_rating, :review_text, :review_time, :relative_time_description, :language, :review_date, :content)
     end
 end
-
