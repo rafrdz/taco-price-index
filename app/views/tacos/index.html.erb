@@ -1,6 +1,6 @@
 <h1>Tacos</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -14,13 +14,13 @@
         <td><%= taco.name %></td>
         <td><%= taco.restaurant_id %></td>
         <td>
-          <%= link_to 'Show', taco %>
-          <%= link_to 'Edit', edit_taco_path(taco) %>
-          <%= link_to 'Destroy', taco, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+          <%= link_to 'Show', taco, class: 'btn btn-sm btn-outline-primary' %>
+          <%= link_to 'Edit', edit_taco_path(taco), class: 'btn btn-sm btn-outline-secondary' %>
+          <%= link_to 'Destroy', taco, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'New Taco', new_taco_path %>
+<%= link_to 'New Taco', new_taco_path, class: 'btn btn-primary' %>

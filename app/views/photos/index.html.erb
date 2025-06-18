@@ -1,6 +1,6 @@
 <h1>Photos</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>URL</th>
@@ -14,13 +14,13 @@
         <td><%= photo.url %></td>
         <td><%= photo.taco_id %></td>
         <td>
-          <%= link_to 'Show', photo %>
-          <%= link_to 'Edit', edit_photo_path(photo) %>
-          <%= link_to 'Destroy', photo, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+          <%= link_to 'Show', photo, class: 'btn btn-sm btn-outline-primary' %>
+          <%= link_to 'Edit', edit_photo_path(photo), class: 'btn btn-sm btn-outline-secondary' %>
+          <%= link_to 'Destroy', photo, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'New Photo', new_photo_path %>
+<%= link_to 'New Photo', new_photo_path, class: 'btn btn-primary' %>

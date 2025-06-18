@@ -1,19 +1,7 @@
-<p>
-  <strong>Name:</strong>
-  <%= @taco.name %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @taco.description %>
-</p>
-<p>
-  <strong>Price:</strong>
-  <%= @taco.price_cents %>
-</p>
-<p>
-  <strong>Restaurant:</strong>
-  <%= @taco.restaurant_id %>
-</p>
+<p class="mb-2"><strong>Name:</strong> <%= @taco.name %></p>
+<p class="mb-2"><strong>Description:</strong> <%= @taco.description %></p>
+<p class="mb-2"><strong>Price:</strong> <%= @taco.price_cents %></p>
+<p class="mb-2"><strong>Restaurant:</strong> <%= @taco.restaurant_id %></p>
 
-<%= link_to 'Edit', edit_taco_path(@taco) %> |
-<%= link_to 'Back', tacos_path %>
+<%= link_to 'Edit', edit_taco_path(@taco), class: 'btn btn-primary' %>
+<%= link_to 'Back', tacos_path, class: 'btn btn-secondary ms-2' %>

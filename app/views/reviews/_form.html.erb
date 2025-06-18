@@ -1,8 +1,8 @@
-<%= form_with(model: review) do |form| %>
+<%= form_with(model: review, class: "needs-validation") do |form| %>
   <% if review.errors.any? %>
-    <div>
+    <div class="alert alert-danger">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
-      <ul>
+      <ul class="mb-0">
         <% review.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
@@ -10,47 +10,47 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :restaurant_id %>
-    <%= form.number_field :restaurant_id %>
+  <div class="mb-3">
+    <%= form.label :restaurant_id, class: "form-label" %>
+    <%= form.number_field :restaurant_id, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :author_name %>
-    <%= form.text_field :author_name %>
+  <div class="mb-3">
+    <%= form.label :author_name, class: "form-label" %>
+    <%= form.text_field :author_name, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :author_url %>
-    <%= form.text_field :author_url %>
+  <div class="mb-3">
+    <%= form.label :author_url, class: "form-label" %>
+    <%= form.text_field :author_url, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :google_rating %>
-    <%= form.number_field :google_rating %>
+  <div class="mb-3">
+    <%= form.label :google_rating, class: "form-label" %>
+    <%= form.number_field :google_rating, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :review_text %>
-    <%= form.text_area :review_text %>
+  <div class="mb-3">
+    <%= form.label :review_text, class: "form-label" %>
+    <%= form.text_area :review_text, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :review_time %>
-    <%= form.number_field :review_time %>
+  <div class="mb-3">
+    <%= form.label :review_time, class: "form-label" %>
+    <%= form.number_field :review_time, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :relative_time_description %>
-    <%= form.text_field :relative_time_description %>
+  <div class="mb-3">
+    <%= form.label :relative_time_description, class: "form-label" %>
+    <%= form.text_field :relative_time_description, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :language %>
-    <%= form.text_field :language %>
+  <div class="mb-3">
+    <%= form.label :language, class: "form-label" %>
+    <%= form.text_field :language, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :review_date %>
-    <%= form.datetime_field :review_date %>
+  <div class="mb-3">
+    <%= form.label :review_date, class: "form-label" %>
+    <%= form.datetime_field :review_date, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+  <div class="mb-3">
+    <%= form.label :content, class: "form-label" %>
+    <%= form.text_area :content, class: "form-control" %>
   </div>
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -1,6 +1,6 @@
 <h1>Restaurants</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -16,13 +16,13 @@
         <td><%= restaurant.city %></td>
         <td><%= restaurant.state %></td>
         <td>
-          <%= link_to 'Show', restaurant %>
-          <%= link_to 'Edit', edit_restaurant_path(restaurant) %>
-          <%= link_to 'Destroy', restaurant, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+          <%= link_to 'Show', restaurant, class: 'btn btn-sm btn-outline-primary' %>
+          <%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'btn btn-sm btn-outline-secondary' %>
+          <%= link_to 'Destroy', restaurant, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'New Restaurant', new_restaurant_path %>
+<%= link_to 'New Restaurant', new_restaurant_path, class: 'btn btn-primary' %>

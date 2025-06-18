@@ -1,8 +1,8 @@
-<%= form_with(model: taco) do |form| %>
+<%= form_with(model: taco, class: "needs-validation") do |form| %>
   <% if taco.errors.any? %>
-    <div>
+    <div class="alert alert-danger">
       <h2><%= pluralize(taco.errors.count, "error") %> prohibited this taco from being saved:</h2>
-      <ul>
+      <ul class="mb-0">
         <% taco.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
@@ -10,55 +10,55 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :restaurant_id %>
-    <%= form.number_field :restaurant_id %>
+  <div class="mb-3">
+    <%= form.label :restaurant_id, class: "form-label" %>
+    <%= form.number_field :restaurant_id, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="mb-3">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :price_cents %>
-    <%= form.number_field :price_cents %>
+  <div class="mb-3">
+    <%= form.label :price_cents, class: "form-label" %>
+    <%= form.number_field :price_cents, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :calories %>
-    <%= form.number_field :calories %>
+  <div class="mb-3">
+    <%= form.label :calories, class: "form-label" %>
+    <%= form.number_field :calories, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :tortilla_type %>
-    <%= form.text_field :tortilla_type %>
+  <div class="mb-3">
+    <%= form.label :tortilla_type, class: "form-label" %>
+    <%= form.text_field :tortilla_type, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :protein_type %>
-    <%= form.text_field :protein_type %>
+  <div class="mb-3">
+    <%= form.label :protein_type, class: "form-label" %>
+    <%= form.text_field :protein_type, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :is_vegan %>
-    <%= form.check_box :is_vegan %>
+  <div class="form-check mb-3">
+    <%= form.check_box :is_vegan, class: "form-check-input" %>
+    <%= form.label :is_vegan, class: "form-check-label" %>
   </div>
-  <div>
-    <%= form.label :is_bulk %>
-    <%= form.check_box :is_bulk %>
+  <div class="form-check mb-3">
+    <%= form.check_box :is_bulk, class: "form-check-input" %>
+    <%= form.label :is_bulk, class: "form-check-label" %>
   </div>
-  <div>
-    <%= form.label :is_daily_special %>
-    <%= form.check_box :is_daily_special %>
+  <div class="form-check mb-3">
+    <%= form.check_box :is_daily_special, class: "form-check-input" %>
+    <%= form.label :is_daily_special, class: "form-check-label" %>
   </div>
-  <div>
-    <%= form.label :available_from %>
-    <%= form.time_field :available_from %>
+  <div class="mb-3">
+    <%= form.label :available_from, class: "form-label" %>
+    <%= form.time_field :available_from, class: "form-control" %>
   </div>
-  <div>
-    <%= form.label :available_to %>
-    <%= form.time_field :available_to %>
+  <div class="mb-3">
+    <%= form.label :available_to, class: "form-label" %>
+    <%= form.time_field :available_to, class: "form-control" %>
   </div>
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
