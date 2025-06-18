@@ -1,0 +1,10 @@
+<h1>Tacos</h1>
+
+<div id="tacos">
+  <% @tacos.each do |taco| %>
+    <div>
+      <p>Taco Name: <%= taco.name %></p>
+      <p>Taco Description: <%= taco.description %></p>
+    </div>
+  <% end %>
+</div>

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get "static_pages/home"
   resource :session
   resources :passwords, param: :token
+  get "/tacos", to: "tacos#index"
+  get "/tacos/:id", to: "tacos#show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   root 'static_pages#home'
