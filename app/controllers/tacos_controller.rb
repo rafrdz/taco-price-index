@@ -14,6 +14,7 @@ class TacosController < ApplicationController
   end
 
   def edit
+    @restaurants = Restaurant.all.order(:name)
   end
 
   def create

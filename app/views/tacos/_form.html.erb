@@ -11,8 +11,8 @@
   <% end %>
 
   <div class="mb-3">
-    <%= form.label :restaurant_id, class: "form-label" %>
-    <%= form.number_field :restaurant_id, class: "form-control" %>
+    <%= form.label :restaurant_id, "Restaurant", class: "form-label" %>
+    <%= form.collection_select :restaurant_id, @restaurants, :id, :name, { prompt: "Select a restaurant" }, { class: "form-select" } %>
   </div>
   <div class="mb-3">
     <%= form.label :name, class: "form-label" %>

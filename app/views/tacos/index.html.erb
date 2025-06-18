@@ -12,7 +12,7 @@
     <% @tacos.each do |taco| %>
       <tr>
         <td><%= taco.name %></td>
-        <td><%= taco.restaurant_id %></td>
+        <td><%= taco.restaurant.name %></td>
         <td>
           <%= link_to 'Show', taco, class: 'btn btn-sm btn-outline-primary' %>
           <%= link_to 'Edit', edit_taco_path(taco), class: 'btn btn-sm btn-outline-secondary' %>
