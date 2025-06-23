@@ -8,6 +8,17 @@ Bundler.require(*Rails.groups)
 
 module TacoPriceIndex
   class Application < Rails::Application
+    # Load environment variables from .env file
+    config.before_configuration do
+      env_file = File.join(Rails.root, '.env')
+      if File.exist?(env_file)
+        File.foreach(env_file) do |line|
+          key, value = line.strip.split('=', 2)
+          ENV[key] = value if key.present? && value.present?
+        end
+      end
+    end
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
 
@@ -21,7 +32,13 @@ module TacoPriceIndex
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    config.time_zone = "Central Time (US & Canada)"
+    config.eager_load_paths << Rails.root.join("extras")
+
+    # Add StimulusReflex configuration
+    config.stimulus_reflex = {
+      cable_url: "ws://localhost:3000/cable",
+      reflex_class: "ApplicationReflex"
+    }
   end
 end

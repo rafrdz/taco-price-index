@@ -1,0 +1,7 @@
+<%= turbo_stream.update "reviews-container" do %>
+  <%= render partial: "reviews/review_item", collection: @review.restaurant.reviews.order(created_at: :desc).limit(10), as: :review %>
+<% end %>
+
+<%= turbo_stream.replace "review-form" do %>
+  <%= render partial: "reviews/form", locals: { review: Review.new(restaurant: @review.restaurant) } %>
+<% end %>

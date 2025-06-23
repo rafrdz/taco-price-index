@@ -165,16 +165,26 @@ cd taco-price-index
 bundle install
 ```
 
-3. **Environment Configuration** Create a `.env` file in the project root:
+3. **Environment Configuration**
 
-```env
-APIKEY=YOURGOOGLEPLACESAPIKEY
-POSTGRES_DB=tacos_db
-POSTGRES_USER=tacos
-POSTGRES_PASSWORD=tacos_password
+Copy the sample environment file and edit values as needed:
+
+```bash
+cp .env.example .env
+# then open .env and add your keys
 ```
 
-> ⚠️ Never commit the `.env` file to version control.
+Key variables:
+
+| Variable | Description |
+|----------|-------------|
+| `APIKEY` | Google Places API key used by the Python data-collection scripts |
+| `GOOGLE_MAPS_API_KEY` | Google Maps JavaScript API key used by Rails views |
+| `POSTGRES_DB` | Database name Docker will create |
+| `POSTGRES_USER` | DB username |
+| `POSTGRES_PASSWORD` | DB password |
+
+> ⚠️ **Never** commit the `.env` file or real secrets to version control. The `.gitignore` already excludes it.
 
 4. **Database Setup with Docker**
 

@@ -1,0 +1,20 @@
+<div class="list-group-item">
+  <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1"><%= taco.name %></h5>
+    <small class="text-muted">
+      <%= number_to_currency(taco.price_cents / 100, precision: 2) %>
+    </small>
+  </div>
+  <p class="mb-1"><%= taco.description %></p>
+  <small>
+    <% if taco.is_vegan %>
+      <span class="badge bg-success">Vegan</span>
+    <% end %>
+    <% if taco.is_bulk %>
+      <span class="badge bg-info">Bulk</span>
+    <% end %>
+    <% if taco.is_daily_special %>
+      <span class="badge bg-warning">Special</span>
+    <% end %>
+  </small>
+</div>

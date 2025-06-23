@@ -68,6 +68,17 @@ node_modules/
 /public/packs-test
 /public/assets
 
+# Ignore asset build output (importmap/esbuild)
+/app/assets/builds
+
+# Ignore VSCode settings
+.vscode/
+
+# Ignore precompiled javascript packs
+/public/packs
+/public/packs-test
+/public/assets
+
 # Ignore yarn files
 /yarn-error.log
 yarn-debug.log*

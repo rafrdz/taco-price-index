@@ -1,0 +1,10 @@
+{
+  "name": "taco-price-index",
+  "private": true,
+  "devDependencies": {
+    "sass": "^1.69.0"
+  },
+  "scripts": {
+    "build:css": "sass --no-source-map app/assets/stylesheets/application.scss app/assets/builds/application.css"
+  }
+}
