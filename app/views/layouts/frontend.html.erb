@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Taco Price Index</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tag %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/">Taco Price Index</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <%= link_to 'Map View', root_path, class: 'nav-link' %>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <% if authenticated? %>
+              <li class="nav-item">
+                <%= link_to 'My Favorites', favorites_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Logout', session_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'nav-link' %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to 'Login', '#', data: { controller: 'modal', action: 'click->modal#show', modal_target: 'login' }, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Sign Up', '#', data: { controller: 'modal', action: 'click->modal#show', modal_target: 'signup' }, class: 'nav-link' %>
+              </li>
+            <% end %>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <% if authenticated? %>
+              <li class="nav-item">
+                <span class="nav-link">Welcome, <%= current_user.email %></span>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <%= yield %>
+    </div>
+
+    <%= javascript_importmap_tag %>
+  </body>
+</html>

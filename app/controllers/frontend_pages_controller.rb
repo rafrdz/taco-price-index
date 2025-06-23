@@ -1,22 +1,20 @@
 class FrontendPagesController < ApplicationController
+  before_action :authenticate_user!, except: [:map, :restaurant_details]
+
   def map
+    @restaurants = Restaurant.all
+    @user = Current.session&.user
+    @is_favorited = @user&.favorite_restaurants.exists?(@restaurant) if @user
+    @favorite_count = @restaurant.favorite_count if @restaurant
   end
 
   def restaurant_details
-  end
-
-  def restaurant_review_form
-  end
-
-  def user_profile
-  end
-
-  def featured_spotlight
-  end
-
-  def restaurant_leaderboard
-  end
-
-  def catering_bulk_order
+    @restaurant = Restaurant.find(params[:id])
+    @tacos = @restaurant.tacos
+    @photos = @restaurant.photos
+    @reviews = @restaurant.reviews
+    @user = Current.session&.user
+    @is_favorited = @user&.favorite_restaurants.exists?(@restaurant) if @user
+    @favorite_count = @restaurant.favorite_count
   end
 end

@@ -1,10 +1,95 @@
 /*
- * This is a manifest file that'll be compiled into application.css.
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
  *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
  *
- * Consider organizing styles into separate files for maintainability.
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
  */
+
+/* Map Container Styles */
+.map-container {
+  width: 100%;
+  height: 500px;
+  min-height: 300px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #ddd;
+}
+
+/* Ensure the map takes up the full container */
+.map-container > div {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Loading spinner for map */
+.map-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+}
+
+/* Info window styles */
+.gm-style .gm-style-iw-c {
+  padding: 0 !important;
+  max-width: 300px !important;
+  max-height: none !important;
+}
+
+.gm-style .gm-style-iw-d {
+  overflow: hidden !important;
+}
+
+/* Make sure the map controls are visible */
+.gm-control-active {
+  background-color: white !important;
+  border-radius: 2px !important;
+  box-shadow: 0 1px 4px -1px rgba(0,0,0,0.3) !important;
+}
+
+/* Debug info panel */
+[data-map-debug] {
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+
+[data-map-debug] pre {
+  background-color: #f8f9fa;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 0.5rem;
+}
+
+/* Error state */
+.map-error {
+  padding: 2rem;
+  text-align: center;
+  color: #dc3545;
+}
+
+.map-error .bi {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* Custom Frontend Styles */
+@import "frontend";

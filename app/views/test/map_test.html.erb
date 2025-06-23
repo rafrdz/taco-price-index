@@ -1,0 +1,794 @@
+<div class="container-fluid p-0 vh-100 d-flex flex-column">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Map Test Page</a>
+      <div>
+        <button class="btn btn-sm btn-outline-light me-2" type="button" data-bs-toggle="collapse" data-bs-target="#debugPanel" aria-expanded="true" aria-controls="debugPanel">
+          <i class="bi bi-bug"></i> Toggle Debug
+        </button>
+        <a href="/test/map" class="btn btn-sm btn-outline-light">
+          <i class="bi bi-arrow-clockwise"></i> Reload
+        </a>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="row flex-grow-1 m-0">
+    <!-- Map Container -->
+    <div class="col-md-8 p-0" style="position: relative;">
+      <div 
+        id="test-map"
+        style="height: 100%; width: 100%;"
+        data-controller="map"
+        data-map-markers-value='<%= @markers.to_json %>'
+        data-map-center-value='<%= @map_center.to_json %>'
+        data-map-zoom-value="15"
+      >
+        <!-- Map will be rendered here by the controller -->
+      </div>
+      
+      <!-- Loading overlay -->
+      <div id="map-loading" class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center bg-dark bg-opacity-25" style="z-index: 1000; pointer-events: none;">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading map...</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Debug Panel -->
+    <div class="col-md-4 p-0 border-start bg-light collapse show" id="debugPanel">
+      <div class="d-flex flex-column h-100">
+        <!-- Tabs -->
+        <ul class="nav nav-tabs" id="debugTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="console-tab" data-bs-toggle="tab" data-bs-target="#console" type="button" role="tab">
+              <i class="bi bi-terminal me-1"></i> Console
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="map-tab" data-bs-toggle="tab" data-bs-target="#map-info" type="button" role="tab">
+              <i class="bi bi-map me-1"></i> Map
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="markers-tab" data-bs-toggle="tab" data-bs-target="#markers-info" type="button" role="tab">
+              <i class="bi bi-geo-alt me-1"></i> Markers (<span id="marker-count"><%= @markers.size %></span>)
+            </button>
+          </li>
+        </ul>
+        
+        <!-- Tab content -->
+        <div class="tab-content flex-grow-1" style="overflow: auto;">
+          <!-- Console Tab -->
+          <div class="tab-pane fade show active h-100" id="console" role="tabpanel">
+            <div class="d-flex flex-column h-100">
+              <div class="p-3 border-bottom">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h6 class="mb-0">Console Output</h6>
+                  <button id="clear-console" class="btn btn-sm btn-outline-secondary">
+                    <i class="bi bi-trash"></i> Clear
+                  </button>
+                </div>
+                <div class="d-flex align-items-center">
+                  <span class="badge bg-success me-2">log</span>
+                  <span class="badge bg-warning text-dark me-2">warn</span>
+                  <span class="badge bg-danger me-2">error</span>
+                  <span class="badge bg-info text-dark">info</span>
+                </div>
+              </div>
+              <div id="console-output" class="flex-grow-1 overflow-auto p-3">
+                <!-- Console output will be inserted here -->
+              </div>
+            </div>
+          </div>
+          
+          <!-- Map Info Tab -->
+          <div class="tab-pane fade h-100 p-3" id="map-info" role="tabpanel">
+            <h6 class="mb-3">Map Information</h6>
+            
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h6 class="mb-0">Google Maps API Status</h6>
+                <span id="api-status" class="badge bg-warning">Loading...</span>
+              </div>
+              <div id="api-key-info" class="small text-muted mb-3">
+                Checking API key...
+              </div>
+              
+              <div class="mb-3">
+                <h6>Map Center</h6>
+                <div class="bg-dark text-light p-2 rounded small mb-0 overflow-auto">
+                  <code id="map-center"><%= @map_center.to_json %></code>
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <h6>Zoom Level</h6>
+                <div class="input-group input-group-sm">
+                  <input type="range" class="form-range" id="zoom-level" min="1" max="20" value="15" disabled>
+                  <span class="input-group-text" id="zoom-value">15</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="alert alert-info small">
+              <i class="bi bi-info-circle me-1"></i> Map controls and information will be available after the map loads.
+            </div>
+          </div>
+          
+          <!-- Markers Tab -->
+          <div class="tab-pane fade h-100 p-3" id="markers-info" role="tabpanel">
+            <h6 class="mb-3">Markers</h6>
+            
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h6 class="mb-0">Markers (<span id="marker-count"><%= @markers.size %></span>)</h6>
+                <button id="center-on-markers" class="btn btn-sm btn-outline-primary">
+                  <i class="bi bi-zoom-in"></i> Fit to Markers
+                </button>
+              </div>
+              
+              <div class="list-group mb-3" id="markers-list">
+                <% @markers.each_with_index do |marker, index| %>
+                  <div class="list-group-item list-group-item-action" data-marker-index="<%= index %>">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h6 class="mb-1"><%= marker[:name] || "Marker #{index + 1}" %></h6>
+                      <small class="text-muted">#<%= index + 1 %></small>
+                    </div>
+                    <p class="mb-1 small">
+                      <span class="badge bg-secondary me-1"><%= '%.6f' % marker[:lat] %>, <%= '%.6f' % marker[:lng] %></span>
+                    </p>
+                    <small class="text-muted">
+                      <% if marker[:address] %>
+                        <div><%= marker[:address] %></div>
+                      <% end %>
+                      <% if marker[:rating] %>
+                        <div class="text-warning">
+                          <% 5.times do |i| %>
+                            <% if i < marker[:rating].to_i %>
+                              ★
+                            <% else %>
+                              ☆
+                            <% end %>
+                          <% end %>
+                          (<%= marker[:rating] %>)
+                        </div>
+                      <% end %>
+                    </small>
+                  </div>
+                <% end %>
+              </div>
+              
+              <div class="mb-3">
+                <h6>Raw Markers Data</h6>
+                <div class="bg-dark text-light p-2 rounded small" style="max-height: 200px; overflow: auto;">
+                  <pre class="mb-0"><code id="markers-data"><%= JSON.pretty_generate(@markers) %></code></pre>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        
+        <div class="p-3 border-top bg-white">
+          <h6>Console Output</h6>
+          <div id="console-output" class="bg-dark text-light p-2 rounded small font-monospace" style="height: 150px; overflow-y: auto;">
+            <!-- Console output will appear here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+<style>
+  /* Custom styles for the debug panel */
+  #debugPanel {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  #debugPanel .tab-content {
+    flex: 1;
+    overflow: auto;
+    padding: 1rem;
+  }
+  
+  #console-output {
+    font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .console-entry {
+    border-bottom: 1px solid #eee;
+    padding: 0.25rem 0;
+  }
+  
+  .console-entry:last-child {
+    border-bottom: none;
+  }
+  
+  .badge {
+    font-size: 0.7em;
+    font-weight: 600;
+    padding: 0.25em 0.5em;
+  }
+  
+  /* Loading overlay animation */
+  #map-loading {
+    transition: opacity 0.3s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  
+  /* Custom scrollbar for debug panel */
+  #debugPanel ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  #debugPanel ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  #debugPanel ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+  
+  #debugPanel ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    #debugPanel {
+      height: 40vh;
+    }
+    
+    #test-map {
+      height: 60vh !important;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // DOM Elements
+    const consoleOutput = document.getElementById('console-output');
+    const loadingOverlay = document.getElementById('map-loading');
+    const apiStatus = document.getElementById('api-status');
+    const apiKeyInfo = document.getElementById('api-key-info');
+    const clearConsoleBtn = document.getElementById('clear-console');
+    const zoomLevelInput = document.getElementById('zoom-level');
+    const zoomValue = document.getElementById('zoom-value');
+    const centerOnMarkersBtn = document.getElementById('center-on-markers');
+    const markersList = document.getElementById('markers-list');
+    const mapCenterElement = document.getElementById('map-center');
+    
+    // Global variables
+    let map = null;
+    let markers = [];
+    let infoWindow = null;
+    
+    // Store the original console methods
+    const originalConsole = {
+      log: console.log,
+      error: console.error,
+      warn: console.warn,
+      info: console.info,
+      debug: console.debug
+    };
+    
+    // Override console methods to show in our debug panel
+    function logToPanel(type, args) {
+      // Call the original console method
+      if (originalConsole[type]) {
+        originalConsole[type].apply(console, args);
+      } else {
+        originalConsole.log.apply(console, args);
+      }
+      
+      if (!consoleOutput) return;
+      
+      // Create log entry
+      const entry = document.createElement('div');
+      entry.className = `console-entry text-${type === 'error' ? 'danger' : type === 'warn' ? 'warning' : type === 'info' ? 'primary' : 'muted'}`;
+      
+      // Add timestamp
+      const time = new Date().toISOString().split('T')[1].slice(0, -1);
+      const timeSpan = document.createElement('span');
+      timeSpan.className = 'text-muted me-2';
+      timeSpan.textContent = `[${time}]`;
+      entry.appendChild(timeSpan);
+      
+      // Add log type
+      if (type !== 'log') {
+        const typeSpan = document.createElement('span');
+        typeSpan.className = `badge bg-${type === 'error' ? 'danger' : type === 'warn' ? 'warning' : type === 'info' ? 'info' : 'secondary'} me-2`;
+        typeSpan.textContent = type.toUpperCase();
+        entry.appendChild(typeSpan);
+      }
+      
+      // Add log message
+      const message = document.createElement('span');
+      message.textContent = Array.from(args).map(arg => {
+        if (arg && typeof arg === 'object') {
+          try {
+            // Handle Error objects properly
+            if (arg instanceof Error) {
+              return `${arg.name}: ${arg.message}\n${arg.stack || ''}`;
+            }
+            return JSON.stringify(arg, null, 2);
+          } catch (e) {
+            return String(arg);
+          }
+        }
+        return String(arg);
+      }).join(' ');
+      
+      // Make URLs clickable
+      const urlRegex = /(https?:\/\/[^\s]+)/g;
+      const text = message.textContent;
+      message.innerHTML = '';
+      
+      let lastIndex = 0;
+      let match;
+      
+      while ((match = urlRegex.exec(text)) !== null) {
+        // Add text before the URL
+        if (match.index > lastIndex) {
+          message.appendChild(document.createTextNode(text.substring(lastIndex, match.index)));
+        }
+        
+        // Add clickable URL
+        const link = document.createElement('a');
+        link.href = match[0];
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = match[0];
+        link.className = 'text-primary text-decoration-underline';
+        message.appendChild(link);
+        
+        lastIndex = match.index + match[0].length;
+      }
+      
+      // Add any remaining text
+      if (lastIndex < text.length) {
+        message.appendChild(document.createTextNode(text.substring(lastIndex)));
+      }
+      
+      entry.appendChild(message);
+      
+      // Add to console output
+      consoleOutput.appendChild(entry);
+      consoleOutput.scrollTop = consoleOutput.scrollHeight;
+    }
+    
+    // Override console methods
+    console.log = function() { logToPanel('log', arguments); };
+    console.error = function() { logToPanel('error', arguments); };
+    console.warn = function() { logToPanel('warn', arguments); };
+    console.info = function() { logToPanel('info', arguments); };
+    console.debug = function() { logToPanel('debug', arguments); };
+    
+    // Initialize the application
+    function init() {
+      setupEventListeners();
+      logInitialInfo();
+      checkGoogleMaps();
+      setupMapAutoResize();
+    }
+    
+    // Set up event listeners
+    function setupEventListeners() {
+      // Clear console button
+      if (clearConsoleBtn) {
+        clearConsoleBtn.addEventListener('click', clearConsole);
+      }
+      
+      // Center on markers button
+      if (centerOnMarkersBtn) {
+        centerOnMarkersBtn.addEventListener('click', centerOnMarkers);
+      }
+      
+      // Zoom level input
+      if (zoomLevelInput) {
+        zoomLevelInput.addEventListener('input', updateZoomLevel);
+      }
+      
+      // Handle marker clicks in the list
+      if (markersList) {
+        markersList.addEventListener('click', handleMarkerListClick);
+      }
+      
+      // Handle tab changes to update map size
+      const tabEls = document.querySelectorAll('#debugTabs button[data-bs-toggle="tab"]');
+      tabEls.forEach(tabEl => {
+        tabEl.addEventListener('shown.bs.tab', function() {
+          if (map) {
+            setTimeout(() => {
+              google.maps.event.trigger(map, 'resize');
+            }, 100);
+          }
+        });
+      });
+      
+      // Handle window resize
+      window.addEventListener('resize', handleWindowResize);
+      
+      // Handle window errors
+      window.addEventListener('error', function(event) {
+        console.error('JavaScript Error:', event.message, 'in', event.filename, 'line', event.lineno, 'col', event.colno);
+      });
+      
+      // Handle unhandled promise rejections
+      window.addEventListener('unhandledrejection', function(event) {
+        console.error('Unhandled Promise Rejection:', event.reason);
+      });
+    }
+    
+    // Log initial information
+    function logInitialInfo() {
+      console.log('Page loaded at', new Date().toISOString());
+      console.log('Map center:', <%= @map_center.to_json.html_safe %>);
+      console.log('Markers:', <%= @markers.to_json.html_safe %>);
+      console.log('Google Maps API loaded:', window.googleMapsLoaded);
+      console.log('User Agent:', navigator.userAgent);
+      console.log('Viewport:', `${window.innerWidth}x${window.innerHeight}`);
+      console.log('Test page initialized');
+    }
+    
+    // Clear console
+    function clearConsole() {
+      if (consoleOutput) {
+        consoleOutput.innerHTML = '';
+        console.log('Console cleared');
+      }
+    }
+    
+    // Check if Google Maps API is already loaded
+    function checkGoogleMaps() {
+      if (window.google && window.google.maps) {
+        onGoogleMapsLoaded();
+      } else if (window.googleMapsLoading) {
+        // Wait for the API to load
+        console.log('Google Maps API is loading, waiting...');
+        setTimeout(checkGoogleMaps, 100);
+      } else {
+        // API not loading, try to load it
+        console.warn('Google Maps API not loaded, attempting to load...');
+        if (typeof loadGoogleMapsAPI === 'function') {
+          loadGoogleMapsAPI(onGoogleMapsLoaded);
+        } else {
+          console.error('loadGoogleMapsAPI function not found');
+          updateApiStatus(false, 'loadGoogleMapsAPI function not found');
+        }
+      }
+    }
+    
+    // Update API status in the UI
+    function updateApiStatus(success, message) {
+      if (apiStatus) {
+        apiStatus.className = `badge bg-${success ? 'success' : 'danger'}`;
+        apiStatus.textContent = success ? 'Loaded' : 'Failed';
+      }
+      
+      if (apiKeyInfo) {
+        apiKeyInfo.textContent = message || (success ? 'Google Maps API is loaded and working' : 'Failed to load Google Maps API');
+      }
+    }
+    
+    // Handle Google Maps API loaded
+    function onGoogleMapsLoaded() {
+      console.log('Google Maps API loaded successfully');
+      updateApiStatus(true, 'Google Maps API is loaded and working');
+      
+      // Initialize the map
+      initMap();
+      
+      // Hide loading overlay
+      if (loadingOverlay) {
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => {
+          loadingOverlay.style.display = 'none';
+        }, 300);
+      }
+    }
+    
+    // Initialize the Google Map
+    function initMap() {
+      try {
+        // Parse the map center from the data attribute
+        let center;
+        try {
+          const centerData = JSON.parse(document.getElementById('test-map').dataset.mapCenterValue);
+          center = {
+            lat: parseFloat(centerData.lat) || 0,
+            lng: parseFloat(centerData.lng) || 0
+          };
+        } catch (e) {
+          console.warn('Invalid center data, using default');
+          center = { lat: 0, lng: 0 };
+        }
+        
+        // Create the map
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: center,
+          zoom: parseInt(document.getElementById('test-map').dataset.mapZoomValue) || 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          mapTypeControl: true,
+          streetViewControl: true,
+          fullscreenControl: true,
+          zoomControl: true,
+          styles: [
+            {
+              featureType: 'poi',
+              elementType: 'labels',
+              stylers: [{ visibility: 'off' }]
+            }
+          ]
+        });
+        
+        // Create info window
+        infoWindow = new google.maps.InfoWindow();
+        
+        // Add markers
+        addMarkers();
+        
+        // Update zoom level display
+        updateZoomDisplay(map.getZoom());
+        
+        // Add event listeners
+        map.addListener('zoom_changed', () => {
+          updateZoomDisplay(map.getZoom());
+        });
+        
+        map.addListener('center_changed', () => {
+          const center = map.getCenter();
+          if (mapCenterElement) {
+            mapCenterElement.textContent = JSON.stringify({
+              lat: center.lat().toFixed(6),
+              lng: center.lng().toFixed(6)
+            }, null, 2);
+          }
+        });
+        
+        console.log('Map initialized successfully');
+        
+        // Trigger a resize event to ensure the map renders correctly
+        setTimeout(() => {
+          google.maps.event.trigger(map, 'resize');
+        }, 100);
+        
+      } catch (error) {
+        console.error('Error initializing map:', error);
+        updateApiStatus(false, `Error initializing map: ${error.message}`);
+      }
+    }
+    
+    // Add markers to the map
+    function addMarkers() {
+      try {
+        // Parse markers from the data attribute
+        const markersData = JSON.parse(document.getElementById('test-map').dataset.markersValue);
+        
+        if (!Array.isArray(markersData) || markersData.length === 0) {
+          console.warn('No markers to display');
+          return;
+        }
+        
+        // Clear existing markers
+        clearMarkers();
+        
+        // Add each marker
+        markers = markersData.map((markerData, index) => {
+          try {
+            const position = {
+              lat: parseFloat(markerData.lat),
+              lng: parseFloat(markerData.lng)
+            };
+            
+            if (isNaN(position.lat) || isNaN(position.lng)) {
+              throw new Error(`Invalid coordinates: ${markerData.lat}, ${markerData.lng}`);
+            }
+            
+            // Create marker
+            const marker = new google.maps.Marker({
+              position: position,
+              map: map,
+              title: markerData.name || `Marker ${index + 1}`,
+              animation: google.maps.Animation.DROP,
+              label: {
+                text: (index + 1).toString(),
+                color: 'white',
+                fontWeight: 'bold'
+              }
+            });
+            
+            // Add click event
+            marker.addListener('click', () => {
+              showMarkerInfo(marker, markerData);
+              highlightMarkerInList(index);
+            });
+            
+            // Add to markers array
+            return marker;
+            
+          } catch (error) {
+            console.error(`Error creating marker ${index + 1}:`, error);
+            return null;
+          }
+        }).filter(marker => marker !== null);
+        
+        console.log(`Added ${markers.length} markers to the map`);
+        
+        // Center the map on the markers if there are any
+        if (markers.length > 0) {
+          centerOnMarkers();
+        }
+        
+      } catch (error) {
+        console.error('Error adding markers:', error);
+      }
+    }
+    
+    // Clear all markers from the map
+    function clearMarkers() {
+      markers.forEach(marker => {
+        if (marker && marker.setMap) {
+          marker.setMap(null);
+        }
+      });
+      markers = [];
+    }
+    
+    // Show info window for a marker
+    function showMarkerInfo(marker, markerData) {
+      if (!infoWindow) return;
+      
+      const content = `
+        <div style="min-width: 200px;">
+          <h6 class="mb-1">${markerData.name || 'No Name'}</h6>
+          ${markerData.address ? `<p class="mb-1 small">${markerData.address}</p>` : ''}
+          ${markerData.rating ? `
+            <div class="text-warning mb-1">
+              ${'★'.repeat(Math.floor(markerData.rating))}${'☆'.repeat(5 - Math.floor(markerData.rating))}
+              <span class="text-muted ms-1">(${markerData.rating})</span>
+            </div>
+          ` : ''}
+          <div class="text-muted small">
+            ${marker.getPosition().lat().toFixed(6)}, ${marker.getPosition().lng().toFixed(6)}
+          </div>
+        </div>
+      `;
+      
+      infoWindow.setContent(content);
+      infoWindow.open(map, marker);
+      
+      // Animate the marker
+      if (marker.getAnimation() === null) {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(() => {
+          marker.setAnimation(null);
+        }, 1400);
+      }
+    }
+    
+    // Center the map on all markers
+    function centerOnMarkers() {
+      if (!map || markers.length === 0) return;
+      
+      const bounds = new google.maps.LatLngBounds();
+      markers.forEach(marker => {
+        bounds.extend(marker.getPosition());
+      });
+      
+      // If there's only one marker, center on it with a default zoom
+      if (markers.length === 1) {
+        map.setCenter(markers[0].getPosition());
+        map.setZoom(15);
+      } else {
+        // Fit the map to the bounds with some padding
+        map.fitBounds(bounds, {
+          top: 50, right: 50, bottom: 50, left: 50
+        });
+      }
+      
+      console.log('Map centered on markers');
+    }
+    
+    // Update zoom level display
+    function updateZoomDisplay(zoom) {
+      if (zoomLevelInput) {
+        zoomLevelInput.value = zoom;
+        zoomLevelInput.disabled = false;
+      }
+      if (zoomValue) {
+        zoomValue.textContent = zoom;
+      }
+    }
+    
+    // Handle zoom level input change
+    function updateZoomLevel() {
+      if (!map || !zoomLevelInput) return;
+      const zoom = parseInt(zoomLevelInput.value);
+      if (!isNaN(zoom)) {
+        map.setZoom(zoom);
+      }
+    }
+    
+    // Handle marker list item click
+    function handleMarkerListClick(event) {
+      const listItem = event.target.closest('.list-group-item');
+      if (!listItem) return;
+      
+      const markerIndex = parseInt(listItem.dataset.markerIndex);
+      if (isNaN(markerIndex) || !markers[markerIndex]) return;
+      
+      // Center the map on the marker
+      const marker = markers[markerIndex];
+      map.setCenter(marker.getPosition());
+      map.setZoom(17);
+      
+      // Show the info window
+      const markerData = JSON.parse(document.getElementById('test-map').dataset.markersValue)[markerIndex];
+      showMarkerInfo(marker, markerData);
+      
+      // Highlight the list item
+      highlightMarkerInList(markerIndex);
+    }
+    
+    // Highlight a marker in the list
+    function highlightMarkerInList(index) {
+      const listItems = document.querySelectorAll('#markers-list .list-group-item');
+      listItems.forEach((item, i) => {
+        if (i === index) {
+          item.classList.add('active');
+          item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+    
+    // Handle window resize
+    function handleWindowResize() {
+      if (map) {
+        setTimeout(() => {
+          google.maps.event.trigger(map, 'resize');
+        }, 100);
+      }
+    }
+    
+    // Set up map auto-resize on tab change
+    function setupMapAutoResize() {
+      const tabEls = document.querySelectorAll('button[data-bs-toggle="tab"]');
+      tabEls.forEach(tabEl => {
+        tabEl.addEventListener('shown.bs.tab', () => {
+          if (map) {
+            setTimeout(() => {
+              google.maps.event.trigger(map, 'resize');
+              // Re-center the map after resize
+              const center = map.getCenter();
+              google.maps.event.trigger(map, 'resize');
+              map.setCenter(center);
+            }, 100);
+          }
+        });
+      });
+    }
+    
+    // Initialize the application
+    init();
+  });
+</script>

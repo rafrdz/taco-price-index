@@ -21,7 +21,7 @@ gem "jbuilder"
 gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ windows jruby ]
+# gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
 gem "solid_cache"
@@ -39,6 +39,9 @@ gem "thruster", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+
+# Geocoding and Google Maps integration
+gem 'geocoder'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -62,4 +65,17 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-gem "pg", "~> 1.1"
+
+group :production do
+  gem "pg", "~> 1.1"
+end
+
+# Frontend dependencies
+gem "bootstrap", "~> 5.3.0"
+gem "font-awesome-rails", "~> 4.7.0.8"
+gem "devise", "~> 4.9.4"
+gem "google-maps", "~> 3.0.7"
+gem "stimulus_reflex", "~> 3.5.5"
+
+gem "dartsass-rails", "~> 0.5.1"
+gem "cssbundling-rails", "~> 1.1.0"

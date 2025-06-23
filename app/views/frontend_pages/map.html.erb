@@ -1,2 +1,21 @@
-<h1>FrontendPages#map</h1>
-<p>Find me in app/views/frontend_pages/map.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <!-- Map Container -->
+    <div class="col-md-9">
+      <div id="map" style="height: 600px;" data-controller="map" data-map-restaurants-value="<%= @restaurants.to_json %>">
+      </div>
+    </div>
+
+    <!-- Restaurant List -->
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title mb-0">Taco Places</h5>
+        </div>
+        <div class="card-body">
+          <%= render 'frontend_pages/restaurant_list' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

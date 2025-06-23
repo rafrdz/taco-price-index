@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Map Test</title>
+  <style>
+    #map {
+      height: 600px;
+      width: 100%;
+      background-color: #f0f0f0;
+    }
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+    .debug {
+      margin: 20px 0;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Google Maps Test</h1>
+  
+  <div id="map"></div>
+  
+  <div class="debug">
+    <h3>Debug Info</h3>
+    <div id="status">Loading...</div>
+    <div id="coordinates"></div>
+  </div>
+
+  <script>
+    // This function will be called when the Google Maps API is loaded
+    function initMap() {
+      const statusEl = document.getElementById('status');
+      const coordsEl = document.getElementById('coordinates');
+      
+      try {
+        // Define the position (San Antonio coordinates)
+        const position = { lat: 29.4241, lng: -98.4936 };
+        
+        // Create the map
+        const map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: position,
+          mapTypeId: 'roadmap'
+        });
+        
+        // Add a marker
+        new google.maps.Marker({
+          position: position,
+          map: map,
+          title: 'San Antonio',
+          animation: google.maps.Animation.DROP
+        });
+        
+        // Update status
+        statusEl.innerHTML = '✅ Map loaded successfully';
+        statusEl.style.color = 'green';
+        coordsEl.textContent = `Center: ${position.lat}, ${position.lng}`;
+        
+        // Force a resize after a short delay
+        setTimeout(() => {
+          google.maps.event.trigger(map, 'resize');
+          map.setCenter(position);
+        }, 100);
+        
+      } catch (error) {
+        statusEl.innerHTML = '❌ Error loading map: ' + error.message;
+        statusEl.style.color = 'red';
+        console.error('Map error:', error);
+      }
+    }
+    
+    // Load the Google Maps API
+    function loadGoogleMaps() {
+      const apiKey = '<%= ENV["GOOGLE_MAPS_API_KEY"] %>';
+      if (!apiKey) {
+        document.getElementById('status').innerHTML = '❌ Google Maps API key is missing';
+        return;
+      }
+      
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
+      script.async = true;
+      script.defer = true;
+      script.onerror = () => {
+        document.getElementById('status').innerHTML = '❌ Failed to load Google Maps API';
+      };
+      document.head.appendChild(script);
+    }
+    
+    // Start loading Google Maps when the page loads
+    window.onload = loadGoogleMaps;
+  </script>
+</body>
+</html>
