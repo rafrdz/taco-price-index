@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  root 'frontend_pages#map'
-  
+  root 'static_pages#home'
+
+  get 'frontend_pages_featured_spotlight', to: 'frontend_pages#featured_spotlight'
+  get 'frontend_pages_restaurant_leaderboard', to: 'frontend_pages#restaurant_leaderboard'
+  get 'frontend_pages_map', to: 'frontend_pages#map'
+  get 'frontend_pages_user_profile', to: 'frontend_pages#user_profile'
+
+
+
   # Test routes
   get 'test/map', to: 'test#map_test', as: 'test_map'
 

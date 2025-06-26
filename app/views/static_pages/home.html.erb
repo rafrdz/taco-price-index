@@ -1,91 +1,105 @@
-<div class="container-fluid">
-  <div class="row">
-    <!-- Navigation Menu -->
-    <div class="col-12 mb-4">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Taco Price Index</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Map View</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Leaderboard</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Spotlight</a>
-              </li>
-            </ul>
-            <% if authenticated? %>
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <%= link_to 'My Profile', frontend_pages_user_profile_path, class: 'nav-link' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to 'My Favorites', favorites_path, class: 'nav-link' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to 'Logout', session_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'nav-link' %>
-                </li>
-              </ul>
-            <% else %>
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <%= link_to 'Login', '#', data: { controller: 'modal', action: 'click->modal#show', modal_target: 'login' }, class: 'nav-link' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to 'Sign Up', '#', data: { controller: 'modal', action: 'click->modal#show', modal_target: 'signup' }, class: 'nav-link' %>
-                </li>
-              </ul>
-            <% end %>
+<main>
+  <section class="py-5 text-center container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <h1 class="fw-light">Taco Price Index</h1>
+        <p class="lead text-muted">🌮 Welcome to San Antonio Taco-Price-Index — your go-to taco price index!
+          Craving tacos and data? Search, compare, and track taco prices across your favorite taquerías in San Antonio.
+          Whether you're hunting for the best bang-for-your-bite or just curious how much tacos cost in different
+          neighborhoods, we've got the stats to back your salsa.</p>
+        <div class="d-flex justify-content-center my-4">
+          <div class="input-group mb-3 w-50">
+            <span class="input-group-text" id="basic-addon3">Zip code</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
           </div>
         </div>
-      </nav>
+        <button type="button" class="btn btn-warning">Search</button>
+      </div>
     </div>
+  </section>
+  <section class="py-10 text-center container bg-light">
+    <div class="row row-cols-1 g-3">
+      <div class="col">
+        <div class="card shadow-sm">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#55595c"/>
+            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Map</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Taco</th>
+          <th scope="col">Restaurant</th>
+          <th scope="col">Taco rating</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Bean and cheese</td>
+          <td>Place 1</td>
+          <td>99.9%</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Lengua</td>
+          <td>Place 2</td>
+          <td>90%</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Al Pastor</td>
+          <td>Another place</td>
+          <td>89%</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
+  <section>
     <!-- Featured Section -->
-    <div class="col-12">
-      <div class="card mb-4">
-        <div class="card-body">
-          <h2 class="card-title">Welcome to Taco Price Index</h2>
-          <p class="card-text">Discover the best tacos in your area and track their prices over time.</p>
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Map View</h5>
-                  <p class="card-text">Explore tacos on an interactive map</p>
-                  <%= link_to 'View Map', frontend_pages_map_path, class: 'btn btn-primary' %>
-                </div>
-              </div>
+    <div class="col-12 px-5">
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Map View</h5>
+              <p class="card-text">Explore tacos on an interactive map</p>
+              <%= link_to 'View Map', frontend_pages_map_path, class: 'btn btn-primary' %>
             </div>
-            <div class="col-md-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Leaderboard</h5>
-                  <p class="card-text">See the best taco places in your area</p>
-                  <%= link_to 'View Leaderboard', frontend_pages_restaurant_leaderboard_path, class: 'btn btn-primary' %>
-                </div>
-              </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Leaderboard</h5>
+              <p class="card-text">See the best taco places in your area</p>
+              <%#= link_to 'View Leaderboard', frontend_pages_restaurant_leaderboard_path, class: 'btn btn-primary' %>
             </div>
-            <div class="col-md-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Spotlight</h5>
-                  <p class="card-text">Featured taco places and reviews</p>
-                  <%= link_to 'View Spotlight', frontend_pages_featured_spotlight_path, class: 'btn btn-primary' %>
-                </div>
-              </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Spotlight</h5>
+              <p class="card-text">Featured taco places and reviews</p>
+              <%#= link_to 'View Spotlight', frontend_pages_featured_spotlight_path, class: 'btn btn-primary' %>
             </div>
           </div>
         </div>
       </div>
+
     </div>
 
-
-  </div>
-</div>
+  </section>
+</main>

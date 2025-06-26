@@ -29,22 +29,23 @@ document.addEventListener('turbo:load', function() {
   }
 
   // Handle tab navigation
-  const tabLinks = document.querySelectorAll('.nav-link')
-  tabLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault()
-      const targetId = this.getAttribute('href')
-      const target = document.querySelector(targetId)
-      
-      // Remove active class from all tabs and panels
-      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'))
-      document.querySelectorAll('.tab-pane').forEach(panel => panel.classList.remove('active'))
-      
-      // Add active class to selected tab and panel
-      this.classList.add('active')
-      target.classList.add('active')
-    })
-  })
+  // TODO: enable navigation
+  // const tabLinks = document.querySelectorAll('.nav-link')
+  // tabLinks.forEach(link => {
+  //   link.addEventListener('click', function(e) {
+  //     e.preventDefault()
+  //     const targetId = this.getAttribute('href')
+  //     const target = document.querySelector(targetId)
+  //
+  //     // Remove active class from all tabs and panels
+  //     document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'))
+  //     document.querySelectorAll('.tab-pane').forEach(panel => panel.classList.remove('active'))
+  //
+  //     // Add active class to selected tab and panel
+  //     this.classList.add('active')
+  //     target.classList.add('active')
+  //   })
+  // })
 
 
 

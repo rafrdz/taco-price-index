@@ -1,0 +1,58 @@
+<header>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Navigation Menu -->
+      <div class="col-12 mb-4 bg-dark" id="navbarHeader">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+          <div class="container-fluid">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+              <%= image_tag "taco.png", alt: "Taco", class: "img-fluid", width: "50em" %>
+              <strong>Taco Price Index</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'View Map', frontend_pages_map_path, class: 'nav-link', id: "map-link"%>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Leaderboard</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Spotlight</a>
+                </li>
+              </ul>
+              <% if authenticated? %>
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <%= link_to 'My Profile', frontend_pages_user_profile_path, class: 'nav-link' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to 'My Favorites', favorites_path, class: 'nav-link' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to 'Logout', session_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'nav-link' %>
+                  </li>
+                </ul>
+              <% else %>
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <%= link_to 'Login', '#', data: { controller: 'modal', action: 'click->modal#show', modal_target: 'login' }, class: 'nav-link' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to 'Sign Up', '#', data: { controller: 'modal', action: 'click->modal#show', modal_target: 'signup' }, class: 'nav-link' %>
+                  </li>
+                </ul>
+              <% end %>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
