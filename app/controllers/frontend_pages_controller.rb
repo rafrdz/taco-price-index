@@ -1,5 +1,5 @@
 class FrontendPagesController < ApplicationController
-  before_action :authenticate_user!, except: [:map, :restaurant_details]
+  before_action :authenticate_user!, except: [ :map, :restaurant_details ]
 
   def map
     @restaurants = Restaurant.all
