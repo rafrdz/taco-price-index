@@ -6,8 +6,8 @@ class Taco < ApplicationRecord
 
   # Validations
   validates :name, presence: true
-  validates :price, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
-
+  validates :price_cents, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
+  
   # Scopes
   scope :with_photos, -> {
     joins("INNER JOIN active_storage_attachments " \
