@@ -18,6 +18,14 @@ class Review < ApplicationRecord
     less_than_or_equal_to: 5,
     allow_nil: true
   }
+
+  # General validations
+  validates :gps_latitude, numericality: true, allow_nil: true
+  validates :gps_longitude, numericality: true, allow_nil: true
+  validates :author_url, format: { with: URI::regexp(%w[http https]), message: "must be a valid URL" }, allow_blank: true
+  validates :review_time, presence: true, numericality: true
+  validates :relative_time_description, presence: true
+  validates :review_date, presence: true
   
   # For Google reviews that might not have a user
   def author
