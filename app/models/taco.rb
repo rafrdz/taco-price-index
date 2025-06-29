@@ -8,8 +8,7 @@ class Taco < ApplicationRecord
   validates :name, presence: true
   validates :price_cents, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
   validates :calories, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
-  
-  validates :available_to, comparison: { greater_than_or_equal_to: :available_from }
+  validates :available_to, comparison: { greater_than_or_equal_to: :available_from }, if: :available_from, allow_nil: true
   
   # Scopes
   scope :with_photos, -> {
