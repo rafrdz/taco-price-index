@@ -8,6 +8,9 @@ class Taco < ApplicationRecord
   validates :name, presence: true
   # Price is stored in cents to avoid floating point issues
   validates :price_cents, numericality: { greater_than_or_equal_to: 0, only_integer: true }, allow_nil: true
+  validates :calories, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
+  
+  validates :available_to, comparison: { greater_than_or_equal_to: :available_from }
 
   # Scopes
   scope :with_photos, -> {
