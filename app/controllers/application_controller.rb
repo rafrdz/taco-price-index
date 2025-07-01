@@ -20,7 +20,7 @@ private
   end
 
   def handle_parameter_missing
-    render file: Rails.root.join("public/400.html"), statuc: :parameter_missing
+    render file: Rails.root.join("public/400.html"), status: :parameter_missing
   end
   def current_user
     @current_user ||= begin
