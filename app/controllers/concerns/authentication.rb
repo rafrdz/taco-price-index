@@ -8,7 +8,7 @@ module Authentication
 
   class_methods do
     def allow_unauthenticated_access(*actions)
-      skip_before_action :require_authentication, only: actions
+      skip_before_action :require_authentication, only: actions.flatten
     end
   end
 
