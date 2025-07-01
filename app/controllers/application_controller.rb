@@ -12,15 +12,15 @@ rescue_from ActionController::ParameterMissing, with: :handle_parameter_missing
 
 private
   def record_not_found
-    render file: Rails.root.join('public/404.html'), status: :not_found, layout: false
+    render file: Rails.root.join("public/404.html"), status: :not_found, layout: false
   end
 
   def unprocessable_entity_response(exception)
-    render file: Rails.root.join('public/422.html'), :unprocessable_entity
+    render file: Rails.root.join("public/422.html"), status: :unprocessable_entity
   end
 
   def handle_parameter_missing
-    render file: Rails.root.join('public/400.html'), :parameter_missing
+    render file: Rails.root.join("public/400.html"), statuc: :parameter_missing
   end
   def current_user
     @current_user ||= begin
