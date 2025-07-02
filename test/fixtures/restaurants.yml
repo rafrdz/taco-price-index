@@ -9,8 +9,9 @@ one:
   latitude: 9.99
   longitude: 9.99
   phone: MyString
-  website: MyString
+  website: https://www.example.com
   yelp_id: MyString
+  google_rating: 4.5
 
 two:
   name: MyString
@@ -21,5 +22,6 @@ two:
   latitude: 9.99
   longitude: 9.99
   phone: MyString
-  website: MyString
+  website: http://example.com
   yelp_id: MyString
+  google_rating: 1.5

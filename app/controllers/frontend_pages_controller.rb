@@ -1,5 +1,5 @@
 class FrontendPagesController < ApplicationController
-  before_action :authenticate_user!, except: [ :map, :restaurant_details ]
+  before_action :require_authentication, except: [ :map, :restaurant_details ]
 
   def map
     @restaurants = Restaurant.all
@@ -16,5 +16,9 @@ class FrontendPagesController < ApplicationController
     @user = Current.session&.user
     @is_favorited = @user&.favorite_restaurants.exists?(@restaurant) if @user
     @favorite_count = @restaurant.favorite_count
+  end
+
+  def user_profile
+    @user = Current.session&.user
   end
 end
