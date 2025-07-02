@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class RestaurantShowIntegrationTest < ActionDispatch::IntegrationTest
   fixtures :restaurants
@@ -12,7 +12,7 @@ class RestaurantShowIntegrationTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     # Should contain the safe URL
-    assert_select 'a[href="https://example.com"]', text: 'example.com'
+    assert_select 'a[href="https://example.com"]', text: "example.com"
   end
 
   test "restaurant show page handles URLs without scheme" do
@@ -24,7 +24,7 @@ class RestaurantShowIntegrationTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     # Should contain the normalized URL with http scheme
-    assert_select 'a[href="http://www.example.com"]', text: 'www.example.com'
+    assert_select 'a[href="http://www.example.com"]', text: "www.example.com"
   end
 
   test "restaurant show page handles invalid website URLs gracefully" do
