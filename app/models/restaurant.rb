@@ -18,7 +18,7 @@ class Restaurant < ApplicationRecord
   validates :phone, presence: true
   validates :website, format: { with: URI::regexp(%w[http https]), message: "must be a valid URL" }, allow_blank:  true
   validates :google_rating, numericality: true
-  validates :google_price_level, numericality: true
+  validates :google_price_level, numericality: true, allow_nil: true
   validates :google_user_ratings_total, numericality: true, allow_nil: true
 
   # Geocoding
