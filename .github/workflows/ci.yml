@@ -72,7 +72,7 @@ jobs:
         env:
           POSTGRES_PASSWORD: tacos_password
         options: >-
-          --health-cmd pg_isready -U tacos -d taco_price_index_test
+          --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
@@ -93,6 +93,7 @@ jobs:
         env:
           RAILS_ENV: test
           SKIP_SANITY_CHECK: true
+          PG_HOST: localhost
         run: bin/rails db:test:prepare test test:system
 
       - name: Keep screenshots from failed system tests
