@@ -8,6 +8,11 @@ on:
       - main
       - "rafrdz/basic-tests"
 
+env:
+  POSTGRES_DB: taco_price_index_test
+  POSTGRES_USER: tacos
+  POSTGRES_PASSWORD: tacos_password
+
 jobs:
   scan_ruby:
     runs-on: ubuntu-latest
@@ -65,8 +70,6 @@ jobs:
         ports:
           - 5432:5432
         env:
-          POSTGRES_DB: taco_price_index_test
-          POSTGRES_USER: tacos
           POSTGRES_PASSWORD: tacos_password
         options: >-
           --health-cmd pg_isready
