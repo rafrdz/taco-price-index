@@ -17,9 +17,9 @@ development:
 
 test:
   <<: *default
-  database: <%= ENV['POSTGRES_DB'] %>
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  database: <%= ENV['POSTGRES_DB'] || 'taco_price_index_test' %>
+  username: <%= ENV['POSTGRES_USER'] || 'postgres' %>
+  password: <%= ENV['POSTGRES_PASSWORD'] || 'password' %>
 
 production:
   <<: *default

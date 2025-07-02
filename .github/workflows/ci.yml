@@ -70,6 +70,8 @@ jobs:
         ports:
           - 5432:5432
         env:
+          POSTGRES_DB: taco_price_index_test
+          POSTGRES_USER: tacos
           POSTGRES_PASSWORD: tacos_password
         options: >-
           --health-cmd pg_isready
@@ -94,7 +96,14 @@ jobs:
           RAILS_ENV: test
           SKIP_SANITY_CHECK: true
           POSTGRES_HOST: localhost
-        run: bin/rails db:test:prepare test test:system
+          POSTGRES_DB: taco_price_index_test
+          POSTGRES_USER: tacos
+          POSTGRES_PASSWORD: tacos_password
+          DATABASE_URL: postgres://tacos:tacos_password@localhost:5432/taco_price_index_test
+        run: |
+          bin/rails db:create
+          bin/rails db:schema:load
+          bin/rails db:test:prepare test test:system
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4
