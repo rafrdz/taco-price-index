@@ -92,6 +92,7 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
+          SKIP_SANITY_CHECK: true
         run: bin/rails db:test:prepare test test:system
 
       - name: Keep screenshots from failed system tests
