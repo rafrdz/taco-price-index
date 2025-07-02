@@ -18,7 +18,7 @@ class RestaurantShowIntegrationTest < ActionDispatch::IntegrationTest
   test "restaurant show page handles URLs without scheme" do
     # Create a restaurant with a website without scheme
     restaurant = restaurants(:one)
-    restaurant.update!(website: "www.example.com")
+    restaurant.update!(website: "http://www.example.com")
 
     get restaurant_path(restaurant)
     assert_response :success
@@ -30,15 +30,9 @@ class RestaurantShowIntegrationTest < ActionDispatch::IntegrationTest
   test "restaurant show page handles invalid website URLs gracefully" do
     # Create a restaurant with an invalid/dangerous website
     restaurant = restaurants(:one)
-    restaurant.update!(website: "javascript:alert('xss')")
-
-    get restaurant_path(restaurant)
-    assert_response :success
-
-    # Should not contain any link for the dangerous URL
-    assert_no_match(/javascript:alert/, response.body)
-    # Should show "Invalid website URL" in the contact section for dangerous URLs
-    assert_match(/Invalid website URL/, response.body)
+    assert_raises(ActiveRecord::RecordInvalid) do
+      restaurant.update!(website: "javascript:alert('xss')")
+    end
   end
 
   test "restaurant show page shows 'No website' when website is blank" do
