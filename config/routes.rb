@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resource :session
   resources :passwords, param: :token
+  resources :users, param: :token
   resources :restaurants do
     resources :tacos
     resources :photos
