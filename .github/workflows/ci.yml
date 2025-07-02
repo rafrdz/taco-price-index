@@ -4,9 +4,7 @@ on:
   pull_request:
     branches: [ main ]
   push:
-    branches:
-      - main
-      - "rafrdz/basic-tests"
+    branches: [ main ]
 
 env:
   POSTGRES_DB: taco_price_index_test
