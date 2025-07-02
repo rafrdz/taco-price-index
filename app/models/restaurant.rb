@@ -8,8 +8,14 @@ class Restaurant < ApplicationRecord
   has_many :favorited_by, through: :user_favorites, source: :user
 
   # Geocoding
+  # Only geocode if we do not already have latitude/longitude
+  # This prevents unnecessary external API calls (and related errors)
   geocoded_by :full_address
-  after_validation :geocode, if: ->(obj) { obj.full_address.present? && (obj.street_address_changed? || obj.city_changed? || obj.state_changed? || obj.zip_changed?) }
+  after_validation :geocode, if: ->(obj) do
+    obj.full_address.present? &&
+      (obj.latitude.blank? || obj.longitude.blank?) &&
+      (obj.street_address_changed? || obj.city_changed? || obj.state_changed? || obj.zip_changed?)
+  end
 
   # Store business hours as JSON in a text field
   serialize :business_hours, coder: JSON
