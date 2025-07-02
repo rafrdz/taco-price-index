@@ -93,7 +93,7 @@ jobs:
         env:
           RAILS_ENV: test
           SKIP_SANITY_CHECK: true
-          PG_HOST: localhost
+          POSTGRES_HOST: postgres
         run: bin/rails db:test:prepare test test:system
 
       - name: Keep screenshots from failed system tests
