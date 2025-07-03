@@ -2,8 +2,14 @@ name: CI
 
 on:
   pull_request:
+    branches: [ main ]
   push:
     branches: [ main ]
+
+env:
+  POSTGRES_DB: taco_price_index_test
+  POSTGRES_USER: tacos
+  POSTGRES_PASSWORD: tacos_password
 
 jobs:
   scan_ruby:
@@ -56,15 +62,23 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    # services:
-    #  redis:
-    #    image: redis
-    #    ports:
-    #      - 6379:6379
-    #    options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
+    services:
+      postgres:
+        image: postgres:14-alpine
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_DB: taco_price_index_test
+          POSTGRES_USER: tacos
+          POSTGRES_PASSWORD: tacos_password
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - name: Install packages
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y build-essential git libyaml-dev pkg-config google-chrome-stable
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y build-essential git libyaml-dev pkg-config google-chrome-stable libpq-dev
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -78,8 +92,15 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
-          # REDIS_URL: redis://localhost:6379/0
-        run: bin/rails db:test:prepare test test:system
+          SKIP_SANITY_CHECK: true
+          POSTGRES_HOST: localhost
+          POSTGRES_DB: taco_price_index_test
+          POSTGRES_USER: tacos
+          POSTGRES_PASSWORD: tacos_password
+          DATABASE_URL: postgres://tacos:tacos_password@localhost:5432/taco_price_index_test
+        run: |
+          bin/rails db:schema:load
+          bin/rails test
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4

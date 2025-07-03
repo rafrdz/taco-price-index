@@ -4,10 +4,10 @@
       <div class="card-body">
         <h5 class="card-title">Profile</h5>
         <p class="card-text">
-          Email: <%= @user.email %><br>
+          Email: <%= @user.email_address %><br>
           Joined: <%= @user.created_at.strftime('%B %d, %Y') %>
         </p>
-        <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
+        <%# <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
       </div>
     </div>
   </div>
@@ -16,31 +16,45 @@
     <div class="tab-content">
       <div class="tab-pane active" id="favorites">
         <h3>Favorite Restaurants</h3>
-        <div class="row">
-          <% @favorite_restaurants.each do |restaurant| %>
-            <div class="col-md-4 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title"><%= restaurant.name %></h5>
-                  <p class="card-text">
-                    <%= number_with_precision(restaurant.google_rating, precision: 1) %>★<br>
-                    <%= number_to_currency(restaurant.tacos.average(:price_cents) / 100, precision: 2) %> average price
-                  </p>
-                  <%= link_to "View Restaurant", restaurant_details_path(restaurant), class: "btn btn-primary" %>
+        <% if @favorite_restaurants.present? %>
+          <div class="row">
+            <% @favorite_restaurants.each do |restaurant| %>
+              <div class="col-md-4 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= restaurant.name %></h5>
+                    <p class="card-text">
+                      <%= number_with_precision(restaurant.google_rating, precision: 1) %>★<br>
+                      <%= number_to_currency(restaurant.tacos.average(:price_cents) / 100, precision: 2) %> average price
+                    </p>
+                    <%= link_to "View Restaurant", restaurant_details_path(restaurant), class: "btn btn-primary" %>
+                  </div>
                 </div>
               </div>
-            </div>
-          <% end %>
-        </div>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="text-center text-muted py-4">
+            <p>You haven't favorited any restaurants yet.</p>
+            <%= link_to "Browse Restaurants", restaurants_path, class: "btn btn-primary" %>
+          </div>
+        <% end %>
       </div>
 
       <div class="tab-pane" id="reviews">
         <h3>Recent Reviews</h3>
-        <div class="list-group">
-          <% @recent_reviews.each do |review| %>
-            <%= render partial: 'reviews/review_item', locals: { review: review } %>
-          <% end %>
-        </div>
+        <% if @recent_reviews.present? %>
+          <div class="list-group">
+            <% @recent_reviews.each do |review| %>
+              <%= render partial: 'reviews/review_item', locals: { review: review } %>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="text-center text-muted py-4">
+            <p>You haven't written any reviews yet.</p>
+            <%= link_to "Browse Restaurants", restaurants_path, class: "btn btn-primary" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

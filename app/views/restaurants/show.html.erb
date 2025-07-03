@@ -93,10 +93,13 @@
                 <% end %>
                 
                 <% if @restaurant.website.present? %>
-                  <p class="mb-1">
-                    <i class="bi bi-globe"></i>
-                    <%= link_to URI.parse(@restaurant.website).host, @restaurant.website, target: "_blank", rel: "noopener" %>
-                  </p>
+                  <% safe_website_url = safe_url(@restaurant.website) %>
+                  <% if safe_website_url %>
+                    <p class="mb-1">
+                      <i class="bi bi-globe"></i>
+                      <%= link_to safe_hostname(@restaurant.website), safe_website_url, target: "_blank", rel: "noopener" %>
+                    </p>
+                  <% end %>
                 <% end %>
                 
                 <% if @restaurant.hours.present? %>
@@ -481,7 +484,12 @@
             <li class="mb-2">
               <i class="bi bi-globe me-2"></i>
               <% if @restaurant.website.present? %>
-                <%= link_to URI.parse(@restaurant.website).host, @restaurant.website, target: "_blank", rel: "noopener" %>
+                <% safe_website_url = safe_url(@restaurant.website) %>
+                <% if safe_website_url %>
+                  <%= link_to safe_hostname(@restaurant.website), safe_website_url, target: "_blank", rel: "noopener" %>
+                <% else %>
+                  Invalid website URL
+                <% end %>
               <% else %>
                 No website
               <% end %>

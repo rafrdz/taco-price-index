@@ -7,6 +7,20 @@ class Restaurant < ApplicationRecord
   has_many :user_favorites, dependent: :destroy
   has_many :favorited_by, through: :user_favorites, source: :user
 
+  # Validations
+  validates :name, presence: true
+  validates :street_address, presence: true
+  validates :city, presence: true
+  validates :state, presence: true
+  validates :zip, presence: true
+  validates :latitude, presence: true, numericality: true
+  validates :longitude, presence: true, numericality: true
+  validates :phone, presence: true
+  validates :website, format: { with: URI.regexp(%w[http https]), message: "must be a valid URL" }, allow_blank:  true
+  validates :google_rating, numericality: true
+  validates :google_price_level, numericality: true, allow_nil: true
+  validates :google_user_ratings_total, numericality: true, allow_nil: true
+
   # Geocoding
   # Only geocode if we do not already have latitude/longitude
   # This prevents unnecessary external API calls (and related errors)
