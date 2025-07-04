@@ -392,6 +392,10 @@
                 </div>
               <% end %>
             </div>
+          <% else %>
+            <div class="text-center py-4 border-top">
+              <p class="text-muted mb-3">No reviews yet. Be the first to write one!</p>
+            </div>
           <% end %>
           <% if Current.user.nil? %>
             <div class="text-center py-4 border-top">
