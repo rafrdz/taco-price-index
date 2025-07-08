@@ -1,11 +1,50 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<body class="bg-cream">
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="login-card p-5 rounded-4 shadow-sm text-center">
+    <h2 class="text-welcome mb-2">Welcome!</h2>
+    <p class="text-muted">One step closer to deliciousness...</p>
+    <form class="mt-4">
+      <div class="mb-3">
 
-<%= form_with url: session_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %><br>
-  <%= form.submit "Sign in" %>
-<% end %>
-<br>
+        <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+        <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+        <div class="mb-3 position-relative">
+        <input type="text" class="form-control input-custom" placeholder="username / email">
+        <%= form_with url: session_path do |form| %>
+          <input type="password" class="form-control input-custom" placeholder="password" <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72  %>
+          <i class="fas fa-eye position-absolute end-0 top-50 translate-middle-y me-3 text-muted"></i>
+            </div>
+          <br>
+            <div class="d-flex justify-content-between mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="rememberMe">
+                <label class="form-check-label small" for="rememberMe">Remember Me</label>
+              </div>
+              <a href="#" class="small text-dark fw-semibold"> <%= link_to "Forgot password?", new_password_path %></a>
+            </div>
+            <button type="submit" class="btn-primary w-100 login-btn mb-3">
+              <%= form.submit %>
+              <i class="fas fa-arrow-right ms-2"></i>
+            </button>
 
-<%= link_to "Forgot password?", new_password_path %>
+            <div class="d-flex align-items-center my-3">
+              <div class="flex-grow-1 border-bottom"></div>
+              <span class="px-2 small text-muted">or continue with</span>
+              <div class="flex-grow-1 border-bottom"></div>
+            </div>
+
+
+
+        <% end %>
+        <br>
+          <div class="d-flex justify-content-center gap-4 mb-3">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google" width="30">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" alt="Facebook" width="30">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" alt="Apple" width="30">
+          </div>
+          <p class="small">not a member? <a href="#" class="text-register">Register here</a></p>
+      </div>
+    </form>
+  </div>
+</div>
+</body>

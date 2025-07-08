@@ -29,9 +29,29 @@
   padding: 20px;
 }
 
+.restaurant-squares {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.square-card {
+  flex: 0 0 50%;
+  aspect-ratio: 1 / 1;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+  height: auto;
+  width: auto;
+}
+
 /* Maps */
 #map {
-  height: 600px;
+  height: auto;
+  width: auto;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -246,4 +266,253 @@
   .review-item {
     margin-bottom: 10px;
   }
+}
+
+/* Login */
+body.bg-cream {
+  background-color: #f8f3eb;
+}
+
+.login-card {
+  background-color: #e8d0c7;
+  max-width: 450px;
+  width: 100%;
+}
+
+.text-welcome {
+  color: #9c4b3b;
+  font-weight: 700;
+}
+
+.input-custom {
+  background-color: #dba5a0;
+  border: none;
+  color: #000;
+  font-weight: bold;
+}
+
+.input-custom::placeholder {
+  color: #471c1c;
+}
+
+.input-custom:focus {
+  box-shadow: none;
+  outline: none;
+  background-color: #dba5a0;
+}
+
+.login-btn {
+  background-color: #a65347;
+  border: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.login-btn:hover {
+  background-color: #94493e;
+}
+
+.text-register {
+  color: #c87b6c;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.text-register:hover {
+  text-decoration: underline;
+}
+
+/* MAPS */
+body.bg-cream {
+  background-color: #f8f3eb;
+}
+
+.bg-rose {
+  background-color: #a65347;
+}
+
+.map-title {
+  color: #5c4430;
+  border-bottom: 2px solid #a65347;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.map-section {
+  background-color: #a65347;
+  border-radius: 8px;
+}
+
+.search-bar {
+  background-color: #364c3f;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.map-frame img {
+  border-radius: 8px;
+  max-width: 100%;
+  height: auto;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn-filter {
+  background-color: #364c3f;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Restaurant Review */
+body.bg-cream {
+  background-color: #f8f3eb;
+}
+
+.review-header {
+  background-color: #a65347;
+}
+
+.details-box {
+  background-color: #dba5a0;
+  color: #5c4430;
+}
+
+.btn-submit {
+  background-color: #364c3f;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.review-section {
+  background-color: #364c3f;
+}
+
+.rating-box {
+  background-color: #dba5a0;
+  color: #5c4430;
+}
+
+/* Review Form */
+body.bg-cream {
+  background-color: #f8f3eb;
+}
+
+.form-wrapper {
+  background-color: #3f5744;
+}
+
+.input-block {
+  background-color: #a65347;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+.input-block::placeholder {
+  color: #f1e4de;
+}
+
+.input-block:focus {
+  background-color: #a65347;
+  color: white;
+  box-shadow: none;
+  outline: none;
+}
+
+.btn-submit {
+  background-color: #a65347;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: 6px;
+}
+
+/* Splash Page */
+
+body.bg-cream {
+  background-color: #f8f3eb;
+}
+
+.bg-rose {
+  background-color: #a65347;
+}
+
+.text-rose {
+  color: #a65347;
+}
+
+.text-green {
+  color: #364c3f;
+}
+
+.hero-section {
+  position: relative;
+  height: auto;
+}
+
+.search-bar {
+  background-color: #364c3f;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  width: auto;
+}
+
+.map-frame {
+  background-color: #a65347;
+  border-radius: 8px;
+}
+
+/* User Dashboard */
+
+body.bg-cream {
+  background-color: #f8f3eb;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #a65347;
+}
+
+.user-image {
+  background-color: #f8f3eb;
+  color: black;
+  font-weight: bold;
+  padding: 1rem;
+  border-radius: 50%;
+}
+
+.bg-rose {
+  background-color: #dba5a0;
+}
+
+.bg-green {
+  background-color: #728f71;
+}
+
+.recent-card {
+  width: 100px;
+  height: 140px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.map-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
