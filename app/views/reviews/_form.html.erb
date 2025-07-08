@@ -14,7 +14,9 @@
     <%= form.hidden_field :restaurant_id, value: @restaurant.id %>
   </div>
 
-  
+  <div class="mb-3">
+    For: <%=@restaurant.name %>
+  </div>
 
   <div class="mb-3">
     <%= form.label :fullness_rating, "Taco Fullness Rating", class: "form-label" %>
