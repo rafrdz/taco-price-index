@@ -21,27 +21,27 @@
 
 
   <!-- Main Content -->
-  <section class="row g-4 justify-content-between restaurant-squares">
+  <div class="row g-4 justify-content-between">
     <!-- Left Column -->
 
     <h1 class="h2 container text-center"><%= @restaurant.name %></h1>
     <!-- Restaurant Header -->
-    <section>
+    <section class="details">
       <div class="card mb-4 square">
-        <div class="card-body">
+        <div class="card-body square-card">
           <!-- Row: Map & Restaurant Details columns -->
           <section class="p-4 review-header">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <div class="col">
                 <div class="container col" style="z-index: 10;">
-                        <!-- Map Column Right Under!-->
-                                <div data-controller="map" data-map-restaurants-value="<%= @restaurants.to_json %>">
-                                  </div>
+                  <!-- Map Column Right Under!-->
+                  <div data-controller="map" data-map-restaurants-value="<%= @restaurants.to_json %>">
+                  </div>
                 </div>
               </div>
             </div>
             <!-- Right Column -->
-            <div class="col-md-6">
+            <div class="col-md-7">
               <div class="col">
                 <div class="col">
                   <div class="d-flex justify-content-between align-items-start position-relative row">
@@ -139,8 +139,9 @@
         </div>
       </div>
     </section>
-  </section>
+  </div>
   <!-- Map -->
+  <section>
   <div class="card mb-4">
     <div class="card-header d-flex justify-content-between align-items-center">
       <h5 class="mb-0">Location</h5>
@@ -252,7 +253,8 @@
         </div>
       <% end %>
     </div>
-
+  </div>
+  </section>
     <!-- Tacos Section -->
     <% if @tacos.any? %>
       <div class="card mb-4">
