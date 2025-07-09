@@ -21,27 +21,21 @@
 
 
   <!-- Main Content -->
+  <div class="container">
   <div class="row g-4 justify-content-between">
     <!-- Left Column -->
-
     <h1 class="h2 container text-center"><%= @restaurant.name %></h1>
     <!-- Restaurant Header -->
     <section class="details">
       <div class="card mb-4 square">
         <div class="card-body square-card">
           <!-- Row: Map & Restaurant Details columns -->
-          <section class="p-4 review-header">
-            <div class="col-md-4">
-              <div class="col">
-                <div class="container col" style="z-index: 10;">
+          <section class="p-5 review-header col-12 col-md-5">
                   <!-- Map Column Right Under!-->
-                  <div data-controller="map" data-map-restaurants-value="<%= @restaurants.to_json %>">
+                  <div id="map" data-controller="map" data-map-restaurants-value="<%= @restaurants.to_json %>">
                   </div>
-                </div>
-              </div>
-            </div>
             <!-- Right Column -->
-            <div class="col-md-7">
+            <div class="col-12 col-md-7">
               <div class="col">
                 <div class="col">
                   <div class="d-flex justify-content-between align-items-start position-relative row">
@@ -140,6 +134,25 @@
       </div>
     </section>
   </div>
+</div>
+
+  <section class="row review-section text-white text-center p-4 square-card">
+  <div class="row">
+    <h5 class="mb-4 col-12">Overall Review Section</h5>
+  </div>
+  <div class="row g-4 justify-content-center">
+    <div class="col-md-5">
+      <div class="rating-box p-4 rounded shadow">
+        Overall Taco Rating from the public
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="rating-box p-4 rounded shadow">
+        Overall Taco Rating from Google Reviews
+      </div>
+    </div>
+  </div>
+  </section>
   <!-- Map -->
   <section>
   <div class="card mb-4">
