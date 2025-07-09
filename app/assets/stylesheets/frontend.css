@@ -541,3 +541,39 @@ body.bg-cream {
     height: auto;
     border-radius: 8px;
 }
+
+/* Review form */
+body.bg-cream {
+    background-color: #f8f3eb;
+}
+
+.form-wrapper {
+    background-color: #3f5744;
+}
+
+.input-block {
+    background-color: #a65347;
+    color: white;
+    border: none;
+    font-weight: bold;
+}
+
+.input-block::placeholder {
+    color: #f1e4de;
+}
+
+.input-block:focus {
+    background-color: #a65347;
+    color: white;
+    box-shadow: none;
+    outline: none;
+}
+
+.btn-submit {
+    background-color: #a65347;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+}

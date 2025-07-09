@@ -9,24 +9,55 @@
       </ul>
     </div>
   <% end %>
+<!--  <body class="bg-cream d-flex justify-content-center align-items-center vh-100">-->
+  <body class="bg-cream text-center">
+  <!-- Header with Back Button -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <%= link_to root_path, class: 'btn btn-outline-secondary' do %>
+      <i class="bi bi-arrow-left"></i> Back to Restaurants
+    <% end %>
+  </div>
 
   <div class="mb-3">
     <%= form.hidden_field :restaurant_id, value: @restaurant.id %>
   </div>
 
   <div class="mb-3">
-    For: <%=@restaurant.name %>
+    <div class="container p-4">
+      <div class="mb-4 p-3 bg-light border text-center">
+        <h4 class="text-dark m-0"><span id="restaurantName"><%=@restaurant.name %></span> <br>“Submit your review”</h4>
+      </div>
+  </div>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :fullness_rating, "Taco Fullness Rating", class: "form-label" %>
-    <div class="d-flex gap-2">
-      <% (1..5).each do |i| %>
-        <%= form.radio_button :fullness_rating, i, class: "form-check-input", checked: i == 3 %>
-        <%= form.label :fullness_rating, i, class: "form-check-label" %>
-      <% end %>
+  <form class="p-4 rounded form-wrapper mx-auto" style="max-width: 700px;">
+    <div class="mb-3">
+      <input type="text" class="form-control input-block" placeholder="Review Title">
     </div>
+    <div class="mb-3">
+      <textarea class="form-control input-block" rows="4" placeholder="Write your review here..."></textarea>
+    </div>
+    <div class="mb-3">
+      <input type="file" class="form-control input-block" multiple>
+    </div>
+    <div class="mb-3">
+      <div class="mb-3">
+        <%= form.label :fullness_rating, "Taco Fullness Rating", class: "form-label" %>
+        <div class="d-flex gap-2">
+          <% (1..5).each do |i| %>
+            <%= form.radio_button :fullness_rating, i, class: "form-check-input", checked: i == 3 %>
+            <%= form.label :fullness_rating, i, class: "form-check-label" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="text-start">
+      <button type="submit" class="btn btn-submit">Submit</button>
+    </div>
+  </form>
   </div>
+
+
 
 
   <div class="mb-3">
@@ -57,3 +88,4 @@
     <%= form.submit "Submit Review", class: "btn btn-primary" %>
   </div>
 <% end %>
+</body>
