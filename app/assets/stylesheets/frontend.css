@@ -440,27 +440,51 @@ body.bg-cream {
 }
 
 .form-wrapper {
-    background-color: #3f5744;
+    background-color: #3f5744 !important;
 }
 
 .input-block {
-    background-color: #a65347;
-    color: white;
+    background-color: #a65347 !important;
+    color: white !important;
     border: none;
-    font-weight: bold;
+    font-weight: bold !important;
 }
 
 .input-block::placeholder {
-    color: #f1e4de;
+    color: #f1e4de !important;
 }
 
 .input-block:focus {
-    background-color: #a65347;
-    color: white;
+    background-color: #a65347 !important;
+    color: white !important;
     box-shadow: none;
     outline: none;
 }
 
+.form-check-input {
+    background-color: #a65347 !important;
+    color: white !important;
+    border: none;
+    font-weight: bold !important;
+}
+.form-check-label {
+    color: #f8f3eb;
+}
+
+.form-check-input:checked {
+    border-color: #dba5a0 !important;
+    background-color: #a65347;
+
+}
+.form-check-input[type="radio"]:checked:focus {
+    box-shadow: 0 0 0 3px rgba(213, 162, 160, 0.5);
+    outline: none;
+}
+
+.form-titles {
+    color:#f8f3eb;
+    font-weight: bold !important;
+}
 .btn-submit {
     background-color: #a65347;
     color: white;
@@ -552,9 +576,6 @@ body.bg-cream {
     background-color: #f8f3eb;
 }
 
-.form-wrapper {
-    background-color: #3f5744;
-}
 
 .input-block {
     background-color: #a65347;

@@ -21,31 +21,30 @@
       </div>
     </div>
   </div>
-  <div class="container">
-    <form class="p-4 rounded form-wrapper mx-auto" style="max-width: 700px;">
+  <div class="container form-wrapper rounded mx-auto mb-5">
+    <form style="max-width: 700px;">
       <div class="mb-3">
-        <%= form.label :review_date, "When did you discover this taco?", class: "form-label" %>
-        <%= form.date_field :review_date, class: "form-control", value: Date.today %>
+        <%= form.label :review_date, "When did you discover this taco?", class: "form-label form-titles" %>
+        <%= form.date_field :review_date, class: "form-control input-block", value: Date.today %>
       </div>
       <div class="mb-3">
-        <%= form.label :content, "Let’s taco-bout the layers, what’s your verdict?", class: "form-label" %>
+        <%= form.label :content, "Let’s taco-bout the layers, what’s your verdict?", class: "form-label form-titles" %>
         <input type="text" class="form-control input-block" placeholder="Review Title">
       </div>
       <div class="mb-3">
         <div class="mb-3">
-
-          <%= form.text_area :content, class: "form-control", rows: 4, placeholder: "Write your taco review here..." %>
+          <%= form.text_area :content, class: "form-control input-block", rows: 4, placeholder: "Write your taco review here..." %>
         </div>
       </div>
       <div class="mb-3">
         <div class="mb-3">
-          <%= form.label :photos, "Let the taco speak for itself, upload a pic.", class: "form-label" %>
-          <%= form.file_field :photos, multiple: true, class: "form-control" %>
+          <%= form.label :photos, "Let the taco speak for itself, upload a pic.", class: "form-label form-titles" %>
+          <%= form.file_field :photos, multiple: true, class: "form-control input-block" %>
         </div>
       </div>
       <div class="mb-3">
         <div class="mb-3">
-          <%= form.label :fullness_rating, "From Tex-Mess to Taco Heaven, rate that taco", class: "form-label" %>
+          <%= form.label :fullness_rating, "From Tex-Mess to Taco Heaven, rate that taco", class: "form-label form-titles" %>
           <div class="d-flex gap-2">
             <% (1..5).each do |i| %>
               <%= form.radio_button :fullness_rating, i, class: "form-check-input", checked: i == 3 %>
@@ -56,7 +55,7 @@
       </div>
       <div class="mb-3">
         <div class="mb-3">
-          <%= form.label :language, "What language are you spilling the salsa in?", class: "form-label" %>
+          <%= form.label :language, "What language are you spilling the salsa in?", class: "form-label form-titles" %>
           <%= form.select :language,
                           options_for_select(['English', 'Spanish', 'Other'], review.language),
                           {},
