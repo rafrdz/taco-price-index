@@ -98,6 +98,11 @@
     transform: translateY(-2px);
 }
 
+.btn-secondary {
+    background-color: #364c3f !important;
+}
+
+
 /* Header grid keeps actions fixed-width */
 .restaurant-header {
     display: grid;
@@ -570,8 +575,8 @@ body.bg-cream {
 }
 
 .btn-submit {
-    background-color: #a65347;
-    color: white;
+    background-color: #a65347 !important;
+    color: white !important;
     font-weight: bold;
     border: none;
     padding: 0.5rem 1.25rem;
