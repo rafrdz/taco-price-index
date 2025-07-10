@@ -102,6 +102,11 @@
     background-color: #364c3f !important;
 }
 
+.btn-tertiary {
+    background-color: #5c4430 !important;
+    color: #f0f0f0 !important;
+}
+
 
 /* Header grid keeps actions fixed-width */
 .restaurant-header {
@@ -540,6 +545,7 @@ body.bg-cream {
 .sidebar {
     width: 220px;
     background-color: #a65347;
+    height: auto;
 }
 
 .user-image {
