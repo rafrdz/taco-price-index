@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :require_authentication
 
   def toggle
     restaurant = Restaurant.find(params[:restaurant_id])
@@ -24,6 +24,7 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    @favorite_restaurants = current_user.favorite_restaurants
+    @user = Current.session&.user
+    @favorite_restaurants = @user.favorite_restaurants
   end
 end
