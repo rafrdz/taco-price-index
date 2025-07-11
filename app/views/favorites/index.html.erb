@@ -1,0 +1,21 @@
+<h1>Favorites</h1>
+<% if @favorite_restaurants.any? %>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Restaurant</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @favorite_restaurants.each do |restaurant| %>
+                <tr>
+                    <td> <%= restaurant.name %> </td>
+                    <td> <%= restaurant.city %>, <%= restaurant.state %> </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% else %>
+    <p>No Favorites found</p>
+<% end %>
