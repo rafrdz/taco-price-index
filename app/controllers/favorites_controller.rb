@@ -5,7 +5,16 @@ class FavoritesController < ApplicationController
     restaurant = Restaurant.find(params[:restaurant_id])
     current_user.toggle_favorite(restaurant)
 
+    restaurant.reload
+
     respond_to do |format|
+      format.json do
+        render json: {
+          favorite_count: restaurant.favorite_count,
+          is_favorited: current_user.favorite?(restaurant) # The new favorite status
+        }
+      end
+
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.update(
