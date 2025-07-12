@@ -1,10 +1,11 @@
 <% if authenticated? %>
-  <button class="btn btn-sm <%= @is_favorited ? 'btn-danger' : 'btn-outline-danger' %>" 
+<% is_favorited = Current.session&.user.favorite?(restaurant) %> 
+<button class="btn btn-sm <%= is_favorited ? 'btn-danger' : 'btn-outline-danger' %>" 
           data-controller="favorite"
           data-action="click->favorite#toggle"
           data-favorite-target="button"
           data-restaurant-id="<%= restaurant.id %>">
-    <%= @is_favorited ? 'Unfavorite' : 'Favorite' %>
+    <%= is_favorited ? 'Unfavorite' : 'Favorite' %>
   </button>
 <% else %>
   <button class="btn btn-sm btn-outline-danger" 
