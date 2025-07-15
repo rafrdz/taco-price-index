@@ -170,6 +170,7 @@
       <% if @restaurant.latitude.present? && @restaurant.longitude.present? %>
         <!-- Map Container -->
         <div
+          id='map'
           data-controller="map"
           data-map-api-key-value="<%= ENV['GOOGLE_MAPS_API_KEY'] %>"
           data-map-markers-value='<%= @markers.to_json %>'

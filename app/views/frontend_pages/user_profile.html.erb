@@ -1,4 +1,4 @@
-<body class="bg-cream">
+<body class="bg-tortilla">
 <div class="d-flex min-vh-100">
   <aside class="sidebar text-white p-4">
     <div class="text-center mb-4">
@@ -14,10 +14,10 @@
     </nav>
   </aside>
   <main class="flex-grow-1 p-4">
-    <div class="row justify-content-between">
-      <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-6 align-content-between">
         <div class="col-12">
-          <div class="card">
+          <div class="card bg-serrano text-white">
             <div class="card-body">
               <h5 class="card-title">Profile</h5>
               <p class="card-text">
@@ -28,20 +28,21 @@
             </div>
           </div>
         </div>
-        <div class="row my-3">
-          <div class="card p-4 mb-3 text-center col-md-12">
-            <div class="card-body">
-              <p>[Icons placeholder]</p>
+        <div class="row no-bg">
+          <div class="text-center col-md-12">
+            <div class="card-body text-white pt-md-3">
+              <div class="card-title rounded bg-rose">Your Top 3 Restaurants</div>
+              <canvas id="ratingsChart"></canvas>
             </div>
           </div>
         </div>
       </div>
       <div class="col-md-6">
-        <!--                  <div class="card p-4 bg-rose text-center text-white mb-3">-->
-        <!--                    <h4><span class="display-6">75%</span><br>750 - 1000 Points</h4>-->
-        <!--                    <p>text...</p>-->
-        <!--                  </div>-->
-        <div class="card p-4 bg-green text-white">
+        <div class="card p-4 bg-rose text-center text-white mb-3">
+          <h4><span class="display-6">75%</span><br>750 - 1000 Points</h4>
+          <p>text...</p>
+        </div>
+        <div class="card p-4 bg-cilantro text-white">
           <div class="tab-pane" id="reviews">
             <h3>Recent Reviews</h3>
             <% if @recent_reviews.present? %>
@@ -74,7 +75,7 @@
     </div>
     <div class="row mt-3">
       <div class="col-md-6">
-        <div class="card p-4 bg-green text-white mb-3">
+        <div class="card p-4 bg-serrano text-white mb-3">
           <h5>Found The One? Order again.</h5>
           <div class="tab-pane active" id="favorites">
             <h3>Favorite Restaurants</h3>
@@ -131,13 +132,63 @@
     </div>
   </main>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Example Restaurant Names
+    const restaurants = [
+        "Taco Place 1", "Taco Place 2", "Taco Place 3"
+    ];
+    // Mock data
+    const topRatings = [
+        [3],
+        [4.1],
+        [4.5],
+    ];
+
+    const rating = topRatings.map(r => r[0]);
+    const ctx = document.getElementById("ratingsChart").getContext("2d");
+
+    const ratingsChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: restaurants,
+            datasets: [
+                {
+                    label: "Top Rating",
+                    data: rating,
+                    backgroundColor: "rgba(255, 99, 132, 0.7)",
+                }
+            ]
+        },
+        options: {
+        responsive: true,
+            plugins: {
+            legend: {
+                labels: {
+                    color: "#a65347" // Legend text color
+                }
+            },
+            tooltip: {
+                titleColor: "#a65347",   // Tooltip title
+                    bodyColor: "#a65347"     // Tooltip content
+            }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: "#a65347" // X-axis label color (restaurant names)
+                }
+            },
+            y: {
+                beginAtZero: true,
+                    max: 5,
+                    ticks: {
+                    color: "#a65347" // Y-axis numbers (0 to 5)
+                }
+            }
+        }
+    }
+    });
+</script>
 </body>
-
-<!--  <div class="col-md-8">-->
-<!--    <div class="tab-content">-->
-
-
-
-<!--    </div>-->
-<!--  </div>-->
 </div>

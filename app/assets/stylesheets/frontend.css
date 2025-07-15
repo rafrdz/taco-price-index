@@ -15,8 +15,6 @@
 /* Map */
 .map-container {
     width: 100%;
-    /*height: 300px;*/
-    /*min-height: 300px;*/
     background-color: #f8f9fa;
 }
 
@@ -36,14 +34,21 @@
     padding: 20px;
 }
 
-/*.restaurant-squares {*/
-/*  display: flex;*/
-/*  justify-content: space-between;*/
-/*  flex-wrap: wrap;*/
-/*  gap: 1rem;*/
-/*  margin: 2rem 0;*/
-/*  height: 200px;*/
-/*}*/
+.rounded {
+    border: 1px solid;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    border-color: rgba(0, 0, 0, 0.17)
+}
+
+#ratingsChart {
+    width: 100%;
+    max-width: 700px;
+    height: 400px;
+    border-radius: 12px; /* yes, you can round it too */
+    background-color: #fff5f0; /* soft peach background for ✨vibes✨ */
+}
 
 .square-card {
     flex: 0 0 50%;
@@ -66,8 +71,8 @@
 #map {
     border-radius: 10px;
     overflow: hidden;
-    width: 20rem !important;
-    height: 20rem !important;
+    width: 100% !important;
+    height: 100% !important;
 }
 
 #restaurant-map {
@@ -154,6 +159,11 @@
 .nav-tabs .nav-link.active {
     background-color: #007bff;
     color: white;
+}
+
+#headerFooter{
+    background-color: #5c4430 !important;
+    color: #f0f0f0 !important;
 }
 
 /* Search */
@@ -358,6 +368,15 @@ body.bg-cream {
     background-color: #a65347;
 }
 
+.bg-serrano {
+    /*background-color: #4A5D4E;*/
+    background-color: rgba(74, 93, 78, 75) !important;
+}
+
+/*canvas {*/
+/*    text-decoration-color: #FFFFFF;*/
+/*}*/
+
 .map-title {
     color: #5c4430;
     border-bottom: 2px solid #a65347;
@@ -557,11 +576,15 @@ body.bg-cream {
 }
 
 .bg-rose {
-    background-color: #dba5a0;
+    background-color: #dba5a0 !important;
 }
 
 .bg-green {
-    background-color: #728f71;
+    background-color: #728f71 !important;
+}
+
+.bg-cilantro {
+    background-color: #7a9a76 !important;
 }
 
 .recent-card {
@@ -582,6 +605,17 @@ body.bg-cream {
     background-color: #f8f3eb;
 }
 
+.bg-tortilla {
+    background-color: rgba(232, 220, 195, 100);
+    border: #5c4430;
+}
+
+.no-bg {
+    rgb(232, 220, 195) !important;
+    /*padding-top: 2em;*/
+    padding-bottom: 1em;
+
+}
 
 .input-block {
     background-color: #a65347;
