@@ -16,9 +16,9 @@
 
 /* Map Container Styles */
 .map-container {
-  width: 100%;
-  height: 500px;
-  min-height: 300px;
+  /*width: 100%;*/
+  /*height: 500px;*/
+  /*min-height: 300px;*/
   background-color: #f0f0f0;
   border-radius: 8px;
   overflow: hidden;
@@ -28,8 +28,8 @@
 
 /* Ensure the map takes up the full container */
 .map-container > div {
-  width: 100% !important;
-  height: 100% !important;
+  /*width: 100% !important;*/
+  /*height: 100% !important;*/
 }
 
 /* Loading spinner for map */
@@ -43,7 +43,7 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.8);
-  z-index: 1000;
+  /*z-index: 1000;*/
 }
 
 /* Info window styles */
@@ -74,8 +74,8 @@
   background-color: #f8f9fa;
   padding: 0.5rem;
   border-radius: 0.25rem;
-  max-height: 200px;
-  overflow-y: auto;
+  /*max-height: 200px;*/
+  /*overflow-y: auto;*/
   margin-bottom: 0.5rem;
 }
 
@@ -91,18 +91,82 @@
   margin-bottom: 1rem;
 }
 
-/* Custom Frontend Styles */
-@import "frontend";
-.bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
+/* SPLASH PAGE */
+body.bg-cream {
+    background-color: #f8f3eb;
 }
 
-@media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
+.bg-rose {
+    background-color: #a65347;
 }
+
+.text-rose {
+    color: #a65347;
+}
+
+.text-green {
+    color: #364c3f;
+}
+
+.hero-section {
+    position: relative;
+    height: auto;
+}
+
+.search-bar {
+    background-color: #364c3f;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    width: auto;
+}
+
+.map-frame {
+    background-color: #a65347;
+    border-radius: 8px;
+}
+
+.feature-box {
+    background-color: #728f71;
+    color: white;
+    padding: 1rem;
+    width: 150px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.feature-box.green {
+    background-color: #92b288;
+}
+
+.email-input {
+    max-width: 300px;
+    background-color: #f8f3eb;
+}
+
+.leaderboard-frame {
+    background-color: #364c3f;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+
+/*!* Custom Frontend Styles *!*/
+/*@import "frontend";*/
+/*.bd-placeholder-img {*/
+/*    font-size: 1.125rem;*/
+/*    text-anchor: middle;*/
+/*    -webkit-user-select: none;*/
+/*    -moz-user-select: none;*/
+/*    user-select: none;*/
+/*}*/
+
+/*@media (min-width: 768px) {*/
+/*    .bd-placeholder-img-lg {*/
+/*        font-size: 3.5rem;*/
+/*    }*/
+/*}*/
+
+
+

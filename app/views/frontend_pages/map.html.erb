@@ -1,22 +1,70 @@
+<body class="bg-cream text-center">
+<header class="bg-rose p-4"></header>
 <div class="container-fluid">
+  <section class="p-4">
+    <h1 class="map-title">Map Page</h1>
+  </section>
+
   <div class="row">
     <!-- Map Container -->
-    <div class="col-md-9">
-      <div id="map" style="height: 600px;" data-controller="map" data-map-restaurants-value="<%= @restaurants.to_json %>">
+    <section class="p-4 map-section text-white">
+      <h3>Search & Filter via Map</h3>
+      <div class="search-bar p-2 mb-3">Search for restaurants, salsas, etc.</div>
+      <div class="map-frame mb-4">
+        <div class="col-md-9">
+          <div id="map" style="height: 600px;" data-controller="map" data-map-restaurants-value="<%= @restaurants.to_json %>">
+          </div>
+        </div>
       </div>
-    </div>
+      <!--      <section>-->
+      <!--        <div class="filter-buttons d-flex justify-content-center gap-3 flex-wrap">-->
+      <!--          <button class="btn btn-filter">FILTER</button>-->
+      <!--          <button class="btn btn-filter">FILTER</button>-->
+      <!--          <button class="btn btn-filter">FILTER</button>-->
+      <!--          <button class="btn btn-filter">FILTER</button>-->
+      <!--        </div>-->
+      <!--      </section>-->
+    </section>
 
     <!-- Restaurant List -->
-    <div class="col-md-3">
-      <div class="card">
-        <div class="card-header">
-          <h5 class="card-title mb-0">Taco Places</h5>
-          <%= link_to 'Add a Restaurant', new_restaurant_path, class: 'btn btn-primary my-3' %>
+    <div class="row">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="container">
+              <div class="row">
+                <div class="card">
+                <div class="container">
+
+                  <div class="col-12">
+                    <div class="container">
+                      <div class="card-header">
+                        <h5 class="card-title mb-0">Taco Places</h5>
+                        <%= link_to 'Add a Restaurant', new_restaurant_path, class: 'btn btn-primary my-3' %>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="card-body">
-          <%= render 'frontend_pages/restaurant_list' %>
+        <div class="row">
+          <div class="container">
+            <div class="col-12">
+              <div class="card">
+
+                <%= render 'frontend_pages/restaurant_list' %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+</div>
+
+<footer class="bg-rose p-4 mt-4"></footer>
+</body>

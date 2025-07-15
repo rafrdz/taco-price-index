@@ -1,61 +1,194 @@
-<div class="row">
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Profile</h5>
-        <p class="card-text">
-          Email: <%= @user.email_address %><br>
-          Joined: <%= @user.created_at.strftime('%B %d, %Y') %>
-        </p>
-        <%# <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
-      </div>
+<body class="bg-tortilla">
+<div class="d-flex min-vh-100">
+  <aside class="sidebar text-white p-4">
+    <div class="text-center mb-4">
+      <div class="user-image mb-2">user image</div>
     </div>
-  </div>
-
-  <div class="col-md-8">
-    <div class="tab-content">
-      <div class="tab-pane active" id="favorites">
-        <h3>Favorite Restaurants</h3>
-        <% if @favorite_restaurants.present? %>
-          <div class="row">
-            <% @favorite_restaurants.each do |restaurant| %>
-              <div class="col-md-4 mb-4">
-                <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title"><%= restaurant.name %></h5>
-                    <p class="card-text">
-                      <%= number_with_precision(restaurant.google_rating, precision: 1) %>★<br>
-                      <%= number_to_currency(restaurant.tacos.average(:price_cents) / 100, precision: 2) %> average price
-                    </p>
-                    <%= link_to "View Restaurant", restaurant_details_path(restaurant), class: "btn btn-primary" %>
-                  </div>
-                </div>
+    <nav class="nav flex-column">
+      <a class="nav-link text-white fw-bold" href="#">Home</a>
+      <a class="nav-link text-white fw-bold" href="#">Featured</a>
+      <a class="nav-link text-white fw-bold" href="#">Redeem Points</a>
+      <a class="nav-link text-white fw-bold" href="#">Reviews</a>
+      <a class="nav-link text-white fw-bold" href="#">Settings</a>
+      <a class="nav-link text-white fw-bold" href="#">Logout</a>
+    </nav>
+  </aside>
+  <main class="flex-grow-1 p-4">
+    <div class="row">
+      <div class="col-md-6 align-content-between">
+        <div class="col-12">
+          <div class="card bg-serrano text-white">
+            <div class="card-body">
+              <h5 class="card-title">Profile</h5>
+              <p class="card-text">
+                Email: <%= @user.email_address %><br>
+                Joined: <%= @user.created_at.strftime('%B %d, %Y') %>
+              </p>
+              <%#= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+        <div class="row no-bg">
+          <div class="text-center col-md-12">
+            <div class="card-body text-white pt-md-3">
+              <div class="card-title rounded bg-rose">Your Top 3 Restaurants</div>
+              <canvas id="ratingsChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-4 bg-rose text-center text-white mb-3">
+          <h4><span class="display-6">75%</span><br>750 - 1000 Points</h4>
+          <p>text...</p>
+        </div>
+        <div class="card p-4 bg-cilantro text-white">
+          <div class="tab-pane" id="reviews">
+            <h3>Recent Reviews</h3>
+            <% if @recent_reviews.present? %>
+              <div class="list-group">
+                <% @recent_reviews.each do |review| %>
+                  <%= render partial: 'reviews/review_item', locals: { review: review } %>
+                  <!--                    <ul class="list-unstyled m-0">-->
+                  <!--                      <li>#1 (Restaurant or User ranking?)</li>-->
+                  <!--                      <li>#2</li>-->
+                  <!--                      <li>#3</li>-->
+                  <!--                      <li>#4</li>-->
+                  <!--                      <li>#5</li>-->
+                  <!--                      <li>#6</li>-->
+                  <!--                      <li>#7</li>-->
+                  <!--                      <li>#8</li>-->
+                  <!--                      <li>#9</li>-->
+                  <!--                      <li>#10</li>-->
+                  <!--                    </ul>-->
+                <% end %>
+              </div>
+            <% else %>
+              <div class="text-center text-muted py-4">
+                <p>You haven't written any reviews yet.</p>
+                <%= link_to "Browse Restaurants", restaurants_path, class: "btn btn-tertiary" %>
               </div>
             <% end %>
           </div>
-        <% else %>
-          <div class="text-center text-muted py-4">
-            <p>You haven't favorited any restaurants yet.</p>
-            <%= link_to "Browse Restaurants", restaurants_path, class: "btn btn-primary" %>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="tab-pane" id="reviews">
-        <h3>Recent Reviews</h3>
-        <% if @recent_reviews.present? %>
-          <div class="list-group">
-            <% @recent_reviews.each do |review| %>
-              <%= render partial: 'reviews/review_item', locals: { review: review } %>
-            <% end %>
-          </div>
-        <% else %>
-          <div class="text-center text-muted py-4">
-            <p>You haven't written any reviews yet.</p>
-            <%= link_to "Browse Restaurants", restaurants_path, class: "btn btn-primary" %>
-          </div>
-        <% end %>
+        </div>
       </div>
     </div>
-  </div>
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <div class="card p-4 bg-serrano text-white mb-3">
+          <h5>Found The One? Order again.</h5>
+          <div class="tab-pane active" id="favorites">
+            <h3>Favorite Restaurants</h3>
+            <% if @favorite_restaurants.present? %>
+              <div class="row">
+                <% @favorite_restaurants.each do |restaurant| %>
+                  <div class="col-md-4 mb-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><%= restaurant.name %></h5>
+                        <p class="card-text">
+                          <%= number_with_precision(restaurant.google_rating, precision: 1) %>★<br>
+                          <%= number_to_currency(restaurant.tacos.average(:price_cents) / 100, precision: 2) %>
+                          average
+                          price
+                        </p>
+                        <%= link_to "View Restaurant", restaurant_details_path(restaurant), class: "btn btn-primary" %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="text-center text-muted py-4">
+                <p>You haven't favorited any restaurants yet.</p>
+                <%= link_to "Browse Restaurants", restaurants_path, class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-3 bg-rose text-white">
+          <input class="form-control mb-3" type="text" placeholder="Enter search information...">
+          <div class="map-container">
+            <div id="map" data-controller="map" data-map-restaurants-value="<%= @restaurants.to_json %>">
+              <div class="map-container"
+                   data-controller="map"
+                   data-map-markers-value='<%= @markers.to_json.html_safe %>'
+                   data-map-center-value='<%= @map_center.to_json.html_safe %>'
+                   data-map-zoom-value="15"
+                   data-map-api-key-value="<%= ENV['GOOGLE_MAPS_API_KEY'] %>"
+                   style="min-height: 400px; width: 100%; background-color: #e9ecef;">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                  <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading map...</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Example Restaurant Names
+    const restaurants = [
+        "Taco Place 1", "Taco Place 2", "Taco Place 3"
+    ];
+    // Mock data
+    const topRatings = [
+        [3],
+        [4.1],
+        [4.5],
+    ];
+
+    const rating = topRatings.map(r => r[0]);
+    const ctx = document.getElementById("ratingsChart").getContext("2d");
+
+    const ratingsChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: restaurants,
+            datasets: [
+                {
+                    label: "Top Rating",
+                    data: rating,
+                    backgroundColor: "rgba(255, 99, 132, 0.7)",
+                }
+            ]
+        },
+        options: {
+        responsive: true,
+            plugins: {
+            legend: {
+                labels: {
+                    color: "#a65347" // Legend text color
+                }
+            },
+            tooltip: {
+                titleColor: "#a65347",   // Tooltip title
+                    bodyColor: "#a65347"     // Tooltip content
+            }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: "#a65347" // X-axis label color (restaurant names)
+                }
+            },
+            y: {
+                beginAtZero: true,
+                    max: 5,
+                    ticks: {
+                    color: "#a65347" // Y-axis numbers (0 to 5)
+                }
+            }
+        }
+    }
+    });
+</script>
+</body>
 </div>

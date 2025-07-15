@@ -9,51 +9,66 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="mb-3">
+  <body class="bg-cream justify-content-between align-items-center vh-100">
+  <div class="mb-1">
     <%= form.hidden_field :restaurant_id, value: @restaurant.id %>
   </div>
-
-  <div class="mb-3">
-    For: <%=@restaurant.name %>
-  </div>
-
-  <div class="mb-3">
-    <%= form.label :fullness_rating, "Taco Fullness Rating", class: "form-label" %>
-    <div class="d-flex gap-2">
-      <% (1..5).each do |i| %>
-        <%= form.radio_button :fullness_rating, i, class: "form-check-input", checked: i == 3 %>
-        <%= form.label :fullness_rating, i, class: "form-check-label" %>
-      <% end %>
+  <div class="mb-1">
+    <div class="container p-1">
+      <div class="mb-2 p-3 bg-light border text-center">
+        <h4 class="text-dark m-1">Submit your review for</h4>
+        <h3 id="restaurantName"><%= @restaurant.name %></h3>
+      </div>
     </div>
   </div>
-
-
-  <div class="mb-3">
-    <%= form.label :content, "Your Review", class: "form-label" %>
-    <%= form.text_area :content, class: "form-control", rows: 4, placeholder: "Write your taco review here..." %>
+  <div class="container form-wrapper rounded mx-auto mb-5">
+    <form style="max-width: 700px;">
+      <div class="mb-3">
+        <%= form.label :review_date, "When did you discover this taco?", class: "form-label form-titles" %>
+        <%= form.date_field :review_date, class: "form-control input-block", value: Date.today %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :content, "Let’s taco-bout the layers, what’s your verdict?", class: "form-label form-titles" %>
+        <input type="text" class="form-control input-block" placeholder="Review Title">
+      </div>
+      <div class="mb-3">
+        <div class="mb-3">
+          <%= form.text_area :content, class: "form-control input-block", rows: 4, placeholder: "Write your taco review here..." %>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="mb-3">
+          <%= form.label :photos, "Let the taco speak for itself, upload a pic.", class: "form-label form-titles" %>
+          <%= form.file_field :photos, multiple: true, class: "form-control input-block" %>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="mb-3">
+          <%= form.label :fullness_rating, "From Tex-Mess to Taco Heaven, rate that taco", class: "form-label form-titles" %>
+          <div class="d-flex gap-2">
+            <% (1..5).each do |i| %>
+              <%= form.radio_button :fullness_rating, i, class: "form-check-input", checked: i == 3 %>
+              <%= form.label :fullness_rating, i, class: "form-check-label" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="mb-3">
+          <%= form.label :language, "What language are you spilling the salsa in?", class: "form-label form-titles" %>
+          <%= form.select :language,
+                          options_for_select(['English', 'Spanish', 'Other'], review.language),
+                          {},
+                          class: "form-control"
+          %>
+        </div>
+      </div>
+      <div class="text-start">
+        <div class="d-flex justify-content-end">
+          <%= form.submit "Submit Review", class: "btn btn-submit" %>
+        </div>
+      </div>
+    </form>
   </div>
-
-  <div class="mb-3">
-    <%= form.label :review_date, "Date of Visit", class: "form-label" %>
-    <%= form.date_field :review_date, class: "form-control", value: Date.today %>
-  </div>
-
-  <div class="mb-3">
-    <%= form.label :photos, "Add Photos", class: "form-label" %>
-    <%= form.file_field :photos, multiple: true, class: "form-control" %>
-  </div>
-
-  <div class="mb-3">
-    <%= form.label :language, "Language", class: "form-label" %>
-    <%= form.select :language, 
-      options_for_select(['English', 'Spanish', 'Other'], review.language),
-      {}, 
-      class: "form-control" 
-    %>
-  </div>
-
-  <div class="d-flex justify-content-end">
-    <%= form.submit "Submit Review", class: "btn btn-primary" %>
-  </div>
+</body>
 <% end %>

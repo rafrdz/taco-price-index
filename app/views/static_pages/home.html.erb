@@ -1,3 +1,4 @@
+<body class="bg-cream text-center">
 <main>
   <section class="py-5 text-center container">
     <div class="row">
@@ -21,53 +22,66 @@
     <div class="row row-cols-1 g-3">
       <div class="col">
         <div class="card shadow-sm">
-          <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Placeholder</title>
             <rect width="100%" height="100%" fill="#55595c"/>
-            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Map</text>
+            <div id="map" data-controller="map" data-map-restaurants-value="<%= @restaurants.to_json %>">
+            </div>
           </svg>
         </div>
       </div>
     </div>
   </section>
-  <section>
-    <div class="container">
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Taco</th>
-          <th scope="col">Restaurant</th>
-          <th scope="col">Taco rating</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Bean and cheese</td>
-          <td>Place 1</td>
-          <td>99.9%</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Lengua</td>
-          <td>Place 2</td>
-          <td>90%</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Al Pastor</td>
-          <td>Another place</td>
-          <td>89%</td>
-        </tr>
-        </tbody>
-      </table>
+  <section class="d-flex justify-content-center gap-3 p-4">
+    <div class="feature-box shadow">Deal of the Week</div>
+    <div class="feature-box shadow green">Random Taconator – Spin the wheel for your random taco pick</div>
+    <div class="feature-box shadow">Catering and Bulk Ordering</div>
+  </section>
+
+  <section class="bg-rose p-4">
+    <p class="text-white m-0">Get deals. Get tacos. Get on the board.</p>
+    <input class="form-control mt-3 email-input mx-auto" type="email" placeholder="Enter your email" />
+  </section>
+
+  <section class="p-4">
+    <h5 class="text-green">Taco Leader Board</h5>
+    <div class="leaderboard-frame">
+      <div class="container">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Taco</th>
+            <th scope="col">Restaurant</th>
+            <th scope="col">Taco rating</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Bean and cheese</td>
+            <td>Place 1</td>
+            <td>99.9%</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Lengua</td>
+            <td>Place 2</td>
+            <td>90%</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Al Pastor</td>
+            <td>Another place</td>
+            <td>89%</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
   <section>
     <!-- Featured Section -->
-    <div class="col-12 px-5">
+    <div class="col-12 px-5 pb-4">
 
       <div class="row">
         <div class="col-md-4">
@@ -100,6 +114,6 @@
       </div>
 
     </div>
-
   </section>
 </main>
+</body>
