@@ -274,7 +274,7 @@
     <div class="card mb-4">
       <div class="card-header d-flex justify-content-between align-items-center">
         <h5 class="mb-0">Tacos</h5>
-        <% if Current.user&.admin? %>
+        <% if current_user&.admin? %>
           <%= link_to 'Add Taco', new_restaurant_taco_path(@restaurant), class: 'btn btn-sm btn-outline-primary' %>
         <% end %>
       </div>
@@ -402,7 +402,6 @@
                   <div class="d-flex justify-content-between">
                     <h6 class="mb-1"><%= taco.name %></h6>
                     <span class="text-muted">
->>>>>>> eb69b7f60337056cb5f7058dec3847893bc22eaf
                       <% if taco.price_cents.present? %>
                           <%= number_to_currency(taco.price_cents / 100.0) %>
                         <% else %>
