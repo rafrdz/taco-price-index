@@ -1,0 +1,58 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <% if alert = flash[:alert] %>
+    <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
+  <% end %>
+
+  <% if notice = flash[:notice] %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <h1 class="font-bold text-4xl">Sign up</h1>
+
+  <%= form_with model: @user, url: registration_url, class: "contents" do |form| %>
+    <% if @user.errors.any? %>
+      <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-5">
+        <h4 class="text-red-800 font-medium mb-2">Please fix the following errors:</h4>
+        <ul class="text-red-600 text-sm">
+          <% @user.errors.full_messages.each do |message| %>
+            <li class="mb-1">• <%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="my-5">
+      <%= form.label :email_address, "Email Address", class: "block text-sm font-medium text-gray-700" %>
+      <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: @user.email_address, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full #{'border-red-400' if @user.errors[:email_address].any?}" %>
+      <% if @user.errors[:email_address].any? %>
+        <p class="text-red-500 text-sm mt-1"><%= @user.errors[:email_address].first %></p>
+      <% end %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :password, "Password", class: "block text-sm font-medium text-gray-700" %>
+      <%= form.password_field :password, required: true, autocomplete: "new-password", placeholder: "Enter your password (min 6 characters)", maxlength: 72, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full #{'border-red-400' if @user.errors[:password].any?}" %>
+      <% if @user.errors[:password].any? %>
+        <p class="text-red-500 text-sm mt-1"><%= @user.errors[:password].first %></p>
+      <% end %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :password_confirmation, "Confirm Password", class: "block text-sm font-medium text-gray-700" %>
+      <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", placeholder: "Confirm your password", maxlength: 72, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full #{'border-red-400' if @user.errors[:password_confirmation].any?}" %>
+      <% if @user.errors[:password_confirmation].any? %>
+        <p class="text-red-500 text-sm mt-1"><%= @user.errors[:password_confirmation].first %></p>
+      <% end %>
+    </div>
+
+    <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
+      <div class="inline">
+        <%= form.submit "Sign up", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+      </div>
+
+      <div class="mt-4 text-sm text-gray-500 sm:mt-0">
+        <%= link_to "Forgot password?", new_password_path, class: "text-gray-700 underline" %>
+      </div>
+    </div>
+  <% end %>
+</div>

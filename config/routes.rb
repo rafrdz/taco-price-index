@@ -6,13 +6,14 @@ Rails.application.routes.draw do
   get "frontend_pages_map", to: "frontend_pages#map"
   get "frontend_pages_user_profile", to: "frontend_pages#user_profile"
 
-
+  # Authentication routes
+  resource :session
+  resource :registration, only: [:new, :create]
+  resources :passwords, param: :token
 
   # Test routes
   get "test/map", to: "test#map_test", as: "test_map"
 
-  resource :session
-  resources :passwords, param: :token
   resources :users, param: :token
   resources :restaurants do
     resources :tacos
