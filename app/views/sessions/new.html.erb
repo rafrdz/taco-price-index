@@ -26,8 +26,8 @@
             <%= link_to "Forgot password?", new_password_path, class: "small text-dark fw-semibold" %>
           </div>
 
-          <button type="submit" class="btn-primary w-100 login-btn mb-3">
-            <%= form.submit %> <i class="fas fa-arrow-right ms-2"></i>
+          <button type="submit" class='btn_form'>
+            <%= form.submit "Sign In", class: "btn_submit" %>
           </button>
 
             <div class="d-flex align-items-center my-3">
@@ -43,7 +43,11 @@
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" alt="Facebook" width="30">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" alt="Apple" width="30">
           </div>
-          <p class="small">not a member? <a href="#" class="text-register">Register here</a></p>
+          <p class="small">Not a member? 
+          
+            <%= link_to "Register Now", new_registration_path, class: "text-dark fw-semibold" %>
+          
+          </p>
       </div>
   </div>
 </div>

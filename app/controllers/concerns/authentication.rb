@@ -8,17 +8,17 @@ module Authentication
 
   class_methods do
     def allow_unauthenticated_access(*actions)
-      skip_before_action :require_authentication, only: actions
+      skip_before_action :require_authentication, only: actions.flatten
     end
   end
 
   private
     def authenticated?
-      resume_session
+      resume_session.present?
     end
 
     def require_authentication
-      resume_session || request_authentication
+      request_authentication unless authenticated?
     end
 
     def resume_session

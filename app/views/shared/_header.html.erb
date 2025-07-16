@@ -5,7 +5,7 @@
       <div class="col-12 ">
         <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
           <div class="container-fluid">
-            <a href="#" class="navbar-brand d-flex align-items-center">
+            <a href="/" class="navbar-brand d-flex align-items-center">
               <%#= image_tag "taco.png", alt: "Taco", class: "img-fluid", width: "50em" %>
               <strong>Taco Price Index</strong>
             </a>
@@ -45,7 +45,7 @@
                     <%= link_to 'Login', new_session_path, data: { controller: 'modal', action: 'click->modal#show', modal_target: 'login' }, class: 'nav-link' %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to 'Sign Up', '#', data: { controller: 'modal', action: 'click->modal#show', modal_target: 'signup' }, class: 'nav-link' %>
+                    <%= link_to 'Sign Up', new_registration_path, data: { controller: 'modal', action: 'click->modal#show', modal_target: 'signup' }, class: 'nav-link' %>
                   </li>
                 </ul>
               <% end %>
