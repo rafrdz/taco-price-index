@@ -121,8 +121,8 @@ class RestaurantsController < ApplicationController
     case service
     when 'doordash'
       handle_doordash_delivery
-    when 'grubhub'
-      handle_grubhub_delivery
+    when 'favor'
+      handle_favor_delivery
     else
       # Default to showing delivery options
       render :delivery_options
@@ -161,18 +161,18 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  def handle_grubhub_delivery
+  def handle_favor_delivery
     begin
-      response = check_grubhub_availability(@restaurant)
+      response = check_favor_availability(@restaurant)
       
       if response[:available]
         redirect_to response[:url], allow_other_host: true
       else
-        redirect_to @restaurant, alert: "Restaurant not available on GrubHub"
+        redirect_to @restaurant, alert: "Restaurant not available on Favor"
       end
     rescue => e
-      Rails.logger.error "GrubHub API error: #{e.message}"
-      redirect_to @restaurant, alert: "Unable to check GrubHub availability"
+      Rails.logger.error "Favor API error: #{e.message}"
+      redirect_to @restaurant, alert: "Unable to check Favor availability"
     end
   end
 
@@ -233,10 +233,10 @@ class RestaurantsController < ApplicationController
       }
     end
 
-    def check_grubhub_availability(restaurant)
-      # Simulate GrubHub API call
+    def check_favor_availability(restaurant)
+      # Simulate Favor API call
       # In a real implementation, you would:
-      # 1. Use GrubHub's API to search for the restaurant
+      # 1. Use Favor's API to search for the restaurant
       # 2. Check if it's available for delivery
       # 3. Return the delivery URL if available
       
@@ -244,7 +244,7 @@ class RestaurantsController < ApplicationController
       # You can replace this with actual API integration
       {
         available: true,
-        url: "https://www.grubhub.com/search?query=#{URI.encode_www_form_component(restaurant.name)}"
+        url: "https://favordelivery.com/search?query=#{URI.encode_www_form_component(restaurant.name)}"
       }
     end
 
