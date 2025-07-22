@@ -453,6 +453,39 @@
     </div>
     </div>
 
+     <!-- Delivery & Pick Up Section -->
+     <div class="delivery-pickup-card mb-4">
+       <div class="delivery-pickup-content">
+                    <!-- Left Side - Delivery -->
+           <div class="delivery-section">
+             <h5 class="delivery-pickup-title p-4 rounded">Delivery</h5>
+             <div class="delivery-services">
+               <%= link_to delivery_restaurant_path(@restaurant, service: 'doordash'), class: "service-button doordash" do %>
+                 <img src="https://seeklogo.com/images/D/doordash-logo-5A3B4A0E8B-seeklogo.com.png" alt="DoorDash" class="service-logo">
+               <% end %>
+               <%= link_to delivery_restaurant_path(@restaurant, service: 'grubhub'), class: "service-button grubhub" do %>
+                 <img src="https://seeklogo.com/images/G/grubhub-logo-5A3B4A0E8B-seeklogo.com.png" alt="Grubhub" class="service-logo">
+               <% end %>
+             </div>
+           </div>
+           
+           <!-- Right Side - Pick Up -->
+           <div class="pickup-section">
+             <h5 class="delivery-pickup-title p-4 rounded">Pick Up</h5>
+             <div class="pickup-services">
+               <% if @restaurant.phone.present? %>
+                 <%= link_to pickup_restaurant_path(@restaurant, option: 'phone'), class: "service-button phone" do %>
+                   <i class="bi bi-telephone-fill"></i>
+                 <% end %>
+               <% end %>
+               <%= link_to pickup_restaurant_path(@restaurant, option: 'google_maps'), class: "service-button google" do %>
+                 <img src="https://www.google.com/favicon.ico" alt="Google Maps" class="service-logo">
+               <% end %>
+             </div>
+           </div>
+       </div>
+     </div>
+
     <!-- Add Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 
