@@ -69,7 +69,7 @@ export default class extends Controller {
     
     // Load Google Maps API
     debug('Loading Google Maps API...');
-    if (typeof loadGoogleMapsAPI === 'function') {
+    if (typeof window.loadGoogleMapsAPI === 'function') {
       loadGoogleMapsAPI(() => {
         debug('Google Maps API loaded, initializing map...');
         this.initMap();
@@ -77,6 +77,15 @@ export default class extends Controller {
     } else {
       this.showError('Failed to load Google Maps API: loadGoogleMapsAPI function not found');
     }
+
+    document.addEventListener('turbo:load', () => {
+      if (typeof window.google !== 'undefined' && window.google.maps) {
+        debug("okie doke, turbo is loaded in, re-doin' da map again")
+        this.initMap();
+      }
+    });
+
+
   }
   
   initMap() {
@@ -262,8 +271,8 @@ export default class extends Controller {
       console.error('Error adding markers:', error);
     }
   }
-  
-  fitMapToMarkers() {
+
+  fitMapToMarkers(callback) {
     if (!this.map) {
       debug('Cannot fit map: map not initialized');
       return;
