@@ -745,7 +745,9 @@ body.bg-cream {
   border-radius: 12px;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 9px 8px 5px 0px rgba(94,88,88,0.75);
+  -webkit-box-shadow: 9px 8px 5px 0px rgba(94,88,88,0.75);
+  -moz-box-shadow: 9px 8px 5px 0px rgba(94,88,88,0.75);
   border: none;
   padding: 15px;
   background-color: #ffffff;
