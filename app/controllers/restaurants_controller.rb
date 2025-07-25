@@ -134,10 +134,10 @@ class RestaurantsController < ApplicationController
     option = params[:option]&.downcase
     
     case option
-    when 'phone'
-      handle_phone_pickup
     when 'google_maps'
       handle_google_maps_pickup
+    when 'apple_maps'
+      handle_apple_maps_pickup
     else
       # Default to showing pickup options
       render :pickup_options
@@ -178,18 +178,19 @@ class RestaurantsController < ApplicationController
 
 
 
-  def handle_phone_pickup
-    if @restaurant.phone.present?
-      redirect_to "tel:#{@restaurant.phone}"
-    else
-      redirect_to @restaurant, alert: "Phone number not available for this restaurant"
-    end
-  end
+
 
   def handle_google_maps_pickup
     # Generate Google Maps directions URL
     address = [@restaurant.street_address, @restaurant.city, @restaurant.state, @restaurant.zip].compact.join(", ")
     maps_url = "https://maps.google.com/maps?daddr=#{URI.encode_www_form_component(address)}"
+    redirect_to maps_url, allow_other_host: true
+  end
+
+  def handle_apple_maps_pickup
+    # Generate Apple Maps directions URL
+    address = [@restaurant.street_address, @restaurant.city, @restaurant.state, @restaurant.zip].compact.join(", ")
+    maps_url = "http://maps.apple.com/?daddr=#{URI.encode_www_form_component(address)}"
     redirect_to maps_url, allow_other_host: true
   end
 

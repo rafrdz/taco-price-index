@@ -448,13 +448,11 @@
         <div class="pickup-section">
           <h5 class="delivery-pickup-title p-4 rounded">Pick Up</h5>
           <div class="pickup-services">
-            <% if @restaurant.phone.present? %>
-              <%= link_to pickup_restaurant_path(@restaurant, option: 'phone'), class: "service-button phone" do %>
-                <i class="bi bi-telephone-fill"></i>
-              <% end %>
-            <% end %>
             <%= link_to pickup_restaurant_path(@restaurant, option: 'google_maps'), class: "service-button google" do %>
-              <img src="https://www.google.com/favicon.ico" alt="Google Maps" class="service-logo">
+              <%= image_tag "google-icon.png", alt: "Google Maps", class: "service-logo" %>
+            <% end %>
+            <%= link_to pickup_restaurant_path(@restaurant, option: 'apple_maps'), class: "service-button apple" do %>
+              <%= image_tag "apple-logo.png", alt: "Apple Maps", class: "service-logo" %>
             <% end %>
           </div>
         </div>
