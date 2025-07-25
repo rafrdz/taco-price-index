@@ -436,10 +436,10 @@
           <h5 class="delivery-pickup-title p-4 rounded">Delivery</h5>
           <div class="delivery-services">
             <%= link_to delivery_restaurant_path(@restaurant, service: 'doordash'), class: "service-button doordash" do %>
-              <img src="https://seeklogo.com/images/D/doordash-logo-5A3B4A0E8B-seeklogo.com.png" alt="DoorDash" class="service-logo">
+              <%= image_tag "doordash-logo.png", alt: "DoorDash", class: "service-logo" %>
             <% end %>
             <%= link_to delivery_restaurant_path(@restaurant, service: 'favor'), class: "service-button favor" do %>
-              <img src="https://seeklogo.com/images/F/favor-logo-5A3B4A0E8B-seeklogo.com.png" alt="Favor" class="service-logo">
+              <%= image_tag "favor-logo.png", alt: "Favor", class: "service-logo" %>
             <% end %>
           </div>
         </div>
