@@ -226,11 +226,10 @@ class RestaurantsController < ApplicationController
       # 2. Check if it's available for delivery
       # 3. Return the delivery URL if available
       
-      # For now, we'll simulate a successful response
+      # For now, we'll do nothing
       # You can replace this with actual API integration
       {
         available: true,
-        url: "https://www.doordash.com/search?query=#{URI.encode_www_form_component(restaurant.name)}"
       }
     end
 
@@ -241,11 +240,10 @@ class RestaurantsController < ApplicationController
       # 2. Check if it's available for delivery
       # 3. Return the delivery URL if available
       
-      # For now, we'll simulate a successful response
+      # For now, we'll do nothing
       # You can replace this with actual API integration
       {
         available: true,
-        url: "https://favordelivery.com/search?query=#{URI.encode_www_form_component(restaurant.name)}"
       }
     end
 
