@@ -655,3 +655,176 @@ body.bg-cream {
   padding: 0.5rem 1.25rem;
   border-radius: 6px;
 }
+
+/* Delivery & Pickup Section - Figma Design Style */
+.delivery-pickup-card {
+  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.delivery-pickup-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="texture" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23texture)"/></svg>');
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.delivery-pickup-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.delivery-section,
+.pickup-section {
+  flex: 1;
+  text-align: center;
+  width: 100%;
+  background: linear-gradient(135deg, #DBA5A0 0%, #C49590 100%);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 3px 10px rgba(219, 165, 160, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.delivery-section::before,
+.pickup-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="texture2" x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="7.5" cy="7.5" r="0.8" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23texture2)"/></svg>');
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.delivery-pickup-title {
+  color: #ffffff;
+  background-color: #364c3f;
+  font-family: 'Georgia', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.delivery-services,
+.pickup-services {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.service-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45%;
+  height: 60px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 9px 8px 5px 0px rgba(94,88,88,0.75);
+  -webkit-box-shadow: 9px 8px 5px 0px rgba(94,88,88,0.75);
+  -moz-box-shadow: 9px 8px 5px 0px rgba(94,88,88,0.75);
+  border: none;
+  padding: 15px;
+  background-color: #ffffff;
+}
+
+.service-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  text-decoration: none;
+}
+
+.service-button.doordash {
+  background-color: #ffffff;
+}
+
+.service-button.favor {
+  background-color: #ffffff;
+}
+
+.service-button.google {
+  background: white;
+  border: 2px solid #4285F4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-button.apple {
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-logo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .delivery-pickup-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .delivery-services,
+  .pickup-services {
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .service-button {
+    width: 80px;
+    height: 80px;
+    padding: 12px;
+    width: 100%;
+  }
+  
+  .service-logo {
+    width: 40px;
+    height: 40px;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .delivery-section,
+  .pickup-section {
+    padding: 20px;
+  }
+  
+  .delivery-pickup-title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+}

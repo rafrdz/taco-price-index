@@ -20,6 +20,10 @@ Rails.application.routes.draw do
     resources :photos
     resources :reviews
     post "toggle_favorite", on: :member
+    
+    # Delivery and pickup routes
+    get "delivery", on: :member
+    get "pickup", on: :member
 
     # Test route for map debugging
     get "map_test", on: :collection

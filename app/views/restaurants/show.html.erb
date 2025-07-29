@@ -1,129 +1,133 @@
 <body class="bg-cream text-center">
-<div class="container py-4">
-  <!-- Header with Back Button -->
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <%= link_to root_path, class: 'btn btn-outline-secondary' do %>
-      <i class="bi bi-arrow-left"></i> Back to Restaurants
-    <% end %>
+  <div class="container py-4">
+    <!-- Header with Back Button -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <%= link_to root_path, class: 'btn btn-outline-secondary' do %>
+        <i class="bi bi-arrow-left"></i> Back to Restaurants
+      <% end %>
 
-    <% if current_user&.admin? %>
-      <div class="mt-3">
-        <%= link_to edit_restaurant_path(@restaurant), class: 'btn btn-outline-primary me-2' do %>
-          <i class="bi bi-pencil-square"></i> Edit Restaurant
-        <% end %>
-        <%= link_to 'Delete', @restaurant,
-                    method: :delete,
-                    data: { confirm: 'Are you sure you want to delete this restaurant?' },
-                    class: 'btn btn-outline-danger' %>
-      </div>
-    <% end %>
-  </div>
+      <% if current_user&.admin? %>
+        <div class="mt-3">
+          <%= link_to edit_restaurant_path(@restaurant), class: 'btn btn-outline-primary me-2' do %>
+            <i class="bi bi-pencil-square"></i> Edit Restaurant
+          <% end %>
+          <%= link_to 'Delete', @restaurant,
+                      method: :delete,
+                      data: { confirm: 'Are you sure you want to delete this restaurant?' },
+                      class: 'btn btn-outline-danger' %>
+        </div>
+      <% end %>
+    </div>
 
-
-  <!-- Main Content -->
-  <div class="container">
-    <div class="row g-4 justify-content-between">
-      <!-- Left Column -->
-      <h1 class="h2 container text-center"><%= @restaurant.name %></h1>
-      <!-- Restaurant Header -->
-      <section class="details">
-        <div class="card mb-4 square">
-          <div class="card-body square-card">
-            <!-- Row: Map & Restaurant Details columns -->
-            <section class="p-5 review-header col-12 col-md-5">
-              <!-- Map Column Right Under!-->
-              <div
-                id="map"
-                data-controller="map"
-                data-map-api-key-value="<%= ENV['GOOGLE_MAPS_API_KEY'] %>"
-                data-map-markers-value='<%= @markers.to_json %>'
-                data-map-center-value='<%= @map_center.to_json %>'
-                data-map-zoom-value="15"
-                style="height: 400px; width: 100%; min-height: 300px; background-color: #f0f0f0;"
-                class="map-container rounded"
-              >
-                <div class="d-flex justify-content-center align-items-center h-100">
-                  <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">Loading map...</span>
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row g-4 justify-content-between">
+        <!-- Left Column -->
+        <h1 class="h2 container text-center"><%= @restaurant.name %></h1>
+        <!-- Restaurant Header -->
+        <section class="details">
+          <div class="card mb-4 square">
+            <div class="card-body square-card">
+              <!-- Row: Map & Restaurant Details columns -->
+              <section class="p-5 review-header col-12 col-md-5">
+                <!-- Map Column Right Under!-->
+                <div
+                  id="map"
+                  data-controller="map"
+                  data-map-api-key-value="<%= ENV['GOOGLE_MAPS_API_KEY'] %>"
+                  data-map-markers-value='<%= @markers.to_json %>'
+                  data-map-center-value='<%= @map_center.to_json %>'
+                  data-map-zoom-value="15"
+                  style="height: 400px; width: 100%; min-height: 300px; background-color: #f0f0f0;"
+                  class="map-container rounded"
+                >
+                  <div class="d-flex justify-content-center align-items-center h-100">
+                    <div class="spinner-border text-primary" role="status">
+                      <span class="visually-hidden">Loading map...</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <!-- Right Column -->
-              <div class="col-12 col-md-7">
-                <div class="col">
+                <!-- Right Column -->
+                <div class="col-12 col-md-7">
                   <div class="col">
-                    <div class="d-flex justify-content-between align-items-start position-relative row">
-                      <div class="flex-grow-1 pe-4">
-                        <div class="d-flex justify-content-between align-items-start square-card py-3 details-box  rounded shadow">
-                          <!-- Map Column Right Under!-->
-                          <div class="col">
-                            <div class="text-start p-4">
-                              <h4>Restaurant Details</h4>
-                              <div>
-                                <%= render 'frontend_pages/favorite_button', restaurant: @restaurant %>
-                              </div>
-                              <dl>
-                                <dd>
-                                  <% if @restaurant.description.present? %>
-                                    <div class="border-top pt-3 mt-3">
-                                      <h5 class="h6">About</h5>
-                                      <p class="mb-0"><%= simple_format @restaurant.description %></p>
-                                    </div>
-                                  <% end %></dd>
-                                <dd>
-                                  <% if @restaurant.phone.present? %>
-                                    <p class="mb-1">
-                                      <i class="bi bi-telephone-fill text-primary"></i>
-                                      <%= link_to @restaurant.phone, "tel:#{@restaurant.phone}" %>
-                                    </p>
-                                  <% end %></dd>
-                                <dd><p class="mb-1">
-                                  <i class="bi bi-geo-alt-fill text-danger"></i>
-                                  <%= @restaurant.street_address %><br>
-                                  <%= [@restaurant.city, @restaurant.state, @restaurant.zip].compact.join(', ') %>
-                                </p></dd>
-                                <dd>
-                                  <% if @restaurant.website.present? %>
-                                    <% safe_website_url = safe_url(@restaurant.website) %>
-                                    <% if safe_website_url %>
+                    <div class="col">
+                      <div class="d-flex justify-content-between align-items-start position-relative row">
+                        <div class="flex-grow-1 pe-4">
+                          <div class="d-flex justify-content-between align-items-start square-card py-3 details-box  rounded shadow">
+                            <!-- Map Column Right Under!-->
+                            <div class="col">
+                              <div class="text-start p-4">
+                                <h4>Restaurant Details</h4>
+                                <div>
+                                  <%= render 'frontend_pages/favorite_button', restaurant: @restaurant %>
+                                </div>
+                                <dl>
+                                  <dd>
+                                    <% if @restaurant.description.present? %>
+                                      <div class="border-top pt-3 mt-3">
+                                        <h5 class="h6">About</h5>
+                                        <p class="mb-0"><%= simple_format @restaurant.description %></p>
+                                      </div>
+                                    <% end %>
+                                  </dd>
+                                  <dd>
+                                    <% if @restaurant.phone.present? %>
                                       <p class="mb-1">
-                                        <i class="bi bi-globe"></i>
-                                        <%= link_to safe_hostname(@restaurant.website), safe_website_url, target: "_blank", rel: "noopener" %>
+                                        <i class="bi bi-telephone-fill text-primary"></i>
+                                        <%= link_to @restaurant.phone, "tel:#{@restaurant.phone}" %>
                                       </p>
                                     <% end %>
-                                  <% end %></dd>
-                                <dd>
-                                  <!-- Hours -->
-                                  <% if @restaurant.hours.present? %>
+                                  </dd>
+                                  <dd>
                                     <p class="mb-1">
-                                      <i class="bi bi-clock"></i>
-                                      <span class="<%= @restaurant.open_now? ? 'text-success' : 'text-danger' %>">
-                      <strong><%= @restaurant.status %></strong>
-                    </span>
+                                      <i class="bi bi-geo-alt-fill text-danger"></i>
+                                      <%= @restaurant.street_address %><br>
+                                      <%= [@restaurant.city, @restaurant.state, @restaurant.zip].compact.join(', ') %>
                                     </p>
-                                    <div class="small text-muted">
-                                      <% if @restaurant.business_hours.is_a?(Hash) %>
-                                        <% current_day = Date.current.wday %>
-                                        <% 7.times do |i| %>
-                                          <% day_index = (current_day + i) % 7 %>
-                                          <% day_name = Restaurant::DAYS[day_index] %>
-                                          <div class="d-flex <%= 'fw-bold' if i.zero? %>">
-                                            <div class="me-2" style="min-width: 80px;"><%= day_name[0..2] %>:
-                                            </div>
-                                            <div><%= @restaurant.hours_for_day(day_index) %></div>
-                                          </div>
-                                        <% end %>
-                                      <% else %>
-                                        <%= simple_format(@restaurant.hours) %>
+                                  </dd>
+                                  <dd>
+                                    <% if @restaurant.website.present? %>
+                                      <% safe_website_url = safe_url(@restaurant.website) %>
+                                      <% if safe_website_url %>
+                                        <p class="mb-1">
+                                          <i class="bi bi-globe"></i>
+                                          <%= link_to safe_hostname(@restaurant.website), safe_website_url, target: "_blank", rel: "noopener" %>
+                                        </p>
                                       <% end %>
-                                    </div>
-                                  <% else %>
-                                    <p class="text-muted small mb-1">
-                                      <i class="bi bi-clock"></i> Hours not available
-                                    </p>
-                                  <% end %>
-                                </dd>
-                              </dl>
+                                    <% end %>
+                                  </dd>
+                                  <dd>
+                                    <!-- Hours -->
+                                    <% if @restaurant.hours.present? %>
+                                      <p class="mb-1">
+                                        <i class="bi bi-clock"></i>
+                                        <span class="<%= @restaurant.open_now? ? 'text-success' : 'text-danger' %>">
+                                          <strong><%= @restaurant.status %></strong>
+                                        </span>
+                                      </p>
+                                      <div class="small text-muted">
+                                        <% if @restaurant.business_hours.is_a?(Hash) %>
+                                          <% current_day = Date.current.wday %>
+                                          <% 7.times do |i| %>
+                                            <% day_index = (current_day + i) % 7 %>
+                                            <% day_name = Restaurant::DAYS[day_index] %>
+                                            <div class="d-flex <%= 'fw-bold' if i.zero? %>">
+                                              <div class="me-2" style="min-width: 80px;"><%= day_name[0..2] %>:</div>
+                                              <div><%= @restaurant.hours_for_day(day_index) %></div>
+                                            </div>
+                                          <% end %>
+                                        <% else %>
+                                          <%= simple_format(@restaurant.hours) %>
+                                        <% end %>
+                                      </div>
+                                    <% else %>
+                                      <p class="text-muted small mb-1">
+                                        <i class="bi bi-clock"></i> Hours not available
+                                      </p>
+                                    <% end %>
+                                  </dd>
+                                </dl>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -131,54 +135,41 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </section>
-            <%# Show first taco photo if available %>
-            <% if @tacos.any? %>
-              <% first_taco = @tacos.first %>
-              <% if first_taco.photos.attached? %>
-                <div class="ms-4" style="width: 200px;">
-                  <%= image_tag first_taco.display_photo,
-                                class: "img-fluid rounded",
-                                alt: first_taco.name %>
-                </div>
+              </section>
+              <%# Show first taco photo if available %>
+              <% if @tacos.any? %>
+                <% first_taco = @tacos.first %>
+                <% if first_taco.photos.attached? %>
+                  <div class="ms-4" style="width: 200px;">
+                    <%= image_tag first_taco.display_photo,
+                                  class: "img-fluid rounded",
+                                  alt: first_taco.name %>
+                  </div>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <section class="row review-section text-white text-center p-4 square-card">
+      <div class="row">
+        <h5 class="mb-4 col-12">Overall Review Section</h5>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-5">
+          <div class="rating-box p-4 rounded shadow">
+            Overall Taco Rating from the public
           </div>
         </div>
-      </section>
-    </div>
-  </div>
-
-  <section class="row review-section text-white text-center p-4 square-card">
-    <div class="row">
-      <h5 class="mb-4 col-12">Overall Review Section</h5>
-    </div>
-    <div class="row g-4 justify-content-center">
-      <div class="col-md-5">
-        <div class="rating-box p-4 rounded shadow">
-          Overall Taco Rating from the public
+        <div class="col-md-5">
+          <div class="rating-box p-4 rounded shadow">
+            Overall Taco Rating from Google Reviews
+          </div>
         </div>
       </div>
-      <div class="col-md-5">
-        <div class="rating-box p-4 rounded shadow">
-          Overall Taco Rating from Google Reviews
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tacos Section -->
-  <% if @tacos.any? %>
-    <div class="card mb-4">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">Tacos</h5>
-        <% if current_user&.admin? %>
-          <%= link_to 'Add Taco', new_restaurant_taco_path(@restaurant), class: 'btn btn-sm btn-outline-primary' %>
-        <% end %>
-      </div>
-
-    </div>
+    </section>
 
     <!-- Tacos Section -->
     <% if @tacos.any? %>
@@ -203,25 +194,25 @@
                     <h6 class="mb-1"><%= taco.name %></h6>
                     <span class="text-muted">
                       <% if taco.price_cents.present? %>
-                          <%= number_to_currency(taco.price_cents / 100.0) %>
-                        <% else %>
-                          <span class="text-muted small">Price not set</span>
-                        <% end %>
-                      </span>
+                        <%= number_to_currency(taco.price_cents / 100.0) %>
+                      <% else %>
+                        <span class="text-muted small">Price not set</span>
+                      <% end %>
+                    </span>
                   </div>
                   <% if taco.description.present? %>
                     <p class="small mb-2"><%= taco.description %></p>
                   <% end %>
                   <div class="d-flex align-items-center">
                     <% if taco.respond_to?(:heat_level) && taco.heat_level.present? %>
-                        <span class="badge bg-light text-dark border me-2">
-                          <i class="bi bi-thermometer-half"></i> <%= taco.heat_level %>
-                        </span>
+                      <span class="badge bg-light text-dark border me-2">
+                        <i class="bi bi-thermometer-half"></i> <%= taco.heat_level %>
+                      </span>
                     <% end %>
                     <% if taco.respond_to?(:protein_type) && taco.protein_type.present? %>
-                        <span class="badge bg-light text-dark border">
-                          <i class="bi bi-egg-fried"></i> <%= taco.protein_type.humanize %>
-                        </span>
+                      <span class="badge bg-light text-dark border">
+                        <i class="bi bi-egg-fried"></i> <%= taco.protein_type.humanize %>
+                      </span>
                     <% end %>
                   </div>
                 </div>
@@ -249,16 +240,6 @@
           <div class="col">
             One of three columns
           </div>
-          <!--            <div class="container col" style="z-index: 10;">-->
-          <!--              <div class="card" style="width: 18rem;">-->
-          <!--                <div class="card-body">-->
-          <!--                  <h5 class="card-title">Map Goes Here</h5>-->
-          <!--                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of-->
-          <!--                    the card's content.</p>-->
-          <!--                </div>-->
-          <!--              </div>-->
-          <%#= render 'frontend_pages/favorite_button', restaurant: @restaurant %>
-          <!--            </div>-->
           <div class="d-flex justify-content-between align-items-start position-relative row">
             <div class="flex-grow-1 pe-4">
               <div class="d-flex justify-content-between align-items-start">
@@ -286,16 +267,16 @@
                         <div class="d-flex align-items-center mb-3">
                           <div class="d-flex flex-wrap gap-2 align-items-center">
                             <% if @average_rating.to_f > 0 %>
-                    <span class="badge bg-warning text-dark">
-                      <%= @average_rating %> <i class="bi bi-star-fill"></i>
-                      <small class="text-muted">(<%= @reviews.count %>)</small>
-                    </span>
+                              <span class="badge bg-warning text-dark">
+                                <%= @average_rating %> <i class="bi bi-star-fill"></i>
+                                <small class="text-muted">(<%= @reviews.count %>)</small>
+                              </span>
                             <% end %>
                             <% if @restaurant.google_rating %>
-                    <span class="badge bg-light text-dark border">
-                      <%= number_with_precision(@restaurant.google_rating, precision: 1) %>
-                      <i class="bi bi-star-fill text-warning"></i> Google
-                    </span>
+                              <span class="badge bg-light text-dark border">
+                                <%= number_with_precision(@restaurant.google_rating, precision: 1) %>
+                                <i class="bi bi-star-fill text-warning"></i> Google
+                              </span>
                             <% end %>
                           </div>
                         </div>
@@ -307,7 +288,6 @@
             </div>
           </div>
         </div>
-
 
         <!-- Reviews List -->
         <% if @reviews.any? %>
@@ -388,8 +368,6 @@
         <% end %>
       </div>
     </div>
-    </div>
-
 
     <!-- Popular Dishes -->
     <% if @tacos.any? %>
@@ -403,12 +381,12 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div><%= taco.name %></div>
                 <span class="badge bg-light text-dark">
-  <% if taco.price_cents.present? %>
-  <%= number_to_currency(taco.price_cents / 100.0) %>
-  <% else %>
-                        <span class="text-muted small">-</span>
-  <% end %>
-                    </span>
+                  <% if taco.price_cents.present? %>
+                    <%= number_to_currency(taco.price_cents / 100.0) %>
+                  <% else %>
+                    <span class="text-muted small">-</span>
+                  <% end %>
+                </span>
               </div>
             </div>
           <% end %>
@@ -416,8 +394,8 @@
       </div>
     <% end %>
 
-    Contact Info
-    <div class="card">
+    <!-- Contact Info -->
+    <div class="card mb-4">
       <div class="card-header">
         <h5 class="mb-0">Contact</h5>
       </div>
@@ -449,42 +427,40 @@
         </ul>
       </div>
     </div>
-    </div>
-    </div>
+
+    <!-- Delivery & Pick Up Section -->
+    <div class="delivery-pickup-card mb-4">
+      <div class="delivery-pickup-content">
+        <!-- Left Side - Delivery -->
+        <div class="delivery-section">
+          <h5 class="delivery-pickup-title p-4 rounded">Delivery</h5>
+          <div class="delivery-services">
+            <%= link_to delivery_restaurant_path(@restaurant, service: 'doordash'), class: "service-button doordash" do %>
+              <%= image_tag "doordash-logo.png", alt: "DoorDash", class: "service-logo" %>
+            <% end %>
+            <%= link_to delivery_restaurant_path(@restaurant, service: 'favor'), class: "service-button favor" do %>
+              <%= image_tag "favor-logo.png", alt: "Favor", class: "service-logo" %>
+            <% end %>
+          </div>
+        </div>
+        
+        <!-- Right Side - Pick Up -->
+        <div class="pickup-section">
+          <h5 class="delivery-pickup-title p-4 rounded">Pick Up</h5>
+          <div class="pickup-services">
+            <%= link_to pickup_restaurant_path(@restaurant, option: 'google_maps'), class: "service-button google" do %>
+              <%= image_tag "google-icon.png", alt: "Google Maps", class: "service-logo" %>
+            <% end %>
+            <%= link_to pickup_restaurant_path(@restaurant, option: 'apple_maps'), class: "service-button apple" do %>
+              <%= image_tag "apple-logo.png", alt: "Apple Maps", class: "service-logo" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Add Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-
-    <!--<style>-->
-    <!--    .text-yelp {-->
-    <!--        color: #d32323;-->
-    <!--    }-->
-
-    <!--    /*.map-container {*/-->
-    <!--    /*    height: 300px;*/-->
-    <!--    /*    border-radius: 8px;*/-->
-    <!--    /*    overflow: hidden;*/-->
-    <!--    /*}*/-->
-
-    <!--    .img-thumbnail {-->
-    <!--        max-height: 100px;-->
-    <!--        object-fit: cover;-->
-    <!--    }-->
-
-    <!--    .favorite-button {-->
-    <!--        cursor: pointer;-->
-    <!--        transition: transform 0.2s;-->
-    <!--    }-->
-
-    <!--    .favorite-button:hover {-->
-    <!--        transform: scale(1.1);-->
-    <!--    }-->
-
-    <!--    .favorite-button.favorited {-->
-    <!--        color: #ffc107;-->
-    <!--    }-->
-    <!--</style>-->
 
     <!-- Global Image Viewer Modal -->
     <div data-controller="image-modal" class="modal fade" id="imageViewerModal" tabindex="-1" aria-hidden="true">
@@ -507,8 +483,8 @@
     <!-- Initialize Map -->
     <%= javascript_tag nonce: true do %>
       document.addEventListener('DOMContentLoaded', function() {
-      // The map will be initialized by the Stimulus controller
+        // The map will be initialized by the Stimulus controller
       });
     <% end %>
-  <% end %>
-  </body>
+  </div>
+</body>
