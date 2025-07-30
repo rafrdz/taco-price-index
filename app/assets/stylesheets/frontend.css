@@ -421,7 +421,7 @@ body.bg-cream {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.btn-filter {
+.btn-filter.filter-button { /* needed to override bootstrap button styles */
   background-color: #364c3f;
   color: white;
   font-weight: bold;
