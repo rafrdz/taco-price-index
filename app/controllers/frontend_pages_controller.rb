@@ -7,7 +7,10 @@ class FrontendPagesController < ApplicationController
     @is_favorited = @user&.favorite_restaurants.exists?(@restaurant) if @user
     @favorite_count = @restaurant.favorite_count if @restaurant
   end
-
+  def restaurant_leaderboard
+    @restaurants = Restaurant.all
+    @user = Current.session&.user
+  end
   def restaurant_details
     @restaurant = Restaurant.find(params[:id])
     @tacos = @restaurant.tacos

@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get "frontend_pages_map", to: "frontend_pages#map"
   get "frontend_pages_user_profile", to: "frontend_pages#user_profile"
 
+  get "restaurants/:id/details", to: "restaurants#details", as: "restaurant_details"
+
+
   # Authentication routes
   resource :session
   resource :registration, only: [:new, :create]
