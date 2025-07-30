@@ -1,39 +1,33 @@
 <div class="list-group">
-  <div class="container">
-
   <% @restaurants.each do |restaurant| %>
     <%= link_to restaurant_path(restaurant), class: "list-group-item list-group-item-action restaurant-item text-decoration-none text-reset", data: { restaurant_id: restaurant.id } do %>
-      <div class="container">
-
       <div class="restaurant-header d-flex align-items-start">
-          <div class="flex-grow-1 pe-2">
-            <div class="row">
-              <div class="col-12">
-                <h5 class="mb-1"><%= restaurant.name %></h5>
-                <p class="mb-1 text-muted"><%= restaurant.street_address %></p>
-              </div>
-              <div class="restaurant-actions d-flex align-items-center gap-2 ms-auto flex-shrink-0">
-                <small class="text-muted">
-                  <%= number_with_precision(restaurant.google_rating, precision: 1) %>★
-                </small>
-                <div onclick="event.stopPropagation();" class="d-flex align-items-center">
-                  <%= render 'frontend_pages/favorite_button', restaurant: restaurant %>
-                  <%= render 'frontend_pages/favorite_count', restaurant: restaurant %>
-                </div>
+        <div class="flex-grow-1 pe-2">
+          <div class="row">
+            <div class="col-12">
+              <h5 class="mb-1"><%= restaurant.name %></h5>
+              <p class="mb-1 text-muted"><%= restaurant.street_address %></p>
+            </div>
+            <div class="restaurant-actions d-flex align-items-center gap-2 ms-auto flex-shrink-0">
+              <small class="text-muted">
+                <%= number_with_precision(restaurant.google_rating, precision: 1) %>★
+              </small>
+              <div onclick="event.stopPropagation();" class="d-flex align-items-center">
+                <%= render 'frontend_pages/favorite_button', restaurant: restaurant %>
+                <%= render 'frontend_pages/favorite_count', restaurant: restaurant %>
               </div>
             </div>
-            <small class="text-muted">
-              <% avg_price_cents = restaurant.tacos.average(:price_cents) %>
-              <% if avg_price_cents.present? %>
-                <%= number_to_currency(avg_price_cents / 100.0, precision: 2) %> average price
-              <% else %>
-                Price unavailable
-              <% end %>
-            </small>
+          </div>
+          <small class="text-muted">
+            <% avg_price_cents = restaurant.tacos.average(:price_cents) %>
+            <% if avg_price_cents.present? %>
+              <%= number_to_currency(avg_price_cents / 100.0, precision: 2) %> average price
+            <% else %>
+              Price unavailable
+            <% end %>
+          </small>
+        </div>
+      </div>
     <% end %>
   <% end %>
-  </div>
-  </div>
-  </div>
-</div>
 </div>
