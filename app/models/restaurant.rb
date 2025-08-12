@@ -1,3 +1,6 @@
+# app/models/restaurant.rb
+
+
 class Restaurant < ApplicationRecord
   # Associations
   has_many :tacos, dependent: :destroy

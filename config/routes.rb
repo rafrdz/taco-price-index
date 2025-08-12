@@ -1,8 +1,13 @@
+# config/routes.rb
+
 Rails.application.routes.draw do
   root "static_pages#home"
 
+  get "/taco-leaderboard", to:
+  "restaurants#leaderboard", as: :leaderboard
+
   get "frontend_pages_featured_spotlight", to: "frontend_pages#featured_spotlight"
-  get "frontend_pages_restaurant_leaderboard", to: "frontend_pages#restaurant_leaderboard"
+
   get "frontend_pages_map", to: "frontend_pages#map"
   get "frontend_pages_user_profile", to: "frontend_pages#user_profile"
 
@@ -11,7 +16,7 @@ Rails.application.routes.draw do
 
   # Authentication routes
   resource :session
-  resource :registration, only: [:new, :create]
+  resource :registration, only: [ :new, :create ]
   resources :passwords, param: :token
 
   # Test routes
@@ -23,7 +28,7 @@ Rails.application.routes.draw do
     resources :photos
     resources :reviews
     post "toggle_favorite", on: :member
-    
+
     # Delivery and pickup routes
     get "delivery", on: :member
     get "pickup", on: :member

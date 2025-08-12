@@ -1,3 +1,5 @@
+<%# app/views/restaurants/leaderboard.html.erb %>
+
 <div class="container">
   <h1 class="display-4 mb-4">Taco Restaurant Leaderboard</h1>
   <div class="row">
@@ -35,7 +37,7 @@
                 <%= pluralize(restaurant.tacos.count, 'taco') %> available
               </small>
               Details
-              <%= link_to "View Restaurant",  restaurant_details_path(restaurant), class: "btn btn-primary" %>
+              <%= link_to "View Restaurant",  restaurant_path(restaurant), class: "btn btn-primary" %>
             </div>
           </div>
         </div>
