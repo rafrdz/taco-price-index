@@ -1,8 +1,13 @@
+# config/routes.rb
+
 Rails.application.routes.draw do
   root "static_pages#home"
 
+  get "/taco-leaderboard", to:
+  "restaurants#leaderboard", as: :leaderboard
+
   get "frontend_pages_featured_spotlight", to: "frontend_pages#featured_spotlight"
-  get "frontend_pages_restaurant_leaderboard", to: "frontend_pages#restaurant_leaderboard"
+  
   get "frontend_pages_map", to: "frontend_pages#map"
   get "frontend_pages_user_profile", to: "frontend_pages#user_profile"
 

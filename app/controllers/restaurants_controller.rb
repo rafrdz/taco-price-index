@@ -1,8 +1,14 @@
+# app/controllers/restaurants_controller.rb
+
 class RestaurantsController < ApplicationController
-  before_action :require_authentication, except: %i[ index show map_test ]
+  before_action :require_authentication, except: %i[ index show map_test leaderboard ]
   before_action :set_restaurant, only: %i[ show edit update destroy toggle_favorite delivery pickup ]
 
   def index
+    @restaurants = Restaurant.all
+  end
+
+  def leaderboard
     @restaurants = Restaurant.all
   end
 
@@ -10,6 +16,8 @@ class RestaurantsController < ApplicationController
     # This is a test action for debugging the map
     render "map_test", layout: false
   end
+
+
 
   def show
     @restaurant = Restaurant.find(params[:id])
