@@ -125,11 +125,11 @@ class RestaurantsController < ApplicationController
   def delivery
     # Handle delivery service selection
     service = params[:service]&.downcase
-    
+
     case service
-    when 'doordash'
+    when "doordash"
       handle_doordash_delivery
-    when 'favor'
+    when "favor"
       handle_favor_delivery
     else
       # Default to showing delivery options
@@ -140,11 +140,11 @@ class RestaurantsController < ApplicationController
   def pickup
     # Handle pickup options
     option = params[:option]&.downcase
-    
+
     case option
-    when 'google_maps'
+    when "google_maps"
       handle_google_maps_pickup
-    when 'apple_maps'
+    when "apple_maps"
       handle_apple_maps_pickup
     else
       # Default to showing pickup options
@@ -157,7 +157,7 @@ class RestaurantsController < ApplicationController
   def handle_doordash_delivery
     begin
       response = check_doordash_availability(@restaurant)
-      
+
       if response[:available]
         redirect_to response[:url], allow_other_host: true
       else
@@ -172,7 +172,7 @@ class RestaurantsController < ApplicationController
   def handle_favor_delivery
     begin
       response = check_favor_availability(@restaurant)
-      
+
       if response[:available]
         redirect_to response[:url], allow_other_host: true
       else
@@ -190,14 +190,14 @@ class RestaurantsController < ApplicationController
 
   def handle_google_maps_pickup
     # Generate Google Maps directions URL
-    address = [@restaurant.street_address, @restaurant.city, @restaurant.state, @restaurant.zip].compact.join(", ")
+    address = [ @restaurant.street_address, @restaurant.city, @restaurant.state, @restaurant.zip ].compact.join(", ")
     maps_url = "https://maps.google.com/maps?daddr=#{URI.encode_www_form_component(address)}"
     redirect_to maps_url, allow_other_host: true
   end
 
   def handle_apple_maps_pickup
     # Generate Apple Maps directions URL
-    address = [@restaurant.street_address, @restaurant.city, @restaurant.state, @restaurant.zip].compact.join(", ")
+    address = [ @restaurant.street_address, @restaurant.city, @restaurant.state, @restaurant.zip ].compact.join(", ")
     maps_url = "http://maps.apple.com/?daddr=#{URI.encode_www_form_component(address)}"
     redirect_to maps_url, allow_other_host: true
   end
@@ -233,11 +233,11 @@ class RestaurantsController < ApplicationController
       # 1. Use DoorDash's API to search for the restaurant
       # 2. Check if it's available for delivery
       # 3. Return the delivery URL if available
-      
+
       # For now, we'll do nothing
       # You can replace this with actual API integration
       {
-        available: true,
+        available: true
       }
     end
 
@@ -247,13 +247,11 @@ class RestaurantsController < ApplicationController
       # 1. Use Favor's API to search for the restaurant
       # 2. Check if it's available for delivery
       # 3. Return the delivery URL if available
-      
+
       # For now, we'll do nothing
       # You can replace this with actual API integration
       {
-        available: true,
+        available: true
       }
     end
-
-
 end
