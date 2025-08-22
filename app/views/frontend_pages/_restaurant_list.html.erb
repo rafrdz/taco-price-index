@@ -1,33 +1,76 @@
-<div class="list-group">
+<div class="restaurant-cards-container">
   <% @restaurants.each do |restaurant| %>
-    <%= link_to restaurant_path(restaurant), class: "list-group-item list-group-item-action restaurant-item text-decoration-none text-reset", data: { restaurant_id: restaurant.id } do %>
-      <div class="restaurant-header d-flex align-items-start">
-        <div class="flex-grow-1 pe-2">
-          <div class="row">
-            <div class="col-12">
-              <h5 class="mb-1"><%= restaurant.name %></h5>
-              <p class="mb-1 text-muted"><%= restaurant.street_address %></p>
-            </div>
-            <div class="restaurant-actions d-flex align-items-center gap-2 ms-auto flex-shrink-0">
-              <small class="text-muted">
-                <%= number_with_precision(restaurant.google_rating, precision: 1) %>★
-              </small>
-              <div onclick="event.stopPropagation();" class="d-flex align-items-center">
-                <%= render 'frontend_pages/favorite_button', restaurant: restaurant %>
-                <%= render 'frontend_pages/favorite_count', restaurant: restaurant %>
-              </div>
-            </div>
-          </div>
-          <small class="text-muted">
+    <div class="restaurant-card" data-restaurant-id="<%= restaurant.id %>">
+      <!-- Restaurant Name (Bold, Large Font) -->
+      <div class="restaurant-card-header">
+        <h3 class="restaurant-name"><%= restaurant.name %></h3>
+        
+        <!-- Open Now Status -->
+        <div class="status-indicator">
+          <span class="status-badge <%= restaurant.open_now? ? 'status-open' : 'status-closed' %>">
+            <%= restaurant.status %>
+          </span>
+        </div>
+      </div>
+      
+      <!-- Restaurant Details -->
+      <div class="restaurant-card-body">
+        <!-- Cuisine Type -->
+        <div class="restaurant-detail">
+          <span class="detail-label">Cuisine:</span>
+          <span class="cuisine-type"><%= restaurant.cuisine_type.present? ? restaurant.cuisine_type : 'Mexican' %></span>
+        </div>
+        
+        <!-- Distance/Area -->
+        <div class="restaurant-detail">
+          <span class="detail-label">Location:</span>
+          <span class="location-info"><%= restaurant.distance_or_area %> – <%= restaurant.area_display %></span>
+        </div>
+        
+        <!-- Rating -->
+        <div class="restaurant-detail">
+          <span class="detail-label">Rating:</span>
+          <span class="rating-display">
+            <%= number_with_precision(restaurant.google_rating, precision: 1) %>★
+          </span>
+        </div>
+        
+        <!-- Average Price -->
+        <div class="restaurant-detail">
+          <span class="detail-label">Avg Price:</span>
+          <span class="price-info">
             <% avg_price_cents = restaurant.tacos.average(:price_cents) %>
             <% if avg_price_cents.present? %>
-              <%= number_to_currency(avg_price_cents / 100.0, precision: 2) %> average price
+              <%= number_to_currency(avg_price_cents / 100.0, precision: 2) %>
             <% else %>
               Price unavailable
             <% end %>
-          </small>
+          </span>
         </div>
       </div>
-    <% end %>
+      
+      <!-- Action Buttons -->
+      <div class="restaurant-card-actions">
+        <div class="action-buttons">
+          <!-- Pin on Map Button -->
+          <button class="action-btn pin-btn" onclick="pinOnMap('<%= restaurant.id %>', <%= restaurant.latitude %>, <%= restaurant.longitude %>)" title="Pin on Map">
+            <i class="fas fa-map-pin"></i>
+            <span>Pin on Map</span>
+          </button>
+          
+          <!-- More Info Button -->
+          <%= link_to restaurant_path(restaurant), class: "action-btn info-btn", title: "More Info" do %>
+            <i class="fas fa-info-circle"></i>
+            <span>More Info</span>
+          <% end %>
+          
+          <!-- Favorite Button -->
+          <div class="favorite-section" onclick="event.stopPropagation();">
+            <%= render 'frontend_pages/favorite_button', restaurant: restaurant %>
+            <%= render 'frontend_pages/favorite_count', restaurant: restaurant %>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>

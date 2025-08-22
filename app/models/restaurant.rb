@@ -22,6 +22,7 @@ class Restaurant < ApplicationRecord
   validates :google_rating, numericality: true, allow_nil: true
   validates :google_price_level, numericality: true, allow_nil: true
   validates :google_user_ratings_total, numericality: true, allow_nil: true
+  validates :cuisine_type, presence: true, allow_nil: true
 
   # Geocoding
   # Only geocode if we do not already have latitude/longitude
@@ -99,5 +100,44 @@ class Restaurant < ApplicationRecord
   # Returns a status string (Open/Closed) based on current time
   def status
     open_now? ? "Open Now" : "Closed Now"
+  end
+
+  # Returns distance from given coordinates or area information
+  def distance_or_area(user_lat = nil, user_lng = nil)
+    if user_lat.present? && user_lng.present? && latitude.present? && longitude.present?
+      distance_km = distance_between([user_lat, user_lng], [latitude, longitude])
+      distance_miles = (distance_km * 0.621371).round(1)
+      "#{distance_miles} mi"
+    else
+      # Fallback to showing city or area
+      city.present? ? city : "Location unknown"
+    end
+  end
+
+  # Helper method to calculate distance between two coordinates
+  def distance_between(coord1, coord2)
+    # Using Haversine formula
+    lat1, lng1 = coord1
+    lat2, lng2 = coord2
+    
+    rad_per_deg = Math::PI / 180  # PI / 180
+    rkm = 6371                    # Earth radius in kilometers
+    rm = rkm * 1000               # Earth radius in meters
+    
+    dlat_rad = (lat2 - lat1) * rad_per_deg  # Delta, converted to rad
+    dlng_rad = (lng2 - lng1) * rad_per_deg
+    
+    lat1_rad, lat2_rad = lat1 * rad_per_deg, lat2 * rad_per_deg
+    
+    a = Math.sin(dlat_rad / 2)**2 + Math.cos(lat1_rad) * Math.cos(lat2_rad) * Math.sin(dlng_rad / 2)**2
+    c = 2 * Math.asin(Math.sqrt(a))
+    
+    rkm * c # Delta in kilometers
+  end
+
+  # Returns a formatted area string (e.g., "Downtown", "North Austin")
+  def area_display
+    # For now, just return the city. In a real app, you might have neighborhood data
+    city.present? ? city : "Unknown area"
   end
 end
