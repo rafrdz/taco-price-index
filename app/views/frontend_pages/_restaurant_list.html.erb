@@ -1,6 +1,9 @@
 <div class="restaurant-cards-container">
   <% @restaurants.each do |restaurant| %>
-    <div class="restaurant-card" data-restaurant-id="<%= restaurant.id %>">
+    <div class="restaurant-card" 
+         data-restaurant-id="<%= restaurant.id %>"
+         data-tags='<%= restaurant.tag_list.to_json %>'>
+         
       <!-- Restaurant Name (Bold, Large Font) -->
       <div class="restaurant-card-header">
         <h3 class="restaurant-name"><%= restaurant.name %></h3>

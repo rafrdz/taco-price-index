@@ -36,6 +36,9 @@ class Restaurant < ApplicationRecord
 
   # Store business hours as JSON in a text field
   serialize :business_hours, coder: JSON
+  
+  # Store tags as JSON array in a text field
+  serialize :tags, coder: JSON
 
   # Virtual attribute for simple hours display
   attr_accessor :hours
@@ -139,5 +142,34 @@ class Restaurant < ApplicationRecord
   def area_display
     # For now, just return the city. In a real app, you might have neighborhood data
     city.present? ? city : "Unknown area"
+  end
+  
+  # Returns the tags array, ensuring it's always an array
+  def tag_list
+    tags.is_a?(Array) ? tags : []
+  end
+  
+  # Check if restaurant has a specific tag
+  def has_tag?(tag)
+    tag_list.include?(tag)
+  end
+  
+  # Get all unique tags across all restaurants (class method)
+  def self.all_tags
+    all_tags = []
+    Restaurant.where.not(tags: [nil, '']).find_each do |restaurant|
+      if restaurant.tags.is_a?(String)
+        parsed = JSON.parse(restaurant.tags) rescue []
+        all_tags.concat(parsed) if parsed.is_a?(Array)
+      elsif restaurant.tags.is_a?(Array)
+        all_tags.concat(restaurant.tags)
+      end
+    end
+    all_tags.uniq.sort
+  end
+  
+  # Get all unique cuisine types (class method)
+  def self.all_cuisine_types
+    Restaurant.distinct.pluck(:cuisine_type).compact.sort
   end
 end

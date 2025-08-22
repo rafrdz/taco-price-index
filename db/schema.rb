@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_22_213145) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_22_215019) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -70,6 +70,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_22_213145) do
     t.text "description"
     t.integer "user_favorites_count", default: 0, null: false
     t.string "cuisine_type"
+    t.text "tags"
     t.index ["user_favorites_count"], name: "index_restaurants_on_user_favorites_count"
   end
 
