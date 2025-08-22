@@ -147,27 +147,13 @@ class RestaurantFilters {
       const status = statusBadge?.textContent || '';
       const location = card.querySelector('.location-info')?.textContent || '';
       
-      // Better open/closed detection using CSS class and text content
-      let isOpen = false;
-      if (statusBadge) {
-        // Check CSS classes first (most reliable)
-        if (statusBadge.classList.contains('status-open')) {
-          isOpen = true;
-        } else if (statusBadge.classList.contains('status-closed')) {
-          isOpen = false;
-        } else {
-          // Fallback to text content
-          const statusText = status.toLowerCase().trim();
-          isOpen = statusText.includes('open now') || statusText === 'open';
-        }
-      }
+      // Get open status from data attribute (most reliable)
+      const isOpenFromData = card.getAttribute('data-open');
+      const isOpen = isOpenFromData === 'true';
       
-      // Extract distance if available (assumes format like \"2.5 mi - City\")
-      let distance = null;
-      const locationMatch = location.match(/(\d+\.?\d*) mi/);
-      if (locationMatch) {
-        distance = parseFloat(locationMatch[1]);
-      }
+      // Get distance from data attribute 
+      const distanceFromData = card.getAttribute('data-distance');
+      const distance = distanceFromData ? parseFloat(distanceFromData) : null;
       
       // Get tags from data attributes
       const tags = JSON.parse(card.getAttribute('data-tags') || '[]');
@@ -192,9 +178,10 @@ class RestaurantFilters {
   
   filterRestaurants() {
     this.filteredRestaurants = this.restaurants.filter(restaurant => {
-      // Search filter - only apply if there's search text, otherwise show all
-      if (this.activeFilters.search && this.activeFilters.search !== '') {
-        if (!restaurant.name.includes(this.activeFilters.search)) {
+      // Search filter - if there's search text, filter by it; if no matches, show none
+      if (this.activeFilters.search && this.activeFilters.search.trim() !== '') {
+        const searchTerm = this.activeFilters.search.toLowerCase();
+        if (!restaurant.name.includes(searchTerm)) {
           return false;
         }
       }
@@ -214,9 +201,10 @@ class RestaurantFilters {
       }
       
       // Distance filter
-      if (this.activeFilters.distance && restaurant.distance) {
+      if (this.activeFilters.distance) {
         const maxDistance = parseFloat(this.activeFilters.distance);
-        if (restaurant.distance > maxDistance) {
+        // If restaurant has no distance data, exclude it from distance filtering
+        if (!restaurant.distance || restaurant.distance > maxDistance) {
           return false;
         }
       }

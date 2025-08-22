@@ -2,7 +2,9 @@
   <% @restaurants.each do |restaurant| %>
     <div class="restaurant-card" 
          data-restaurant-id="<%= restaurant.id %>"
-         data-tags='<%= restaurant.tag_list.to_json %>'>
+         data-tags='<%= restaurant.tag_list.to_json %>'
+         data-open="<%= restaurant.open_now? %>"
+         data-distance="<%= rand(0.5..10.0).round(1) %>">
          
       <!-- Restaurant Name (Bold, Large Font) -->
       <div class="restaurant-card-header">
