@@ -26,38 +26,23 @@
             </section>
     </section>
 
-    <!-- Restaurant List -->
-    <div class="row">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="container">
-              <div class="row">
-                <div class="card">
-                <div class="container">
-
-                  <div class="col-12">
-                    <div class="container">
-                      <div class="card-header">
-                        <h5 class="card-title mb-0">Taco Places</h5>
-                        <%= link_to 'Add a Restaurant', new_restaurant_path, class: 'btn btn-primary my-3' %>
-                      </div>
-                    </div>
-                  </div>
-                  </div>
-                </div>
-              </div>
+    <!-- Restaurant List Section -->
+    <div class="restaurant-list-section">
+      <div class="container-fluid">
+        <!-- Section Header -->
+        <div class="row mb-4">
+          <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+              <h2 class="section-title text-rose">Featured Restaurants</h2>
+              <%= link_to 'Add a Restaurant', new_restaurant_path, class: 'btn btn-primary' %>
             </div>
           </div>
         </div>
+        
+        <!-- Restaurant Cards -->
         <div class="row">
-          <div class="container">
-            <div class="col-12">
-              <div class="card">
-
-                <%= render 'frontend_pages/restaurant_list' %>
-              </div>
-            </div>
+          <div class="col-12">
+            <%= render 'frontend_pages/restaurant_list' %>
           </div>
         </div>
       </div>
@@ -67,4 +52,42 @@
 </div>
 
 <footer class="bg-rose p-4 mt-4"></footer>
+
+<script>
+// Global function to handle pinning restaurants on map
+window.pinOnMap = function(restaurantId, lat, lng) {
+  console.log(`Attempting to pin restaurant ${restaurantId} at ${lat}, ${lng}`);
+  
+  // Find the map controller instance
+  const mapElement = document.querySelector('[data-controller="map"]');
+  if (!mapElement) {
+    console.error('Map element not found');
+    return;
+  }
+  
+  // Get the Stimulus controller
+  const mapController = mapElement.application?.getControllerForElementAndIdentifier(mapElement, 'map');
+  if (!mapController) {
+    console.error('Map controller not found');
+    return;
+  }
+  
+  // Call the pinRestaurantOnMap method
+  if (typeof mapController.pinRestaurantOnMap === 'function') {
+    mapController.pinRestaurantOnMap(restaurantId, lat, lng);
+    
+    // Scroll to map section
+    const mapSection = document.querySelector('.map-section');
+    if (mapSection) {
+      mapSection.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+      });
+    }
+  } else {
+    console.error('pinRestaurantOnMap method not found on map controller');
+  }
+};
+</script>
+
 </body>
