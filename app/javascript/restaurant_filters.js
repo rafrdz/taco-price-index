@@ -150,8 +150,16 @@ class RestaurantFilters {
       // Better open/closed detection using CSS class and text content
       let isOpen = false;
       if (statusBadge) {
-        isOpen = statusBadge.classList.contains('status-open') || 
-                 status.toLowerCase().includes('open now');
+        // Check CSS classes first (most reliable)
+        if (statusBadge.classList.contains('status-open')) {
+          isOpen = true;
+        } else if (statusBadge.classList.contains('status-closed')) {
+          isOpen = false;
+        } else {
+          // Fallback to text content
+          const statusText = status.toLowerCase().trim();
+          isOpen = statusText.includes('open now') || statusText === 'open';
+        }
       }
       
       // Extract distance if available (assumes format like \"2.5 mi - City\")
