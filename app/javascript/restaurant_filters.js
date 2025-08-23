@@ -204,7 +204,10 @@ class RestaurantFilters {
       if (this.activeFilters.openNow) {
         console.log(`Checking ${restaurant.name}: isOpen = ${restaurant.isOpen}, status text = '${restaurant.statusText}'`);
         if (!restaurant.isOpen) {
+          console.log(`  -> FILTERED OUT: ${restaurant.name} because isOpen = false`);
           return false;
+        } else {
+          console.log(`  -> KEEPING: ${restaurant.name} because isOpen = true`);
         }
       }
       
@@ -235,19 +238,26 @@ class RestaurantFilters {
   }
   
   renderFilteredResults() {
-    // Hide all restaurants first
+    console.log(`Rendering results: ${this.filteredRestaurants.length} restaurants to show`);
+    
+    // Hide all restaurants first (synchronous)
     this.restaurants.forEach(restaurant => {
       restaurant.element.style.display = 'none';
       restaurant.visible = false;
     });
     
-    // Show filtered restaurants with animation
+    // Show filtered restaurants immediately, then add animation
     this.filteredRestaurants.forEach((restaurant, index) => {
+      // Show immediately
+      restaurant.element.style.display = 'block';
+      restaurant.visible = true;
+      
+      // Add staggered animation
       setTimeout(() => {
-        restaurant.element.style.display = 'block';
         restaurant.element.style.animation = 'fadeInUp 0.3s ease forwards';
-        restaurant.visible = true;
-      }, index * 50); // Stagger animation
+      }, index * 50);
+      
+      console.log(`  -> SHOWING: ${restaurant.name}`);
     });
     
     // Show \"no results\" message if needed
@@ -370,6 +380,22 @@ class RestaurantFilters {
       clearTimeout(timeout);
       timeout = setTimeout(later, wait);
     };
+  }
+  
+  // Debug helper function to check restaurant status
+  debugRestaurantStatus() {
+    console.log('=== RESTAURANT STATUS DEBUG ===');
+    this.restaurants.forEach(restaurant => {
+      const badge = restaurant.element.querySelector('.status-badge');
+      const badgeText = badge ? badge.textContent.trim() : 'No badge';
+      const badgeClass = badge ? badge.className : 'No class';
+      console.log(`${restaurant.name}:`);
+      console.log(`  - JavaScript isOpen: ${restaurant.isOpen}`);
+      console.log(`  - Badge text: "${badgeText}"`);
+      console.log(`  - Badge classes: ${badgeClass}`);
+      console.log(`  - data-open: ${restaurant.element.getAttribute('data-open')}`);
+      console.log('---');
+    });
   }
 }
 
