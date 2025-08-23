@@ -919,7 +919,8 @@ body.bg-cream {
   border-radius: 0 8px 8px 0;
 }
 
-.clear-search-btn {
+.clear-search-btn,
+.btn.clear-search-btn {
   background-color: #dc3545;
   border-radius: 0;
   margin-left: -1px;
@@ -934,6 +935,15 @@ body.bg-cream {
 .clear-search-btn:hover {
   background-color: #c82333;
   transform: scale(1.02);
+}
+
+#clearFilters {
+    color: white;
+}
+
+#clearFilters:hover {
+    background-color: #c82333;
+    transform: scale(1.02);
 }
 
 .search-btn i, .clear-search-btn i {
