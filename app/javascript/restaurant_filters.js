@@ -252,9 +252,16 @@ class RestaurantFilters {
       restaurant.element.style.display = 'block';
       restaurant.visible = true;
       
-      // Add staggered animation
+      // Add staggered animation, then clear it to restore hover effects
       setTimeout(() => {
         restaurant.element.style.animation = 'fadeInUp 0.3s ease forwards';
+        
+        // Clear animation after it completes to restore hover effects
+        setTimeout(() => {
+          restaurant.element.style.animation = '';
+          restaurant.element.style.transform = '';
+          restaurant.element.style.opacity = '';
+        }, 300); // Animation duration
       }, index * 50);
       
       console.log(`  -> SHOWING: ${restaurant.name}`);
