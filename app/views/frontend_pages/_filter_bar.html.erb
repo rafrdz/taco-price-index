@@ -1,0 +1,127 @@
+<div class="filter-bar-container" id="filterBar">
+  <div class="filter-bar">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <!-- Search by Name -->
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
+          <div class="filter-group">
+            <label class="filter-label">Search</label>
+            <div class="search-input-container">
+              <input type="text" 
+                     id="searchInput" 
+                     class="form-control filter-input" 
+                     placeholder="Search restaurants..." 
+                     autocomplete="off">
+              <button type="button" id="searchBtn" class="search-btn" title="Search">
+                <i class="fas fa-search"></i>
+                <span>Search</span>
+              </button>
+              <button type="button" id="clearSearchBtn" class="clear-search-btn" title="Clear Search" style="display: none;">
+                <i class="fas fa-times"></i>
+                <span>Clear</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Cuisine Type Dropdown -->
+        <div class="col-lg-2 col-md-3 col-sm-6 mb-2">
+          <div class="filter-group">
+            <label class="filter-label">Cuisine</label>
+            <select id="cuisineFilter" class="form-select filter-select">
+              <option value="">All Cuisines</option>
+              <% Restaurant.all_cuisine_types.each do |cuisine| %>
+                <option value="<%= cuisine %>"><%= cuisine %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Open Now Toggle -->
+        <div class="col-lg-2 col-md-2 col-sm-4 mb-2">
+          <div class="filter-group">
+            <label class="filter-label">Status</label>
+            <div class="toggle-container">
+              <input type="checkbox" id="openNowToggle" class="filter-toggle">
+              <label for="openNowToggle" class="toggle-label">
+                <span class="toggle-switch"></span>
+                <span class="toggle-text">Open Now</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Distance Filter -->
+        <div class="col-lg-2 col-md-3 col-sm-4 mb-2">
+          <div class="filter-group">
+            <label class="filter-label">Distance</label>
+            <select id="distanceFilter" class="form-select filter-select">
+              <option value="">Any Distance</option>
+              <option value="1">< 1 mile</option>
+              <option value="3">< 3 miles</option>
+              <option value="5">< 5 miles</option>
+              <option value="10">< 10 miles</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Clear Filters & Results Count -->
+        <div class="col-lg-3 col-md-12 col-sm-4 mb-2">
+          <div class="filter-actions">
+            <div class="results-count">
+              <span id="resultsCount"><%= @restaurants.count %></span> restaurants
+            </div>
+            <button id="clearFilters" class="btn clear-search-btn" title="Clear All Filters">
+              <i class="fas fa-times"></i> Clear All
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tags Row -->
+      <div class="row">
+        <div class="col-12">
+          <div class="tags-container">
+            <label class="filter-label me-3">Tags:</label>
+            <div class="tags-list" id="tagsList">
+              <% Restaurant.all_tags.each do |tag| %>
+                <button class="tag-button" data-tag="<%= tag %>">
+                  <i class="fas fa-tag"></i>
+                  <%= tag %>
+                </button>
+              <% end %>
+              
+              <!-- Add some default tags if none exist -->
+              <% if Restaurant.all_tags.empty? %>
+                <button class="tag-button" data-tag="Late Night">
+                  <i class="fas fa-moon"></i>
+                  Late Night
+                </button>
+                <button class="tag-button" data-tag="Vegan">
+                  <i class="fas fa-leaf"></i>
+                  Vegan
+                </button>
+                <button class="tag-button" data-tag="Coffee">
+                  <i class="fas fa-coffee"></i>
+                  Coffee
+                </button>
+                <button class="tag-button" data-tag="Drive-Thru">
+                  <i class="fas fa-car"></i>
+                  Drive-Thru
+                </button>
+                <button class="tag-button" data-tag="Family Friendly">
+                  <i class="fas fa-users"></i>
+                  Family Friendly
+                </button>
+                <button class="tag-button" data-tag="Delivery">
+                  <i class="fas fa-truck"></i>
+                  Delivery
+                </button>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

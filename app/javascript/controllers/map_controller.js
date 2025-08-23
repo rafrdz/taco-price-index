@@ -346,6 +346,47 @@ export default class extends Controller {
     }
   }
   
+  // Function to pin a specific restaurant on the map
+  pinRestaurantOnMap(restaurantId, lat, lng) {
+    if (!this.map) {
+      debug('Cannot pin restaurant: map not initialized');
+      return;
+    }
+    
+    try {
+      debug(`Pinning restaurant ${restaurantId} at ${lat}, ${lng}`);
+      
+      // Center map on the restaurant
+      const position = { lat: parseFloat(lat), lng: parseFloat(lng) };
+      this.map.setCenter(position);
+      this.map.setZoom(16);
+      
+      // Add a highlighted marker
+      const marker = new google.maps.Marker({
+        position,
+        map: this.map,
+        title: 'Selected Restaurant',
+        animation: google.maps.Animation.BOUNCE,
+        icon: {
+          url: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
+          scaledSize: new google.maps.Size(40, 40)
+        }
+      });
+      
+      // Stop bouncing after 2 seconds
+      setTimeout(() => {
+        if (marker) {
+          marker.setAnimation(null);
+        }
+      }, 2000);
+      
+      debug('Restaurant pinned successfully');
+      
+    } catch (error) {
+      console.error('Error pinning restaurant:', error);
+    }
+  }
+  
   disconnect() {
     // Clean up
     if (this.map) {
