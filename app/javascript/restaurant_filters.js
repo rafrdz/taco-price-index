@@ -158,7 +158,12 @@ class RestaurantFilters {
       // Get tags from data attributes
       const tags = JSON.parse(card.getAttribute('data-tags') || '[]');
       
-      console.log(`Loading restaurant: ${name}, Status: '${status}', isOpen: ${isOpen}, CSS classes: ${statusBadge?.className}`);
+      console.log(`Loading restaurant: ${name}`);
+      console.log(`  - Status text: '${status}'`);
+      console.log(`  - data-open attribute: '${isOpenFromData}'`);
+      console.log(`  - isOpen parsed: ${isOpen}`);
+      console.log(`  - CSS classes: ${statusBadge?.className}`);
+      console.log(`  - Distance: ${distance}`);
       
       return {
         element: card,
@@ -177,6 +182,9 @@ class RestaurantFilters {
   }
   
   filterRestaurants() {
+    console.log('\n=== FILTERING RESTAURANTS ===');
+    console.log('Active filters:', this.activeFilters);
+    
     this.filteredRestaurants = this.restaurants.filter(restaurant => {
       // Search filter - if there's search text, filter by it; if no matches, show none
       if (this.activeFilters.search && this.activeFilters.search.trim() !== '') {
