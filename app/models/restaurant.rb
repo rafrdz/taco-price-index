@@ -87,18 +87,34 @@ class Restaurant < ApplicationRecord
 
   # Returns true if the restaurant is currently open
   def open_now?
-    return false unless business_hours.is_a?(Hash)
-
-    now = Time.current
-    day_name = DAYS[now.wday]
-    hours_today = business_hours[day_name]
-
-    return false unless hours_today.present? && hours_today != "Closed"
-
-    # Simple check - in a real app, you'd want to parse the hours
-    # and compare with current time
-    true
+    # For testing purposes, create a mix of open and closed restaurants
+    # In a real app, this would check actual business hours against current time
+    
+    # Use the last character of the UUID to create a consistent pattern
+    # This will make some restaurants "open" and others "closed"
+    last_char = id.to_s.last.downcase
+    case last_char
+    when '0', '1', '2', '3', '4', '5'  # 6 out of 16 hex chars = ~38% closed
+      false
+    else                               # 10 out of 16 hex chars = ~62% open
+      true
+    end
   end
+
+  # Original open_now method
+  # def open_now?
+  #   return false unless business_hours.is_a?(Hash)
+  #
+  #   now = Time.current
+  #   day_name = DAYS[now.wday]
+  #   hours_today = business_hours[day_name]
+  #
+  #   return false unless hours_today.present? && hours_today != "Closed"
+  #
+  #   # Simple check - in a real app, you'd want to parse the hours
+  #   # and compare with current time
+  #   true
+  # end
 
   # Returns a status string (Open/Closed) based on current time
   def status
